@@ -1,0 +1,23 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  English (Base)
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "Bring Your Sketches to Life";
+"intro_subtitle" = "Discover sketches, portraits, anime, animals, and more all in one place.";
+"intro_agree_button" = "Agree & Continue";
+"intro_terms_prefix" = "I've agree to";
+"intro_terms_of_use" = "Terms of Use";
+"intro_terms_and" = "and I have read the";
+"intro_privacy_policy" = "Privacy Policy";
+
+/* Onboarding */
+"onboarding_trusted_by_creators" = "Trusted by the creatives";
+"onboarding_trace_title" = "Trace with your phone";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.";
+"onboarding_continue_button" = "Continue";
