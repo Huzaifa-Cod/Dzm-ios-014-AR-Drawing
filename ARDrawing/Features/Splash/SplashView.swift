@@ -11,13 +11,9 @@ struct SplashView: View {
 
     var body: some View {
         ZStack {
-            RadialGradient(
-                colors: [Color(.gradientEnd), Color(.gradientStart)],
-                center: .init(x: 0.5, y: 0.85),
-                startRadius: 0,
-                endRadius: 500.s
-            )
-            .ignoresSafeArea()
+            Image(app: .splash)
+                .resizable()
+                .ignoresSafeArea()
 
             VStack(spacing: 16.h) {
                 Image(app: .splashIcon)

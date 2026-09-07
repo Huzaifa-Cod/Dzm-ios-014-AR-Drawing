@@ -16,9 +16,10 @@ struct IntroView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            CollageImage(image: .onboard1, cornerRadius: 0)
+            Image(app: .onboard1)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
-                .frame(height: 420.h)
 
             content
                 .padding(.horizontal, 24.w)
@@ -64,20 +65,20 @@ struct IntroView: View {
             Text("\(LocalizedKey.introTermsPrefix.localized) ")
                 .foregroundStyle(Color(.textSecondary))
             + Text(LocalizedKey.introTermsOfUse.localized)
-                .foregroundStyle(Color(.primaryBlue))
+                .foregroundStyle(Color(.accent))
             + Text(" \(LocalizedKey.introTermsAnd.localized) ")
                 .foregroundStyle(Color(.textSecondary))
             + Text(LocalizedKey.introPrivacyPolicy.localized)
-                .foregroundStyle(Color(.primaryBlue))
+                .foregroundStyle(Color(.accent))
         )
         .font(.app(.regular, size: 12))
         .multilineTextAlignment(.center)
     }
 }
 
-#Preview {
-    NavigationStack {
-        IntroView()
-    }
-    .environmentObject(AppRouter())
-}
+//#Preview {
+//    NavigationStack {
+//        IntroView()
+//    }
+//    .environmentObject(AppRouter())
+//}

@@ -18,17 +18,10 @@ struct OnboardingView: View {
                 .padding(.top, 12.h)
 
             VStack(spacing: 18.h) {
-                HStack(spacing: 4.s) {
-                    ForEach(0..<5, id: \.self) { _ in
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 14.s))
-                            .foregroundStyle(.yellow)
-                    }
-                }
-
-                Text(LocalizedKey.onboardingTrustedByCreators.localized)
-                    .font(.app(.medium, size: 14))
-                    .foregroundStyle(Color(.textSecondary))
+                Image(app: .trustedByCreators)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 28.h)
 
                 VStack(spacing: 10.h) {
                     Text(viewModel.currentPage.titleKey.localized)

@@ -16,8 +16,6 @@ enum AppColor: String {
     case white = "kWhite"
     case dark = "k1A1A"
     case primaryBlue = "kPrimaryBlue"
-    case gradientStart = "kGradientStart"
-    case gradientEnd = "kGradientEnd"
     case textSecondary = "kTextSecondary"
 }
 
@@ -104,7 +102,6 @@ enum LocalizedKey: String {
     case introPrivacyPolicy = "intro_privacy_policy"
 
     // Onboarding
-    case onboardingTrustedByCreators = "onboarding_trusted_by_creators"
     case onboardingTraceTitle = "onboarding_trace_title"
     case onboardingTraceDescription = "onboarding_trace_description"
     case onboardingContinueButton = "onboarding_continue_button"
