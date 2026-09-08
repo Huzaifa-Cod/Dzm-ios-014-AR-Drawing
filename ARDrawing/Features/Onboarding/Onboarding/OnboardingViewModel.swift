@@ -10,14 +10,25 @@ import Foundation
 final class OnboardingViewModel: ObservableObject {
     @Published var currentPage: OnboardingPage = .trace
 
+    /// Advances to the next page, or finishes onboarding on the last one.
     func continueTapped(router: AppRouter) {
-        UserDefaultsManager.shared.lastOnboardingPage = currentPage.rawValue
-
-        guard let nextPage = OnboardingPage(rawValue: currentPage.rawValue + 1) else {
+        guard OnboardingPage(rawValue: currentPage.rawValue + 1) != nil else {
             UserDefaultsManager.shared.hasCompletedOnboarding = true
-            router.push(.home)
+            router.push(.tutorial)
             return
         }
+        goToNextPage()
+    }
+
+    func goToNextPage() {
+        guard let nextPage = OnboardingPage(rawValue: currentPage.rawValue + 1) else { return }
         currentPage = nextPage
+        UserDefaultsManager.shared.lastOnboardingPage = nextPage.rawValue
+    }
+
+    func goToPreviousPage() {
+        guard let previousPage = OnboardingPage(rawValue: currentPage.rawValue - 1) else { return }
+        currentPage = previousPage
+        UserDefaultsManager.shared.lastOnboardingPage = previousPage.rawValue
     }
 }

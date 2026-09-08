@@ -10,9 +10,10 @@
 import SwiftUI
 
 enum ScreenSize {
-    /// Figma design frame size.
-    static let designWidth: CGFloat = 393
-    static let designHeight: CGFloat = 852
+    /// Figma design frame size. Every exported artwork is 390pt wide,
+    /// so the design frame is an iPhone 14 (390x844).
+    static let designWidth: CGFloat = 390
+    static let designHeight: CGFloat = 844
 
     static var current: CGSize {
         UIScreen.main.bounds.size

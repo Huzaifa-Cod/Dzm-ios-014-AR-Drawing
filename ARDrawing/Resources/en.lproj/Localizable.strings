@@ -18,5 +18,51 @@
 
 /* Onboarding */
 "onboarding_trace_title" = "Trace with your phone";
-"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "Draw your own photos";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "500+ creative templates to get started";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "Step-by-step lessons to master drawing";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "Join over hundreds of users";
 "onboarding_continue_button" = "Continue";
+
+/* Tutorial */
+"tutorial_title" = "Let's see\nhow good you are";
+"tutorial_badge" = "Tutorial";
+"tutorial_callout" = "Draw the cat with step by step guide";
+"tutorial_start_button" = "Start Tutorial";
+"tutorial_skip_button" = "Skip Tutorial";
+"tutorial_lesson_title" = "Let's Draw Face";
+"tutorial_complete_button" = "Complete";
+"tutorial_complete_social_proof" = "Your drawing is far better than\n50% of our users.";
+"tutorial_complete_headline" = "Every masterpiece starts\nwith a single stroke";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "Continue";
+
+/* Tab bar */
+"tab_home" = "Home";
+"tab_lessons" = "Lessons";
+"tab_templates" = "Templates";
+"tab_profile" = "Profile";
+"tab_settings" = "Settings";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "Photo as\na reference";
+"home_capture_title" = "Capture";
+"home_step_by_step_title" = "Draw Step by Step";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "For Kids";
+"home_cute" = "Cute";
+"home_see_all" = "See all";
+
+/* Templates */
+"templates_title" = "Templates";
+"templates_search_placeholder" = "Search here";
+"template_category_kids" = "Kids";
+"template_category_cute" = "Cute";
+"template_category_animal" = "Animal";
+"template_category_anime" = "Anime";

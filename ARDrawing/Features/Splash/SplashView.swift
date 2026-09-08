@@ -25,7 +25,7 @@ struct SplashView: View {
 
                 Text(LocalizedKey.appName.localized)
                     .font(.app(.bold, size: 22))
-                    .foregroundStyle(Color(.white))
+                    .foregroundStyle(Color(app: .white))
             }
             .opacity(viewModel.isLogoVisible ? 1 : 0)
             .scaleEffect(viewModel.isLogoVisible ? 1 : 0.92)

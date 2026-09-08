@@ -2,9 +2,7 @@
 //  PrimaryButton.swift
 //  ARDrawing
 //
-//  Shared full-width rounded CTA button used across onboarding
-//  and the rest of the app.
-//
+
 
 import SwiftUI
 
@@ -18,10 +16,10 @@ struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.app(.semiBold, size: 17))
-                .foregroundStyle(Color(.white))
+                .foregroundStyle(Color(app: .white))
                 .frame(maxWidth: .infinity)
                 .frame(height: 56.h)
-                .background(Color(.primaryBlue))
+                .background(Color(app: .accent))
                 .clipShape(RoundedRectangle(cornerRadius: 16.s, style: .continuous))
         }
         .scaleEffect(isPressed ? 0.97 : 1)

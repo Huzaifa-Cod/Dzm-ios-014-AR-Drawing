@@ -23,6 +23,11 @@ final class UserDefaultsManager {
         set { defaults.set(newValue, forKey: UserDefaultsKey.hasCompletedOnboarding.rawValue) }
     }
 
+    var hasCompletedTutorial: Bool {
+        get { defaults.bool(forKey: UserDefaultsKey.hasCompletedTutorial.rawValue) }
+        set { defaults.set(newValue, forKey: UserDefaultsKey.hasCompletedTutorial.rawValue) }
+    }
+
     var lastOnboardingPage: Int {
         get { defaults.integer(forKey: UserDefaultsKey.lastOnboardingPage.rawValue) }
         set { defaults.set(newValue, forKey: UserDefaultsKey.lastOnboardingPage.rawValue) }
