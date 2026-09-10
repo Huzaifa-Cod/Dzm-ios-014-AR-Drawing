@@ -41,12 +41,15 @@ struct EditorView: View {
     /// Mirrors the template horizontally. Not offered in phone mode —
     /// the toolbar shows Eraser in that slot instead.
     @State private var isFlipped = false
+    /// Device torch — mirrors the physical light, so it's still on when
+    /// the user leaves the Flash tool selected and taps elsewhere.
+    @State private var isFlashOn = false
 
     private let canvasRadius: CGFloat = 24
 
     var body: some View {
         ZStack {
-            CameraPreviewView()
+            CameraPreviewView(isTorchOn: isFlashOn)
                 .ignoresSafeArea()
 
             VStack(spacing: 0) {
@@ -295,8 +298,10 @@ struct EditorView: View {
                         isOpacityToolActive = true
                     case .secondary where mode != .phone:
                         withAnimation(.easeInOut(duration: 0.25)) { isFlipped.toggle() }
+                    case .flash:
+                        isFlashOn.toggle()
                     default:
-                        break // Eraser/Record/Photo/Flash sheets follow separately.
+                        break // Eraser/Record/Photo sheets follow separately.
                     }
                 } label: {
                     VStack(spacing: 6.h) {
@@ -308,7 +313,12 @@ struct EditorView: View {
                         Text(tool.titleKey(for: mode).localized)
                             .font(.app(.medium, size: 11))
                     }
-                    .foregroundStyle(isActive || (tool == .secondary && isFlipped) ? Color(app: .accent) : Color(app: .dark))
+                    .foregroundStyle(
+                        isActive
+                            || (tool == .secondary && isFlipped)
+                            || (tool == .flash && isFlashOn)
+                            ? Color(app: .accent) : Color(app: .dark)
+                    )
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.plain)

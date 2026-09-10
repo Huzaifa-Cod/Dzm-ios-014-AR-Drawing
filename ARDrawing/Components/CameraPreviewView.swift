@@ -11,11 +11,17 @@ import AVFoundation
 import SwiftUI
 
 struct CameraPreviewView: UIViewRepresentable {
+    /// Torch (device flashlight) state — the Flash tool in the editor
+    /// toolbar drives this.
+    var isTorchOn: Bool = false
+
     func makeUIView(context: Context) -> PreviewView {
         PreviewView()
     }
 
-    func updateUIView(_ uiView: PreviewView, context: Context) {}
+    func updateUIView(_ uiView: PreviewView, context: Context) {
+        uiView.setTorch(on: isTorchOn)
+    }
 
     static func dismantleUIView(_ uiView: PreviewView, coordinator: ()) {
         uiView.stop()
@@ -30,6 +36,9 @@ final class PreviewView: UIView {
     }
 
     private let session = AVCaptureSession()
+    /// Set once the back camera input is added — the torch lives on the
+    /// device itself, not the session.
+    private var camera: AVCaptureDevice?
 
     init() {
         super.init(frame: .zero)
@@ -67,6 +76,7 @@ final class PreviewView: UIView {
             session.canAddInput(input)
         {
             session.addInput(input)
+            camera = device
         }
 
         session.commitConfiguration()
@@ -74,6 +84,16 @@ final class PreviewView: UIView {
         DispatchQueue.global(qos: .userInitiated).async { [session] in
             session.startRunning()
         }
+    }
+
+    /// No-ops on the Simulator (no torch hardware) and on devices whose
+    /// back camera lacks one.
+    func setTorch(on: Bool) {
+        guard let camera, camera.hasTorch, camera.isTorchAvailable else { return }
+        guard (camera.torchMode == .on) != on else { return }
+        try? camera.lockForConfiguration()
+        camera.torchMode = on ? .on : .off
+        camera.unlockForConfiguration()
     }
 
     func stop() {

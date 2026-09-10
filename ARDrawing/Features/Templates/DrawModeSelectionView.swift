@@ -45,15 +45,10 @@ struct DrawModeSelectionView: View {
             .padding(.bottom, 12.h)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .screenGradientBackground()
+        .background(.kGradientEnd)
         .navigationBarHidden(true)
     }
 
-    // MARK: Header
-    /// Same white plate as Album's header — reaches up under the status
-    /// bar and rounds off only at the bottom — but with the title
-    /// centred and the back button overlaid on top rather than sitting
-    /// in the same row.
 
     private var header: some View {
         ZStack {
@@ -94,10 +89,6 @@ struct DrawModeSelectionView: View {
 
     // MARK: Carousel
 
-    /// A paged, edge-peeking carousel: the current card sits centred with
-    /// its neighbours' edges visible either side (only on the trailing
-    /// side for the first card, both sides in between — exactly what
-    /// falls out of centring a card narrower than the row).
     private var videoCarousel: some View {
         GeometryReader { geo in
             let cardWidth = geo.size.width - peekInset.w * 2
