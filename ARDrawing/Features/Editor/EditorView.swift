@@ -38,6 +38,9 @@ struct EditorView: View {
     /// canvas to `templateOpacity` on its own.
     @State private var draftOpacity: Double = 1
     @State private var isOpacityToolActive = false
+    /// Mirrors the template horizontally. Not offered in phone mode —
+    /// the toolbar shows Eraser in that slot instead.
+    @State private var isFlipped = false
 
     private let canvasRadius: CGFloat = 24
 
@@ -147,6 +150,7 @@ struct EditorView: View {
                     .scaledToFit()
                     .padding(18.s)
                     .opacity(isOpacityToolActive ? draftOpacity : templateOpacity)
+                    .scaleEffect(x: isFlipped ? -1 : 1, y: 1)
             }
             .overlay(alignment: .topTrailing) {
                 Button {
@@ -284,12 +288,16 @@ struct EditorView: View {
                 let isActive = tool == .opacity && isOpacityToolActive
 
                 Button {
-                    guard tool == .opacity else { return }
-                    // Seed the slider from the last confirmed value and
-                    // reveal it; every other tool is still a stub ahead
-                    // of its own sheet landing.
-                    draftOpacity = templateOpacity
-                    isOpacityToolActive = true
+                    switch tool {
+                    case .opacity:
+                        // Seed the slider from the last confirmed value.
+                        draftOpacity = templateOpacity
+                        isOpacityToolActive = true
+                    case .secondary where mode != .phone:
+                        withAnimation(.easeInOut(duration: 0.25)) { isFlipped.toggle() }
+                    default:
+                        break // Eraser/Record/Photo/Flash sheets follow separately.
+                    }
                 } label: {
                     VStack(spacing: 6.h) {
                         Image(app: tool.icon(for: mode))
@@ -300,7 +308,7 @@ struct EditorView: View {
                         Text(tool.titleKey(for: mode).localized)
                             .font(.app(.medium, size: 11))
                     }
-                    .foregroundStyle(isActive ? Color(app: .accent) : Color(app: .dark))
+                    .foregroundStyle(isActive || (tool == .secondary && isFlipped) ? Color(app: .accent) : Color(app: .dark))
                     .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.plain)
