@@ -17,8 +17,12 @@ enum AppColor: String {
     case homeBackground = "kHomeBg"
     case proOrange = "kProOrange"
     case tutorialBorder = "kTutorialBorder"
+    /// Bottom stop of the screen gradient (white FFFFFF → this F7F8FA).
+    /// See `View.screenGradientBackground()`.
+    case gradientEnd = "kGradientEnd"
     case successGreen = "kSuccessGreen"
     case surfaceLight = "kSurfaceLight"
+    case redAccent = "kRed"
 }
 
 // MARK: - Fonts
@@ -74,7 +78,32 @@ enum AppImage: String {
     case capBgImg, capImg
     case fireIcon, starIcon
     case sample1, sample2, sample3, sample4
+
+    /// Profile
+    case topViewBackView, levelBadge
+    case pencilIcon, timeSpentIcon, lessonCountIcon
+    case uploadIcon
+    
+    /// Profile — Album
+    /// Selection state on a thumbnail; both are pre-coloured in the asset,
+    /// so like the tab icons above they are drawn untinted.
+    case checkIcon, uncheckIcon
+    case selectAllIcon, deselectAllIcon, deleteIcon
+
+    /// Settings
+    case restorePurchaseIcon = "Group"
+    case languageIcon, rateIcon, contactIcon, shareIcon, privacyIcon, termsIcon
+
+    /// Draw mode
+    case phoneIcon, paperIcon, arDrawIcon
+
+    /// Editor
+    case undoIcon, redoIcon, lockImageIcon, unlockImageIcon
+    case opacityIcon, flipImgIcon, eraserIcon, recordIcon, imageCameraIcon, flashIcon, resetIcon
 }
+
+
+
 
 // MARK: - Tab Bar
 /// The five sections of the app behind the tab bar. Order here is the
@@ -175,17 +204,14 @@ enum TemplateCategory: Int, CaseIterable, Identifiable {
         }
     }
 
-    /// Artwork for the chip. Still to be supplied — the chip lays out
-    /// correctly with or without one, so filling these in is the only
-    /// change needed once the icons arrive.
+    
     var icon: AppImage? {
         switch self {
         case .kids, .cute, .animal, .anime: return nil
         }
     }
 
-    /// Placeholder artwork until templates come from the backend.
-    var samples: [AppImage] {
+    var samples: [AppImage] {   
         switch self {
         case .kids: return [.sample1, .sample4]
         case .cute: return [.sample2, .sample3]
@@ -193,6 +219,254 @@ enum TemplateCategory: Int, CaseIterable, Identifiable {
         case .anime: return [.sample3, .sample1]
         }
     }
+}
+
+// MARK: - Profile
+/// The three figures in the stats card. All three icons were exported at
+/// the same 33pt height with differing widths, so they are pinned by height
+/// and keep their natural proportions.
+enum ProfileStat: Int, CaseIterable, Identifiable {
+    case drawn = 0
+    case timeSpent
+    case lessons
+
+    var id: Int { rawValue }
+
+    static let iconHeight: CGFloat = 33
+
+    var icon: AppImage {
+        switch self {
+        case .drawn: return .pencilIcon
+        case .timeSpent: return .timeSpentIcon
+        case .lessons: return .lessonCountIcon
+        }
+    }
+
+    var labelKey: LocalizedKey {
+        switch self {
+        case .drawn: return .profileStatDrawn
+        case .timeSpent: return .profileStatTimeSpent
+        case .lessons: return .profileStatLessons
+        }
+    }
+}
+
+
+
+// MARK: - Profile — Album
+/// The two segmented tabs at the top of the Album screen.
+enum AlbumTab: Int, CaseIterable, Identifiable {
+   case drawn = 0
+   case recorded
+
+   var id: Int { rawValue }
+
+   var titleKey: LocalizedKey {
+       switch self {
+       case .drawn: return .albumTabDrawn
+       case .recorded: return .albumTabRecorded
+       }
+   }
+}
+
+
+// MARK: - Draw Mode
+/// The three ways a template can be drawn, offered as a carousel right
+/// after picking one. Each page gets a looping usage clip once that
+/// exists — see `DrawModeSelectionView`.
+enum DrawMode: Int, CaseIterable, Identifiable {
+    case phone = 0
+    case arDraw
+    case paper
+
+    var id: Int { rawValue }
+
+    var icon: AppImage {
+        switch self {
+        case .phone: return .phoneIcon
+        case .arDraw: return .arDrawIcon
+        case .paper: return .paperIcon
+        }
+    }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .phone: return .drawModePhoneTitle
+        case .arDraw: return .drawModeARTitle
+        case .paper: return .drawModePaperTitle
+        }
+    }
+}
+
+// MARK: - Editor
+/// One button in the editor's bottom toolbar. The second slot is
+/// `flip` for AR/paper modes and `eraser` while drawing on the phone
+/// screen itself, where there is nothing behind the canvas to flip.
+enum EditorTool: Int, CaseIterable, Identifiable {
+    case opacity = 0
+    case secondary
+    case record
+    case photo
+    case flash
+
+    var id: Int { rawValue }
+
+    func icon(for mode: DrawMode) -> AppImage {
+        switch self {
+        case .opacity: return .opacityIcon
+        case .secondary: return mode == .phone ? .eraserIcon : .flipImgIcon
+        case .record: return .recordIcon
+        case .photo: return .imageCameraIcon
+        case .flash: return .flashIcon
+        }
+    }
+
+    func titleKey(for mode: DrawMode) -> LocalizedKey {
+        switch self {
+        case .opacity: return .editorToolOpacity
+        case .secondary: return mode == .phone ? .editorToolEraser : .editorToolFlip
+        case .record: return .editorToolRecord
+        case .photo: return .editorToolPhoto
+        case .flash: return .editorToolFlash
+        }
+    }
+}
+
+/// Zoom presets shown as a pill row above the toolbar.
+enum EditorZoom: Int, CaseIterable, Identifiable {
+    case half = 0
+    case one
+    case two
+
+    var id: Int { rawValue }
+
+    var label: String {
+        switch self {
+        case .half: return "0.5x"
+        case .one: return "1x"
+        case .two: return "2x"
+        }
+    }
+}
+
+// MARK: - Settings
+/// One tappable row on the Settings screen.
+enum SettingsRow: Int, CaseIterable, Identifiable {
+    case restorePurchase = 0
+    case language
+    case rateUs
+    case contactUs
+    case shareWithFriends
+    case privacyPolicy
+    case termsAndConditions
+
+    var id: Int { rawValue }
+
+    var icon: AppImage {
+        switch self {
+        case .restorePurchase: return .restorePurchaseIcon
+        case .language: return .languageIcon
+        case .rateUs: return .rateIcon
+        case .contactUs: return .contactIcon
+        case .shareWithFriends: return .shareIcon
+        case .privacyPolicy: return .privacyIcon
+        case .termsAndConditions: return .termsIcon
+        }
+    }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .restorePurchase: return .settingsRestorePurchase
+        case .language: return .settingsLanguage
+        case .rateUs: return .settingsRateUs
+        case .contactUs: return .settingsContactUs
+        case .shareWithFriends: return .settingsShareWithFriends
+        case .privacyPolicy: return .settingsPrivacyPolicy
+        case .termsAndConditions: return .settingsTermsConditions
+        }
+    }
+}
+
+/// The three grouped cards on the Settings screen, in order.
+enum SettingsSection: Int, CaseIterable, Identifiable {
+    case manage = 0
+    case other
+    case about
+
+    var id: Int { rawValue }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .manage: return .settingsSectionManage
+        case .other: return .settingsSectionOther
+        case .about: return .settingsSectionAbout
+        }
+    }
+
+    var rows: [SettingsRow] {
+        switch self {
+        case .manage: return [.restorePurchase]
+        case .other: return [.language, .rateUs, .contactUs, .shareWithFriends]
+        case .about: return [.privacyPolicy, .termsAndConditions]
+        }
+    }
+}
+
+// MARK: - Lessons
+/// Difficulty tag shown on a lesson card — also the four filter chips
+/// (`nil` case = "All") across the top of the screen.
+enum LessonDifficulty: Int, CaseIterable, Identifiable {
+    case beginner = 0
+    case intermediate
+    case expert
+
+    var id: Int { rawValue }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .beginner: return .lessonDifficultyBeginner
+        case .intermediate: return .lessonDifficultyIntermediate
+        case .expert: return .lessonDifficultyExpert
+        }
+    }
+
+    /// Text/background tint for this difficulty's pill.
+    var tint: AppColor {
+        switch self {
+        case .beginner: return .successGreen
+        case .intermediate: return .proOrange
+        case .expert: return .redAccent
+        }
+    }
+}
+
+/// Where a lesson stands for the current user, driving the trailing
+/// control on its card.
+enum LessonProgress {
+    case completed
+    /// The next lesson the user hasn't done yet — its Start button is live.
+    case unlocked
+    /// Not reached yet — its Start button is shown but disabled.
+    case locked
+}
+
+/// One row on the Lessons screen. Placeholder data until lessons come
+/// from the backend — see `Lesson.placeholders`.
+struct Lesson: Identifiable {
+    let id: Int
+    let title: String
+    let thumbnail: AppImage
+    let difficulty: LessonDifficulty
+    let progress: LessonProgress
+
+    static let placeholders: [Lesson] = [
+        Lesson(id: 0, title: "Saturo Esai", thumbnail: .sample3, difficulty: .beginner, progress: .completed),
+        Lesson(id: 1, title: "Cute 3", thumbnail: .sample4, difficulty: .intermediate, progress: .unlocked),
+        Lesson(id: 2, title: "Cute 3", thumbnail: .sample4, difficulty: .expert, progress: .locked),
+        Lesson(id: 3, title: "Cute 3", thumbnail: .sample4, difficulty: .beginner, progress: .locked),
+        Lesson(id: 4, title: "Cute 3", thumbnail: .sample4, difficulty: .intermediate, progress: .locked),
+        Lesson(id: 5, title: "Cute 3", thumbnail: .sample4, difficulty: .beginner, progress: .locked)
+    ]
 }
 
 // MARK: - Navigation Routes
@@ -206,6 +480,9 @@ enum AppRoute: Hashable {
     /// The finished lesson, carrying the sketch the user just drew.
     case tutorialComplete(strokes: [DrawnStroke])
     case home
+    case album
+    case drawModeSelection
+    case editor(mode: DrawMode)
 }
 
 // MARK: - Launch
@@ -433,4 +710,73 @@ enum LocalizedKey: String {
     case templateCategoryCute = "template_category_cute"
     case templateCategoryAnimal = "template_category_animal"
     case templateCategoryAnime = "template_category_anime"
+
+    // Profile
+    case profileTitle = "profile_title"
+    case profileCurrentLevel = "profile_current_level"
+    case profileSeeMore = "profile_see_more"
+    case profileStatDrawn = "profile_stat_drawn"
+    case profileStatTimeSpent = "profile_stat_time_spent"
+    case profileStatLessons = "profile_stat_lessons"
+    case profileAlbumTitle = "profile_album_title"
+    case profileAlbumSubtitle = "profile_album_subtitle"
+    case profileUploadDrawing = "profile_upload_drawing"
+    case profileLessonsTitle = "profile_lessons_title"
+    case profileLessonsSubtitle = "profile_lessons_subtitle"
+    
+    
+    // Profile — Album
+    case albumNavTitle = "album_nav_title"
+    case albumSelectAll = "album_select_all"
+    case albumDeselectAll = "album_deselect_all"
+    case albumTabDrawn = "album_tab_drawn"
+    case albumTabRecorded = "album_tab_recorded"
+    /// Format string, e.g. "%d items selected".
+    case albumItemsSelected = "album_items_selected"
+    case albumDelete = "album_delete"
+    case albumEmptyTitle = "album_empty_title"
+
+    // Lessons
+    case lessonsScreenTitle = "lessons_screen_title"
+    case lessonsCurrentLevel = "lessons_current_level"
+    case lessonDifficultyAll = "lesson_difficulty_all"
+    case lessonDifficultyBeginner = "lesson_difficulty_beginner"
+    case lessonDifficultyIntermediate = "lesson_difficulty_intermediate"
+    case lessonDifficultyExpert = "lesson_difficulty_expert"
+    /// Format string, e.g. "Avg time: %@".
+    case lessonAvgTimeFormat = "lesson_avg_time_format"
+    case lessonAvgTimeValue = "lesson_avg_time_value"
+    case lessonStatusCompleted = "lesson_status_completed"
+    case lessonStatusStart = "lesson_status_start"
+
+    // Settings
+    case settingsTitle = "settings_title"
+    case settingsSectionManage = "settings_section_manage"
+    case settingsSectionOther = "settings_section_other"
+    case settingsSectionAbout = "settings_section_about"
+    case settingsRestorePurchase = "settings_restore_purchase"
+    case settingsLanguage = "settings_language"
+    case settingsRateUs = "settings_rate_us"
+    case settingsContactUs = "settings_contact_us"
+    case settingsShareWithFriends = "settings_share_with_friends"
+    case settingsPrivacyPolicy = "settings_privacy_policy"
+    case settingsTermsConditions = "settings_terms_conditions"
+
+    // Draw mode
+    case drawModeSelectTitle = "draw_mode_select_title"
+    case drawModePhoneTitle = "draw_mode_phone_title"
+    case drawModeARTitle = "draw_mode_ar_title"
+    case drawModePaperTitle = "draw_mode_paper_title"
+    case drawModeDescription = "draw_mode_description"
+    case drawModeContinueButton = "draw_mode_continue_button"
+
+    // Editor
+    case editorCancel = "editor_cancel"
+    case editorFinish = "editor_finish"
+    case editorToolOpacity = "editor_tool_opacity"
+    case editorToolFlip = "editor_tool_flip"
+    case editorToolEraser = "editor_tool_eraser"
+    case editorToolRecord = "editor_tool_record"
+    case editorToolPhoto = "editor_tool_photo"
+    case editorToolFlash = "editor_tool_flash"
 }

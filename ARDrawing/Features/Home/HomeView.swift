@@ -7,7 +7,7 @@ import SwiftUI
 
 struct HomeView: View {
     private let pageMargin: CGFloat = 20
-    private let featureCard = CGSize(width: 167.5, height: 220)
+    private let featureCardHeight: CGFloat = 220
     private let cardRadius: CGFloat = 20
     private let tileSize: CGFloat = 140
 
@@ -100,13 +100,17 @@ struct HomeView: View {
     }
 
     /// Both top cards are the same box with a full-bleed artwork behind
-    /// whatever sits on top.
+    /// whatever sits on top. Width is flexible — the enclosing HStack
+    /// splits the row evenly between the two — so they fill the row edge
+    /// to edge on any screen instead of sitting at a fixed phone width
+    /// with space left over on a tablet.
     private func featureCardShell<Content: View>(
         background: AppImage,
         @ViewBuilder content: () -> Content
     ) -> some View {
         content()
-            .frame(width: featureCard.width.w, height: featureCard.height.h)
+            .frame(maxWidth: .infinity)
+            .frame(height: featureCardHeight.h)
             .background {
                 Image(app: background)
                     .resizable()

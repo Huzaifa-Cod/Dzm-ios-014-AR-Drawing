@@ -1,7 +1,6 @@
 //
 //  ReportingScrollView.swift
 //  ARDrawing
-//
 
 
 import SwiftUI

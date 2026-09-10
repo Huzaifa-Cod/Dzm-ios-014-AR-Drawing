@@ -70,9 +70,9 @@ struct TutorialIntroView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        TutorialIntroView()
-    }
-    .environmentObject(AppRouter())
-}
+//#Preview {
+//    NavigationStack {
+//        TutorialIntroView()
+//    }
+//    .environmentObject(AppRouter())
+//}

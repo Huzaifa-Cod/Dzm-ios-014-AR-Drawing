@@ -38,10 +38,6 @@ struct RootView: View {
     @StateObject private var router = AppRouter()
     @State private var isSplashFinished = false
 
-    /// Resolved once, when the view is first created, rather than read on
-    /// every redraw. The flags change while the user is still inside these
-    /// flows — finishing onboarding sets one — and re-reading them would
-    /// swap the screen out from under a push that is already happening.
     @State private var launch = LaunchDestination.current
 
     var body: some View {
@@ -85,6 +81,12 @@ struct RootView: View {
             TutorialCompleteView(strokes: strokes)
         case .home:
             MainTabView()
+        case .album:
+            AlbumView()
+        case .drawModeSelection:
+            DrawModeSelectionView()
+        case .editor(let mode):
+            EditorView(mode: mode)
         }
     }
 }

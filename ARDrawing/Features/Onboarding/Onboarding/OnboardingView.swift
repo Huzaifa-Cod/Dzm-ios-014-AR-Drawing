@@ -148,9 +148,9 @@ struct OnboardingView: View {
     }
 }
 
-#Preview {
-    NavigationStack {
-        OnboardingView()
-    }
-    .environmentObject(AppRouter())
-}
+//#Preview {
+//    NavigationStack {
+//        OnboardingView()
+//    }
+//    .environmentObject(AppRouter())
+//}

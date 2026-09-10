@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct TemplatesView: View {
+    @EnvironmentObject private var router: AppRouter
     @State private var searchText = ""
     @State private var selectedCategory: TemplateCategory = .kids
 
     private let pageMargin: CGFloat = 20
     private let gridSpacing: CGFloat = 12
     private let tileRadius: CGFloat = 16
-    private let columnCount = 3
 
     /// Placeholder count until templates come from the backend.
     private let tileCount = 12
+
+    /// 3 across on a phone; a wider screen gets more columns instead of
+    /// the same 3 tiles just stretching wider (which is what made the
+    /// grid still read as a phone layout on iPad).
+    private var columnCount: Int {
+        switch ScreenSize.screenWidth {
+        case ..<600: return 3
+        case ..<900: return 4
+        default: return 5
+        }
+    }
 
     private var columns: [GridItem] {
         Array(
@@ -49,7 +60,12 @@ struct TemplatesView: View {
             ReportingScrollView {
                 LazyVGrid(columns: columns, spacing: gridSpacing.h) {
                     ForEach(Array(tiles.enumerated()), id: \.offset) { _, image in
-                        tile(image)
+                        Button {
+                            router.push(.drawModeSelection)
+                        } label: {
+                            tile(image)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
                 .padding(.horizontal, pageMargin.w)
@@ -66,7 +82,7 @@ struct TemplatesView: View {
     private var header: some View {
         HStack(spacing: 8.w) {
             Text(LocalizedKey.templatesTitle.localized)
-                .font(.app(.bold, size: 24))
+                .font(.app(.paytoneOne, size: 24))
                 .foregroundStyle(Color(app: .dark))
 
             Spacer(minLength: 8.w)
@@ -97,21 +113,21 @@ struct TemplatesView: View {
             Button {
                 searchText = ""
             } label: {
-                Image(systemName: "xmark")
+                Image(.crossBtn)
                     .font(.system(size: 10.s, weight: .bold))
                     .foregroundStyle(Color(app: .white))
                     .frame(width: 20.s, height: 20.s)
                     .background(Circle().fill(Color(app: .dotInactive)))
             }
-            // Kept in place rather than removed when empty, so the field's
-            // trailing edge doesn't jump as the user types.
             .opacity(searchText.isEmpty ? 0.6 : 1)
         }
         .padding(.horizontal, 16.w)
         .frame(height: 48.h)
         .background(
-            RoundedRectangle(cornerRadius: 16.s, style: .continuous)
-                .fill(Color(app: .surfaceLight))
+            Capsule()
+            .fill(Color(app: .dark))
+            .opacity(0.04)
+
         )
     }
 
@@ -135,8 +151,6 @@ struct TemplatesView: View {
             selectedCategory = category
         } label: {
             HStack(spacing: 7.w) {
-                // Renders only once artwork is supplied — see
-                // `TemplateCategory.icon`.
                 if let icon = category.icon {
                     Image(app: icon)
                         .resizable()
@@ -177,6 +191,6 @@ struct TemplatesView: View {
     }
 }
 
-#Preview {
-    TemplatesView()
-}
+//#Preview {
+//    TemplatesView()
+//}

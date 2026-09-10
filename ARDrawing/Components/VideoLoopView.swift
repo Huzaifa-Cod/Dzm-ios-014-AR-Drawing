@@ -1,14 +1,8 @@
 //
 //  VideoLoopView.swift
 //  ARDrawing
-//
-//  A silent, seamlessly looping video, used as artwork rather than as a
-//  player — there are no controls and nothing to tap.
-//
-//  Looping is done with `AVPlayerLooper` over an `AVQueuePlayer` instead of
-//  seeking back to zero on the end notification: seeking leaves a visible
-//  stutter at the loop point, which is obvious on a short clip like this.
-//
+
+
 
 import AVFoundation
 import SwiftUI

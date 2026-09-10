@@ -2,9 +2,6 @@
 //  HeaderPills.swift
 //  ARDrawing
 //
-//  The streak counter and Pro badge that sit at the top right of Home and
-//  Templates. Shared so the two screens cannot drift apart.
-//
 
 import SwiftUI
 

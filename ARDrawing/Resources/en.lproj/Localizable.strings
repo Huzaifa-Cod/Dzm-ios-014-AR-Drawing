@@ -66,3 +66,74 @@
 "template_category_cute" = "Cute";
 "template_category_animal" = "Animal";
 "template_category_anime" = "Anime";
+
+/* Profile */
+"profile_title" = "Profile";
+"profile_current_level" = "Current Level";
+"profile_see_more" = "See more";
+"profile_stat_drawn" = "Drawn";
+"profile_stat_time_spent" = "Time Spent";
+"profile_stat_lessons" = "Lessons";
+"profile_album_title" = "Album";
+"profile_album_subtitle" = "Upload a photo of the sketch you drew";
+"profile_upload_drawing" = "Upload drawing";
+"profile_lessons_title" = "Lessons";
+"profile_lessons_subtitle" = "Upload a photo of the sketch you drew";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "Album";
+"album_select_all" = "Select all";
+"album_deselect_all" = "Deselect all";
+"album_tab_drawn" = "Drawn Image";
+"album_tab_recorded" = "Recorded";
+"album_items_selected" = "%d items selected";
+"album_delete" = "Delete";
+"album_empty_title" = "No drawings yet";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "Lessons";
+"lessons_current_level" = "Current Level";
+"lesson_difficulty_all" = "All";
+"lesson_difficulty_beginner" = "Beginner";
+"lesson_difficulty_intermediate" = "Intermediate";
+"lesson_difficulty_expert" = "Expert";
+"lesson_avg_time_format" = "Avg time: %@";
+"lesson_avg_time_value" = "5 min";
+"lesson_status_completed" = "Completed";
+"lesson_status_start" = "Start";
+
+
+// MARK: - Settings
+"settings_title" = "Settings";
+"settings_section_manage" = "Manage";
+"settings_section_other" = "Other";
+"settings_section_about" = "About";
+"settings_restore_purchase" = "Restore Purchase";
+"settings_language" = "Language";
+"settings_rate_us" = "Rate Us";
+"settings_contact_us" = "Contact Us";
+"settings_share_with_friends" = "Share with Friends";
+"settings_privacy_policy" = "Privacy Policy";
+"settings_terms_conditions" = "Terms & Conditions";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "Select Mode";
+"draw_mode_phone_title" = "Draw on Phone";
+"draw_mode_ar_title" = "AR Draw";
+"draw_mode_paper_title" = "Draw on Paper";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "Continue";
+
+
+// MARK: - Editor
+"editor_cancel" = "Cancel";
+"editor_finish" = "Finish";
+"editor_tool_opacity" = "Opacity";
+"editor_tool_flip" = "Flip";
+"editor_tool_eraser" = "Eraser";
+"editor_tool_record" = "Record";
+"editor_tool_photo" = "Photo";
+"editor_tool_flash" = "Flash";

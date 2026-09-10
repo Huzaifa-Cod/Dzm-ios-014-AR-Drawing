@@ -72,10 +72,10 @@ struct TutorialCompleteView: View {
         }
     }
 }
-
-#Preview {
-    NavigationStack {
-        TutorialCompleteView(strokes: [])
-    }
-    .environmentObject(AppRouter())
-}
+//
+//#Preview {
+//    NavigationStack {
+//        TutorialCompleteView(strokes: [])
+//    }
+//    .environmentObject(AppRouter())
+//}

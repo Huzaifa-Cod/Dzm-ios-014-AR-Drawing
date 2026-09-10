@@ -46,17 +46,17 @@ struct MainTabView: View {
     private var content: some View {
         switch selection {
         case .home: HomeView()
-        case .lessons: TabPlaceholderView(tab: .lessons)
+        case .lessons: LessonsView()
         case .templates: TemplatesView()
-        case .profile: TabPlaceholderView(tab: .profile)
-        case .settings: TabPlaceholderView(tab: .settings)
+        case .profile: ProfileView()
+        case .settings: SettingsView()
         }
     }
 }
 
-#Preview {
-    NavigationStack {
-        MainTabView()
-    }
-    .environmentObject(AppRouter())
-}
+//#Preview {
+//    NavigationStack {
+//        MainTabView()
+//    }
+//    .environmentObject(AppRouter())
+//}
