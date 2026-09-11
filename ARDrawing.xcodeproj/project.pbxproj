@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6B896D4E30540E6300FF218B /* Localize_Swift in Frameworks */ = {isa = PBXBuildFile; productRef = 6B896D4D30540E6300FF218B /* Localize_Swift */; };
+		6B896D5130540EA500FF218B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6B896D5030540EA500FF218B /* FirebaseAuth */; };
+		6B896D5330540EA500FF218B /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6B896D5230540EA500FF218B /* FirebaseCore */; };
+		6B896D5530540EA500FF218B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6B896D5430540EA500FF218B /* FirebaseFirestore */; };
+		6B896D5730540EA500FF218B /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6B896D5630540EA500FF218B /* FirebaseStorage */; };
+		D5D4689CD5164295BCB3C1E8 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E456582AEEED4B538EDB57E6 /* SDWebImageSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		6BAD274B304EEF9600B78D9C /* ARDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B896D4E30540E6300FF218B /* Localize_Swift in Frameworks */,
+				6B896D5530540EA500FF218B /* FirebaseFirestore in Frameworks */,
+				6B896D5330540EA500FF218B /* FirebaseCore in Frameworks */,
+				6B896D5730540EA500FF218B /* FirebaseStorage in Frameworks */,
+				D5D4689CD5164295BCB3C1E8 /* SDWebImageSwiftUI in Frameworks */,
+				6B896D5130540EA500FF218B /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,12 @@
 			);
 			name = ARDrawing;
 			packageProductDependencies = (
+				6B896D4D30540E6300FF218B /* Localize_Swift */,
+				6B896D5030540EA500FF218B /* FirebaseAuth */,
+				6B896D5230540EA500FF218B /* FirebaseCore */,
+				6B896D5430540EA500FF218B /* FirebaseFirestore */,
+				6B896D5630540EA500FF218B /* FirebaseStorage */,
+				E456582AEEED4B538EDB57E6 /* SDWebImageSwiftUI */,
 			);
 			productName = ARDrawing;
 			productReference = 6BAD274B304EEF9600B78D9C /* ARDrawing.app */;
@@ -107,6 +128,11 @@
 			);
 			mainGroup = 6BAD2742304EEF9600B78D9C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6B896D4C30540E6300FF218B /* XCRemoteSwiftPackageReference "Localize-Swift" */,
+				6B896D4F30540EA500FF218B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1E12782398784B29820D7E58 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6BAD274C304EEF9600B78D9C /* Products */;
 			projectDirPath = "";
@@ -270,6 +296,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ARDrawing/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "AR Drawing uses the camera so you can trace your template over the live view.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "AR Drawing saves your captured sketches to your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -281,7 +309,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ARDrawing;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.huzaifa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -304,6 +332,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ARDrawing/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "AR Drawing uses the camera so you can trace your template over the live view.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "AR Drawing saves your captured sketches to your photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -315,7 +345,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ARDrawing;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.huzaifa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -349,6 +379,66 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1E12782398784B29820D7E58 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		6B896D4C30540E6300FF218B /* XCRemoteSwiftPackageReference "Localize-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/Localize-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.0;
+			};
+		};
+		6B896D4F30540EA500FF218B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.19.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B896D4D30540E6300FF218B /* Localize_Swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B896D4C30540E6300FF218B /* XCRemoteSwiftPackageReference "Localize-Swift" */;
+			productName = Localize_Swift;
+		};
+		6B896D5030540EA500FF218B /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B896D4F30540EA500FF218B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6B896D5230540EA500FF218B /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B896D4F30540EA500FF218B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		6B896D5430540EA500FF218B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B896D4F30540EA500FF218B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6B896D5630540EA500FF218B /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B896D4F30540EA500FF218B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		E456582AEEED4B538EDB57E6 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1E12782398784B29820D7E58 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6BAD2743304EEF9600B78D9C /* Project object */;
 }

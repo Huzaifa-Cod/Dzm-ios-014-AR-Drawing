@@ -34,7 +34,6 @@ enum AppFontName: String {
     case regular = "Outfit-Regular"
     case light = "Outfit-Light"
     case extraBold = "Outfit-ExtraBold"
-
     case paytoneOne = "PaytoneOne-Regular"
 }
 
@@ -100,6 +99,10 @@ enum AppImage: String {
     /// Editor
     case undoIcon, redoIcon, lockImageIcon, unlockImageIcon
     case opacityIcon, flipImgIcon, eraserIcon, recordIcon, imageCameraIcon, flashIcon, resetIcon
+    case strokeIcon
+    /// Buttons inside the Photo/Record sheets — shown exactly as
+    /// exported, no extra background or shadow drawn on top.
+    case capturePhotoIconBtn, recordBtn, stopRecordingBtnIcon
 }
 
 
@@ -158,65 +161,6 @@ enum AppTab: Int, CaseIterable, Identifiable {
         case .templates: return .templatesUnactive
         case .profile: return .profileUnactive
         case .settings: return .settingUnactive
-        }
-    }
-}
-
-// MARK: - Home
-
-enum HomeCategory: Int, CaseIterable, Identifiable {
-    case forKids = 0
-    case cute
-
-    var id: Int { rawValue }
-
-    var titleKey: LocalizedKey {
-        switch self {
-        case .forKids: return .homeForKids
-        case .cute: return .homeCute
-        }
-    }
-
-    var samples: [AppImage] {
-        switch self {
-        case .forKids: return [.sample1, .sample4, .sample2, .sample3]
-        case .cute: return [.sample2, .sample3, .sample1, .sample4]
-        }
-    }
-}
-
-// MARK: - Templates
-/// Filter chips across the top of the Templates screen.
-enum TemplateCategory: Int, CaseIterable, Identifiable {
-    case kids = 0
-    case cute
-    case animal
-    case anime
-
-    var id: Int { rawValue }
-
-    var titleKey: LocalizedKey {
-        switch self {
-        case .kids: return .templateCategoryKids
-        case .cute: return .templateCategoryCute
-        case .animal: return .templateCategoryAnimal
-        case .anime: return .templateCategoryAnime
-        }
-    }
-
-    
-    var icon: AppImage? {
-        switch self {
-        case .kids, .cute, .animal, .anime: return nil
-        }
-    }
-
-    var samples: [AppImage] {   
-        switch self {
-        case .kids: return [.sample1, .sample4]
-        case .cute: return [.sample2, .sample3]
-        case .animal: return [.sample4, .sample2]
-        case .anime: return [.sample3, .sample1]
         }
     }
 }
@@ -317,7 +261,7 @@ enum EditorTool: Int, CaseIterable, Identifiable {
         case .secondary: return mode == .phone ? .eraserIcon : .flipImgIcon
         case .record: return .recordIcon
         case .photo: return .imageCameraIcon
-        case .flash: return .flashIcon
+        case .flash: return mode == .phone ? .strokeIcon : .flashIcon
         }
     }
 
@@ -327,7 +271,7 @@ enum EditorTool: Int, CaseIterable, Identifiable {
         case .secondary: return mode == .phone ? .editorToolEraser : .editorToolFlip
         case .record: return .editorToolRecord
         case .photo: return .editorToolPhoto
-        case .flash: return .editorToolFlash
+            case .flash: return mode == .phone ? .editorToolStroke : .editorToolFlash
         }
     }
 }
@@ -345,6 +289,22 @@ enum EditorZoom: Int, CaseIterable, Identifiable {
         case .half: return "0.5x"
         case .one: return "1x"
         case .two: return "2x"
+        }
+    }
+}
+
+/// The two tabs in the Record sheet — same start/stop button, a
+/// differently styled progress ring around it while active.
+enum EditorRecordMode: Int, CaseIterable, Identifiable {
+    case video = 0
+    case timelapse
+
+    var id: Int { rawValue }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .video: return .editorRecordModeVideo
+        case .timelapse: return .editorRecordModeTimelapse
         }
     }
 }
@@ -481,8 +441,10 @@ enum AppRoute: Hashable {
     case tutorialComplete(strokes: [DrawnStroke])
     case home
     case album
-    case drawModeSelection
-    case editor(mode: DrawMode)
+    /// The template the user tapped, carried forward so Editor knows
+    /// what to draw — from Home's category rows or the Templates grid.
+    case drawModeSelection(templateURL: URL)
+    case editor(mode: DrawMode, templateURL: URL)
 }
 
 // MARK: - Launch
@@ -779,4 +741,11 @@ enum LocalizedKey: String {
     case editorToolRecord = "editor_tool_record"
     case editorToolPhoto = "editor_tool_photo"
     case editorToolFlash = "editor_tool_flash"
+    case editorToolStroke = "editor_tool_stroke"
+    case editorPhotoSavedToast = "editor_photo_saved_toast"
+    case editorRecordModeVideo = "editor_record_mode_video"
+    case editorRecordModeTimelapse = "editor_record_mode_timelapse"
+    case editorCapturePhotoTitle = "editor_capture_photo_title"
+    case editorDrawStrokeTitle = "editor_draw_stroke_title"
+    
 }

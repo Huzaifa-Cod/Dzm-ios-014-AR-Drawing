@@ -36,6 +36,9 @@ final class AppRouter: ObservableObject {
 /// NavigationStack so it can own the initial fade/replace transition.
 struct RootView: View {
     @StateObject private var router = AppRouter()
+    /// Shared with Home and Templates via `.environmentObject` so both
+    /// read the same fetched catalog instead of each fetching its own.
+    @StateObject private var templateCatalog = TemplateCatalogStore()
     @State private var isSplashFinished = false
 
     @State private var launch = LaunchDestination.current
@@ -54,6 +57,7 @@ struct RootView: View {
             }
         }
         .environmentObject(router)
+        .environmentObject(templateCatalog)
     }
 
     @ViewBuilder
@@ -83,10 +87,10 @@ struct RootView: View {
             MainTabView()
         case .album:
             AlbumView()
-        case .drawModeSelection:
-            DrawModeSelectionView()
-        case .editor(let mode):
-            EditorView(mode: mode)
+        case .drawModeSelection(let templateURL):
+            DrawModeSelectionView(templateURL: templateURL)
+        case .editor(let mode, let templateURL):
+            EditorView(mode: mode, templateURL: templateURL)
         }
     }
 }

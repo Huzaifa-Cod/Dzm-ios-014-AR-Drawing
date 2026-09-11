@@ -137,3 +137,10 @@
 "editor_tool_record" = "Record";
 "editor_tool_photo" = "Photo";
 "editor_tool_flash" = "Flash";
+"editor_photo_saved_toast" = "Saved to Gallery! ✨";
+"editor_record_mode_video" = "Video";
+"editor_record_mode_timelapse" = "Timelapse";
+"editor_capture_photo_title" = "Capture Image";
+"editor_tool_stroke" = "Stroke";
+"editor_draw_stroke_title" = "Draw Stroke";
+"editor_draw_stroke_title" = "Draw Stroke";

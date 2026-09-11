@@ -2,22 +2,21 @@
 //  TemplatesView.swift
 //  ARDrawing
 //
-//  Browse screen: search, category filter chips, and a grid of templates.
+//  Browse screen: search, category filter chips, and a grid of templates
+//  fetched from Firebase Storage via `TemplateCatalogStore`.
 //
 
 import SwiftUI
 
 struct TemplatesView: View {
     @EnvironmentObject private var router: AppRouter
+    @EnvironmentObject private var templateCatalog: TemplateCatalogStore
     @State private var searchText = ""
-    @State private var selectedCategory: TemplateCategory = .kids
+    @State private var selectedCategory: TemplateCategoryData?
 
     private let pageMargin: CGFloat = 20
     private let gridSpacing: CGFloat = 12
     private let tileRadius: CGFloat = 16
-
-    /// Placeholder count until templates come from the backend.
-    private let tileCount = 12
 
     /// 3 across on a phone; a wider screen gets more columns instead of
     /// the same 3 tiles just stretching wider (which is what made the
@@ -37,11 +36,8 @@ struct TemplatesView: View {
         )
     }
 
-    /// Cycles the selected category's artwork to fill the grid.
-    private var tiles: [AppImage] {
-        let samples = selectedCategory.samples
-        guard !samples.isEmpty else { return [] }
-        return (0..<tileCount).map { samples[$0 % samples.count] }
+    private var activeCategory: TemplateCategoryData? {
+        selectedCategory ?? templateCatalog.categories.first
     }
 
     var body: some View {
@@ -58,23 +54,39 @@ struct TemplatesView: View {
                 .padding(.top, 16.h)
 
             ReportingScrollView {
-                LazyVGrid(columns: columns, spacing: gridSpacing.h) {
-                    ForEach(Array(tiles.enumerated()), id: \.offset) { _, image in
-                        Button {
-                            router.push(.drawModeSelection)
-                        } label: {
-                            tile(image)
+                if let category = activeCategory, category.imageCount > 0 {
+                    LazyVGrid(columns: columns, spacing: gridSpacing.h) {
+                        ForEach(1...category.imageCount, id: \.self) { index in
+                            Button {
+                                selectTemplate(category: category, index: index)
+                            } label: {
+                                tile(category: category, index: index)
+                            }
+                            .buttonStyle(.plain)
                         }
-                        .buttonStyle(.plain)
                     }
+                    .padding(.horizontal, pageMargin.w)
+                    .padding(.top, 16.h)
+                    .padding(.bottom, 16.h)
+                    // A fresh identity per category, not just fresh data —
+                    // without this, switching categories reuses the same
+                    // grid-cell views (both categories fill the same
+                    // 1...imageCount indices), so the old thumbnails'
+                    // already-resolved URLs kept showing while the new
+                    // ones raced to load in underneath, which is exactly
+                    // the "mixed templates for a moment" glitch. Forcing
+                    // a new identity throws the old grid away outright —
+                    // the crossfade below then swaps it cleanly for an
+                    // entirely fresh one.
+                    .id(category.id)
+                    .transition(.opacity)
                 }
-                .padding(.horizontal, pageMargin.w)
-                .padding(.top, 16.h)
-                .padding(.bottom, 16.h)
             }
+            .animation(.easeInOut(duration: 0.22), value: activeCategory?.id)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(app: .homeBackground).ignoresSafeArea())
+        .onAppear { templateCatalog.loadIfNeeded() }
     }
 
     // MARK: Header
@@ -136,7 +148,7 @@ struct TemplatesView: View {
     private var categoryChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10.w) {
-                ForEach(TemplateCategory.allCases) { category in
+                ForEach(templateCatalog.categories) { category in
                     chip(for: category)
                 }
             }
@@ -144,50 +156,43 @@ struct TemplatesView: View {
         }
     }
 
-    private func chip(for category: TemplateCategory) -> some View {
-        let isSelected = selectedCategory == category
+    private func chip(for category: TemplateCategoryData) -> some View {
+        let isSelected = activeCategory?.id == category.id
 
         return Button {
             selectedCategory = category
         } label: {
-            HStack(spacing: 7.w) {
-                if let icon = category.icon {
-                    Image(app: icon)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24.s, height: 24.s)
-                }
-
-                Text(category.titleKey.localized)
-                    .font(.app(.semiBold, size: 15))
-                    .foregroundStyle(isSelected ? Color(app: .white) : Color(app: .dark))
-            }
-            .padding(.horizontal, 18.w)
-            .frame(height: 42.h)
-            .background(
-                Capsule().fill(isSelected ? Color(app: .dark) : Color(app: .white))
-            )
-            .overlay(
-                Capsule().stroke(Color(app: .dark).opacity(0.07), lineWidth: 1)
-            )
+            Text(category.categoryName)
+                .font(.app(.semiBold, size: 15))
+                .foregroundStyle(isSelected ? Color(app: .white) : Color(app: .dark))
+                .padding(.horizontal, 18.w)
+                .frame(height: 42.h)
+                .background(
+                    Capsule().fill(isSelected ? Color(app: .dark) : Color(app: .white))
+                )
+                .overlay(
+                    Capsule().stroke(Color(app: .dark).opacity(0.07), lineWidth: 1)
+                )
         }
         .buttonStyle(.plain)
     }
 
     // MARK: Grid
 
-    /// Some sample artwork carries its own background, some is line art on
-    /// transparency — the white plate underneath keeps the tiles readable
-    /// against the page, the same way the home rows do it.
-    private func tile(_ image: AppImage) -> some View {
-        Color(app: .white)
+    private func tile(category: TemplateCategoryData, index: Int) -> some View {
+        TemplateThumbnailView(category: category, index: index, cornerRadius: tileRadius)
             .aspectRatio(1, contentMode: .fit)
-            .overlay {
-                Image(app: image)
-                    .resizable()
-                    .scaledToFill()
-            }
-            .clipShape(RoundedRectangle(cornerRadius: tileRadius.s, style: .continuous))
+    }
+
+    /// By the time a thumbnail is visible to tap, it has already
+    /// resolved (and cached) its URL — this is a synchronous lookup,
+    /// not a fresh Storage round trip.
+    private func selectTemplate(category: TemplateCategoryData, index: Int) {
+        guard let url = templateCatalog.cachedImageURL(category: category, index: index) else {
+            print("[TemplatesView] No resolved URL yet for \(category.folderName) #\(index) — ignoring tap.")
+            return
+        }
+        router.push(.drawModeSelection(templateURL: url))
     }
 }
 

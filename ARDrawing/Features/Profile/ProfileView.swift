@@ -249,13 +249,10 @@ struct ProfileView: View {
                     .stroke(Color(app: .dark).opacity(0.08), lineWidth: 1)
             )
             .overlay(alignment: .topTrailing) {
-                // Stand-in for the in-progress badge until the icon is
-                // exported — see the note in the handover.
-                Image(systemName: "arrow.trianglehead.clockwise")
+                Image(.clockIcon)
                     .font(.system(size: 11.s, weight: .bold))
                     .foregroundStyle(Color(app: .white))
                     .frame(width: 22.s, height: 22.s)
-                    .background(Circle().fill(Color(app: .proOrange)))
                     .padding(8.s)
             }
     }

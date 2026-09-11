@@ -6,10 +6,16 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var router: AppRouter
+    @EnvironmentObject private var templateCatalog: TemplateCatalogStore
+
     private let pageMargin: CGFloat = 20
     private let featureCardHeight: CGFloat = 220
     private let cardRadius: CGFloat = 20
     private let tileSize: CGFloat = 140
+    /// Home shows a taste of each category, not the whole thing — the
+    /// full set is what the Templates tab's grid is for.
+    private let rowPreviewCount = 8
 
     var body: some View {
         ReportingScrollView {
@@ -29,7 +35,7 @@ struct HomeView: View {
                     .padding(.horizontal, pageMargin.w)
                     .padding(.top, 14.h)
 
-                ForEach(HomeCategory.allCases) { category in
+                ForEach(templateCatalog.categories) { category in
                     categoryRow(category)
                         .padding(.top, 22.h)
                 }
@@ -37,6 +43,7 @@ struct HomeView: View {
             .padding(.bottom, 16.h)
         }
         .background(Color(app: .homeBackground).ignoresSafeArea())
+        .onAppear { templateCatalog.loadIfNeeded() }
     }
 
     // MARK: Header
@@ -147,10 +154,10 @@ struct HomeView: View {
 
     // MARK: Artwork rows
 
-    private func categoryRow(_ category: HomeCategory) -> some View {
+    private func categoryRow(_ category: TemplateCategoryData) -> some View {
         VStack(alignment: .leading, spacing: 12.h) {
             HStack {
-                Text(category.titleKey.localized)
+                Text(category.categoryName)
                     .font(.app(.paytoneOne, size: 18))
                     .foregroundStyle(Color(app: .dark))
 
@@ -166,26 +173,38 @@ struct HomeView: View {
             }
             .padding(.horizontal, pageMargin.w)
 
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12.w) {
-                    ForEach(Array(category.samples.enumerated()), id: \.offset) { _, sample in
-                        tile(sample)
+            if category.imageCount > 0 {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12.w) {
+                        ForEach(1...min(category.imageCount, rowPreviewCount), id: \.self) { index in
+                            Button {
+                                selectTemplate(category: category, index: index)
+                            } label: {
+                                tile(category: category, index: index)
+                            }
+                            .buttonStyle(.plain)
+                        }
                     }
+                    .padding(.horizontal, pageMargin.w)
                 }
-                .padding(.horizontal, pageMargin.w)
             }
         }
     }
 
-    /// Some sample artwork carries its own background, some is line art on
-    /// transparency — the white plate underneath keeps the tiles uniform.
-    private func tile(_ image: AppImage) -> some View {
-        Image(app: image)
-            .resizable()
-            .scaledToFill()
+    private func tile(category: TemplateCategoryData, index: Int) -> some View {
+        TemplateThumbnailView(category: category, index: index, cornerRadius: cardRadius)
             .frame(width: tileSize.w, height: tileSize.w)
-            .background(Color(app: .white))
-            .clipShape(RoundedRectangle(cornerRadius: cardRadius.s, style: .continuous))
+    }
+
+    /// By the time a thumbnail is visible to tap, it has already
+    /// resolved (and cached) its URL — this is a synchronous lookup,
+    /// not a fresh Storage round trip.
+    private func selectTemplate(category: TemplateCategoryData, index: Int) {
+        guard let url = templateCatalog.cachedImageURL(category: category, index: index) else {
+            print("[HomeView] No resolved URL yet for \(category.folderName) #\(index) — ignoring tap.")
+            return
+        }
+        router.push(.drawModeSelection(templateURL: url))
     }
 }
 

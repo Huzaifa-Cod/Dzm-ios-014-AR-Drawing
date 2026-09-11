@@ -8,6 +8,8 @@ import SwiftUI
 struct DrawModeSelectionView: View {
     @EnvironmentObject private var router: AppRouter
     @Environment(\.dismiss) private var dismiss
+
+    let templateURL: URL
     /// `nil` only in the instant SwiftUI hands back control mid-gesture;
     /// every read falls back to `.phone` via `currentMode`.
     @State private var scrolledID: DrawMode?
@@ -24,9 +26,7 @@ struct DrawModeSelectionView: View {
     var body: some View {
         VStack(spacing: 0) {
             header
-
             Spacer(minLength: 0)
-
             videoCarousel
 
             PageIndicator(count: DrawMode.allCases.count, currentIndex: currentMode.rawValue)
@@ -39,7 +39,7 @@ struct DrawModeSelectionView: View {
             Spacer(minLength: 0)
 
             PrimaryButton(title: LocalizedKey.drawModeContinueButton.localized) {
-                router.push(.editor(mode: currentMode))
+                router.push(.editor(mode: currentMode, templateURL: templateURL))
             }
             .padding(.horizontal, pageMargin.w)
             .padding(.bottom, 12.h)
@@ -111,9 +111,6 @@ struct DrawModeSelectionView: View {
             .frame(height: cardHeight)
             .frame(maxHeight: .infinity, alignment: .center)
         }
-        // Reserves the tallest the card ever gets so the chrome below
-        // never moves as the available width (and so the card size)
-        // changes with the device.
         .frame(height: (ScreenSize.screenWidth - peekInset.w * 2) / cardAspect)
         .onAppear { scrolledID = .phone }
     }
