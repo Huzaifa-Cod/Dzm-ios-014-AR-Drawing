@@ -4,12 +4,18 @@
 //
 
 
+import CoreData
 import SwiftUI
 
 struct ProfileView: View {
-    
+
     @EnvironmentObject private var router: AppRouter
-    
+
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \SavedSketch.createdAt, ascending: false)]
+    )
+    private var sketches: FetchedResults<SavedSketch>
+
     private let summary = ProfileSummary.placeholder
 
     private let pageMargin: CGFloat = 20
@@ -153,20 +159,8 @@ struct ProfileView: View {
            
 
             HStack(spacing: 10.w) {
-                ForEach(0..<3, id: \.self) { _ in
-                    Image(app: .sample1)
-                        .resizable()
-                        .scaledToFit()
-                        .padding(6.s)
-                        .frame(width: thumbnailSize.w, height: thumbnailSize.w)
-                        .background(
-                            RoundedRectangle(cornerRadius: 14.s, style: .continuous)
-                                .fill(Color(app: .white))
-                        )
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 14.s, style: .continuous)
-                                .stroke(Color(app: .dark).opacity(0.08), lineWidth: 1)
-                        )
+                ForEach(recentSketches, id: \.objectID) { sketch in
+                    albumThumbnail(sketch)
                 }
 
                 Spacer(minLength: 0)
@@ -177,6 +171,32 @@ struct ProfileView: View {
         .padding(16.w)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(cardBackground)
+    }
+
+    /// A taste of the album — the full set is what the Album screen is for.
+    private var recentSketches: [SavedSketch] {
+        Array(sketches.prefix(3))
+    }
+
+    private func albumThumbnail(_ sketch: SavedSketch) -> some View {
+        Group {
+            if let uiImage = sketch.uiImage {
+                Image(uiImage: uiImage).resizable()
+            } else {
+                Image(app: .sample1).resizable()
+            }
+        }
+        .scaledToFit()
+        .padding(6.s)
+        .frame(width: thumbnailSize.w, height: thumbnailSize.w)
+        .background(
+            RoundedRectangle(cornerRadius: 14.s, style: .continuous)
+                .fill(Color(app: .white))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 14.s, style: .continuous)
+                .stroke(Color(app: .dark).opacity(0.08), lineWidth: 1)
+        )
     }
 
     private var uploadButton: some View {

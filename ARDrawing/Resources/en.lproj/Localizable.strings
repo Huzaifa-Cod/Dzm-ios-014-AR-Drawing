@@ -143,4 +143,11 @@
 "editor_capture_photo_title" = "Capture Image";
 "editor_tool_stroke" = "Stroke";
 "editor_draw_stroke_title" = "Draw Stroke";
-"editor_draw_stroke_title" = "Draw Stroke";
+
+
+// MARK: - Sketch result
+"result_title" = "Your sketch is ready!";
+"result_subtitle" = "It's saved to your album. Download it or share it with friends.";
+"result_download" = "Download";
+"result_share" = "Share";
+"result_done" = "Done";

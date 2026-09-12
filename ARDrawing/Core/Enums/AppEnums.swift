@@ -211,6 +211,14 @@ enum AlbumTab: Int, CaseIterable, Identifiable {
        case .recorded: return .albumTabRecorded
        }
    }
+
+   /// Matches `SavedSketch.kind`, so a tab filters straight on the stored value.
+   var storageKind: String {
+       switch self {
+       case .drawn: return SketchKind.drawn.rawValue
+       case .recorded: return SketchKind.recorded.rawValue
+       }
+   }
 }
 
 
@@ -445,6 +453,8 @@ enum AppRoute: Hashable {
     /// what to draw — from Home's category rows or the Templates grid.
     case drawModeSelection(templateURL: URL)
     case editor(mode: DrawMode, templateURL: URL)
+    /// The finished drawing, looked up from Core Data by the result screen.
+    case sketchResult(id: UUID)
 }
 
 // MARK: - Launch
@@ -743,6 +753,13 @@ enum LocalizedKey: String {
     case editorToolFlash = "editor_tool_flash"
     case editorToolStroke = "editor_tool_stroke"
     case editorPhotoSavedToast = "editor_photo_saved_toast"
+
+    // Sketch result
+    case resultTitle = "result_title"
+    case resultSubtitle = "result_subtitle"
+    case resultDownload = "result_download"
+    case resultShare = "result_share"
+    case resultDone = "result_done"
     case editorRecordModeVideo = "editor_record_mode_video"
     case editorRecordModeTimelapse = "editor_record_mode_timelapse"
     case editorCapturePhotoTitle = "editor_capture_photo_title"

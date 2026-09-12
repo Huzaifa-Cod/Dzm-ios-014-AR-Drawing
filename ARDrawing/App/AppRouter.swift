@@ -91,6 +91,8 @@ struct RootView: View {
             DrawModeSelectionView(templateURL: templateURL)
         case .editor(let mode, let templateURL):
             EditorView(mode: mode, templateURL: templateURL)
+        case .sketchResult(let id):
+            SketchResultView(sketchID: id)
         }
     }
 }

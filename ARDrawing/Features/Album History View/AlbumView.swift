@@ -4,21 +4,15 @@
 //
 
 
+import CoreData
 import SwiftUI
 
 // MARK: - Model
 
-/// One saved drawing in the album, grouped by the day it was made.
-struct AlbumDrawing: Identifiable, Hashable {
-    let id = UUID()
-    let image: AppImage
-    let date: Date
-}
-
-/// Drawings bucketed under the day-header they were made on, newest first.
+/// Sketches bucketed under the day-header they were saved on, newest first.
 private struct AlbumSection: Identifiable {
     let date: Date
-    let drawings: [AlbumDrawing]
+    let sketches: [SavedSketch]
     var id: Date { date }
 }
 
@@ -29,11 +23,14 @@ struct AlbumView: View {
     /// Drives the sliding highlight between "Drawn Image" and "Recorded".
     @Namespace private var tabAnimation
 
-    @State private var selectedTab: AlbumTab = .drawn
-    @State private var selectedIDs: Set<AlbumDrawing.ID> = []
+    @Environment(\.managedObjectContext) private var moc
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \SavedSketch.createdAt, ascending: false)]
+    )
+    private var sketches: FetchedResults<SavedSketch>
 
-    /// Stand-in gallery until this reads from the real album store.
-    @State private var drawings: [AlbumDrawing] = AlbumDrawing.placeholder
+    @State private var selectedTab: AlbumTab = .drawn
+    @State private var selectedIDs: Set<NSManagedObjectID> = []
 
     private let pageMargin: CGFloat = 20
 
@@ -43,15 +40,21 @@ struct AlbumView: View {
         GridItem(.flexible(), spacing: 10)
     ]
 
+    private var visibleSketches: [SavedSketch] {
+        sketches.filter { $0.kind == selectedTab.storageKind }
+    }
+
     private var sections: [AlbumSection] {
-        let grouped = Dictionary(grouping: drawings) { Calendar.current.startOfDay(for: $0.date) }
+        let grouped = Dictionary(grouping: visibleSketches) {
+            Calendar.current.startOfDay(for: $0.createdAt ?? Date())
+        }
         return grouped
-            .map { AlbumSection(date: $0.key, drawings: $0.value) }
+            .map { AlbumSection(date: $0.key, sketches: $0.value) }
             .sorted { $0.date > $1.date }
     }
 
     private var allSelected: Bool {
-        !drawings.isEmpty && selectedIDs.count == drawings.count
+        !visibleSketches.isEmpty && selectedIDs.count == visibleSketches.count
     }
 
     var body: some View {
@@ -65,8 +68,12 @@ struct AlbumView: View {
             ZStack(alignment: .bottom) {
                 ReportingScrollView {
                     LazyVStack(alignment: .leading, spacing: 20.h) {
-                        ForEach(sections) { section in
-                            sectionView(section)
+                        if sections.isEmpty {
+                            emptyState
+                        } else {
+                            ForEach(sections) { section in
+                                sectionView(section)
+                            }
                         }
                     }
                     .padding(.horizontal, pageMargin.w)
@@ -208,6 +215,14 @@ struct AlbumView: View {
 
     // MARK: Sections & grid
 
+    private var emptyState: some View {
+        Text(LocalizedKey.albumEmptyTitle.localized)
+            .font(.app(.medium, size: 15))
+            .foregroundStyle(Color(app: .textSecondary))
+            .frame(maxWidth: .infinity)
+            .padding(.top, 80.h)
+    }
+
     private func sectionView(_ section: AlbumSection) -> some View {
         VStack(alignment: .leading, spacing: 12.h) {
             Text(section.date.albumSectionTitle)
@@ -215,17 +230,17 @@ struct AlbumView: View {
                 .foregroundStyle(Color(app: .black))
 
             LazyVGrid(columns: columns, spacing: 10.h) {
-                ForEach(section.drawings) { drawing in
-                    thumbnail(drawing)
+                ForEach(section.sketches, id: \.objectID) { sketch in
+                    thumbnail(sketch)
                 }
             }
         }
     }
 
-    private func thumbnail(_ drawing: AlbumDrawing) -> some View {
-        let isSelected = selectedIDs.contains(drawing.id)
+    private func thumbnail(_ sketch: SavedSketch) -> some View {
+        let isSelected = selectedIDs.contains(sketch.objectID)
 
-        return Image(app: drawing.image)
+        return sketchImage(sketch)
             .resizable()
             .scaledToFit()
             .padding(10.s)
@@ -249,7 +264,12 @@ struct AlbumView: View {
                     .padding(8.s)
             }
             .contentShape(Rectangle())
-            .onTapGesture { toggle(drawing) }
+            .onTapGesture { toggle(sketch) }
+    }
+
+    private func sketchImage(_ sketch: SavedSketch) -> Image {
+        guard let uiImage = sketch.uiImage else { return Image(app: .sample1) }
+        return Image(uiImage: uiImage)
     }
 
     // MARK: Delete bar
@@ -320,27 +340,26 @@ struct AlbumView: View {
 
     // MARK: Actions
 
-    private func toggle(_ drawing: AlbumDrawing) {
+    private func toggle(_ sketch: SavedSketch) {
         withAnimation(.easeOut(duration: 0.15)) {
-            if selectedIDs.contains(drawing.id) {
-                selectedIDs.remove(drawing.id)
+            if selectedIDs.contains(sketch.objectID) {
+                selectedIDs.remove(sketch.objectID)
             } else {
-                selectedIDs.insert(drawing.id)
+                selectedIDs.insert(sketch.objectID)
             }
         }
     }
 
     private func toggleSelectAll() {
         withAnimation(.easeOut(duration: 0.15)) {
-            selectedIDs = allSelected ? [] : Set(drawings.map(\.id))
+            selectedIDs = allSelected ? [] : Set(visibleSketches.map(\.objectID))
         }
     }
 
     private func deleteSelected() {
-        // Wiring to the real album store lands with persistence work;
-        // for now this removes the selection from the in-memory gallery.
+        let doomed = visibleSketches.filter { selectedIDs.contains($0.objectID) }
         withAnimation(.easeOut(duration: 0.2)) {
-            drawings.removeAll { selectedIDs.contains($0.id) }
+            SketchStore.delete(doomed, in: moc)
             selectedIDs.removeAll()
         }
     }
@@ -355,36 +374,6 @@ private extension Date {
         formatter.dateFormat = "EEE d MMM yyyy"
         return formatter.string(from: self)
     }
-}
-
-// MARK: - Placeholder data
-
-private extension AlbumDrawing {
-    /// Stand-in gallery matching the three day-groups in the reference
-    /// design, until the real album store lands.
-    static let placeholder: [AlbumDrawing] = {
-        let calendar = Calendar.current
-        let today = Date()
-
-        func day(_ offset: Int) -> Date {
-            calendar.date(byAdding: .day, value: -offset, to: today) ?? today
-        }
-
-        return [
-            AlbumDrawing(image: .sample1, date: day(0)),
-            AlbumDrawing(image: .sample1, date: day(0)),
-
-            AlbumDrawing(image: .sample1, date: day(19)),
-            AlbumDrawing(image: .sample1, date: day(19)),
-            AlbumDrawing(image: .sample1, date: day(19)),
-            AlbumDrawing(image: .sample1, date: day(19)),
-            AlbumDrawing(image: .sample1, date: day(19)),
-
-            AlbumDrawing(image: .sample1, date: day(26)),
-            AlbumDrawing(image: .sample1, date: day(26)),
-            AlbumDrawing(image: .sample1, date: day(26))
-        ]
-    }()
 }
 
 //#Preview {

@@ -37,8 +37,40 @@ private struct EditorStroke {
     }
 }
 
+/// The strokes themselves — on screen inside the card, and again off
+/// screen when Finish renders them to an image.
+private struct StrokePainting: View {
+    let strokes: [EditorStroke]
+    var cursor: EditorStroke?
+
+    var body: some View {
+        Canvas { context, _ in
+            let visible = cursor.map { strokes + [$0] } ?? strokes
+            for stroke in visible {
+                var layer = context
+                // `.clear` only punches through this Canvas's own pixels —
+                // the template is a separate view underneath, so it survives.
+                layer.blendMode = stroke.isEraser ? .clear : .normal
+                layer.stroke(
+                    stroke.path,
+                    with: .color(Color(app: .dark)),
+                    style: StrokeStyle(lineWidth: stroke.width, lineCap: .round, lineJoin: .round)
+                )
+            }
+
+            if let stroke = cursor, stroke.isEraser, let point = stroke.points.last {
+                let size = stroke.width
+                let ring = Path(ellipseIn: CGRect(x: point.x - size / 2, y: point.y - size / 2, width: size, height: size))
+                context.stroke(ring, with: .color(Color(app: .dark).opacity(0.35)), lineWidth: 1)
+            }
+        }
+    }
+}
+
 struct EditorView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) private var moc
+    @EnvironmentObject private var router: AppRouter
 
     let mode: DrawMode
     let templateURL: URL
@@ -79,6 +111,7 @@ struct EditorView: View {
     @StateObject private var cameraController = CameraController()
 
     @State private var canvasFrame: CGRect = .zero
+    @State private var canvasSide: CGFloat = 0
     @State private var isSavedToastVisible = false
 
     @State private var isPhotoSheetActive = false
@@ -172,15 +205,6 @@ struct EditorView: View {
 
     // MARK: Photo capture
 
-    /// Takes a real photo from the live feed, crops it to exactly the
-    /// canvas's current on-screen region (`canvasFrame`, so this
-    /// respects whatever zoom/pan is active), and draws the template
-    /// on top the same way it's drawn on screen — same opacity, same
-    /// flip. `canvasFrame` is mapped into the camera's own image space
-    /// via `metadataOutputRectConverted`, which is what accounts for
-    /// the preview's aspect-fill cropping; without it the crop would
-    /// drift on any device whose sensor aspect ratio doesn't match the
-    /// screen's.
     private func captureSketch() {
         let frame = canvasFrame
         let opacity = templateOpacity
@@ -239,6 +263,33 @@ struct EditorView: View {
             UIImageWriteToSavedPhotosAlbum(composite, nil, nil, nil)
             showSavedToast()
         }
+    }
+
+    // MARK: Finish
+
+    /// Eraser-only strokes leave a blank card, so Finish stays disabled
+    /// until there's actual ink to keep.
+    private var hasInk: Bool { strokes.contains { !$0.isEraser } }
+
+    /// Renders the strokes on their own — no template, no camera, no
+    /// chrome — at the size they were drawn, then hands the saved
+    /// sketch's id to the result screen.
+    private func finishSketch() {
+        guard hasInk, canvasSide > 0 else { return }
+
+        let painting = StrokePainting(strokes: strokes)
+            .frame(width: canvasSide, height: canvasSide)
+            .background(Color(app: .white))
+
+        let renderer = ImageRenderer(content: painting)
+        renderer.scale = 3
+
+        guard
+            let image = renderer.uiImage,
+            let id = SketchStore.save(image: image, in: moc)
+        else { return }
+
+        router.push(.sketchResult(id: id))
     }
 
     private func showSavedToast() {
@@ -337,7 +388,7 @@ struct EditorView: View {
             Spacer(minLength: 0)
 
             Button {
-                // Hands the drawing off to the next stage of the editor.
+                finishSketch()
             } label: {
                 HStack(spacing: 4.w) {
                     Text(LocalizedKey.editorFinish.localized)
@@ -351,6 +402,8 @@ struct EditorView: View {
                 .background(Capsule().fill(Color(app: .white)))
             }
             .buttonStyle(.plain)
+            .disabled(!hasInk)
+            .opacity(hasInk ? 1 : 0.5)
         }
     }
 
@@ -375,8 +428,6 @@ struct EditorView: View {
                     image
                         .resizable()
                         .scaledToFit()
-                        // Templates are opaque JPGs with their own square
-                        // corners, sitting inset from the card's clip.
                         .clipShape(RoundedRectangle(cornerRadius: (canvasRadius - 12).s, style: .continuous))
                 } placeholder: {
                     ProgressView()
@@ -401,11 +452,6 @@ struct EditorView: View {
                 .buttonStyle(.plain)
                 .padding(12.s)
             }
-            // The template overlay's own bounding box is square —
-            // without clipping to the card's shape, an opaque template
-            // (a real photo/scene background, not the transparent local
-            // placeholders this was built against) overhangs the
-            // rounded corners with visible square edges.
             .clipShape(RoundedRectangle(cornerRadius: canvasRadius.s, style: .continuous))
             .shadow(color: .black.opacity(0.25), radius: 20.s, y: 10.h)
             .scaleEffect(zoom == .half ? 0.5 : zoom == .two ? 2 : 1)
@@ -423,7 +469,13 @@ struct EditorView: View {
             )
             .background(
                 GeometryReader { geo in
-                    Color.clear.preference(key: CanvasFrameKey.self, value: geo.frame(in: .global))
+                    Color.clear
+                        .preference(key: CanvasFrameKey.self, value: geo.frame(in: .global))
+                        // Written straight to state: a preference set inside
+                        // a background doesn't reach the enclosing view.
+                        // `scaleEffect` is a render transform, so this stays
+                        // the card's own side length whatever the zoom is.
+                        .task(id: geo.size.width) { canvasSide = geo.size.width }
                 }
             )
     }
@@ -453,27 +505,8 @@ struct EditorView: View {
     private var isDrawingEnabled: Bool { mode == .phone && isLocked }
 
     private var drawingLayer: some View {
-        Canvas { context, _ in
-            let visible = currentStroke.map { strokes + [$0] } ?? strokes
-            for stroke in visible {
-                var layer = context
-                // `.clear` only punches through this Canvas's own pixels —
-                // the template is a separate view underneath, so it survives.
-                layer.blendMode = stroke.isEraser ? .clear : .normal
-                layer.stroke(
-                    stroke.path,
-                    with: .color(Color(app: .dark)),
-                    style: StrokeStyle(lineWidth: stroke.width, lineCap: .round, lineJoin: .round)
-                )
-            }
-
-            if let stroke = currentStroke, stroke.isEraser, let point = stroke.points.last {
-                let size = stroke.width
-                let ring = Path(ellipseIn: CGRect(x: point.x - size / 2, y: point.y - size / 2, width: size, height: size))
-                context.stroke(ring, with: .color(Color(app: .dark).opacity(0.35)), lineWidth: 1)
-            }
-        }
-        .contentShape(Rectangle())
+        StrokePainting(strokes: strokes, cursor: currentStroke)
+            .contentShape(Rectangle())
         // When unlocked the finger moves the card instead (the canvas's
         // own drag gesture), so drawing stands down.
         .gesture(drawGesture, including: isDrawingEnabled ? .all : .subviews)
