@@ -79,6 +79,38 @@
 "profile_upload_drawing" = "Upload drawing";
 "profile_lessons_title" = "Lessons";
 "profile_lessons_subtitle" = "Upload a photo of the sketch you drew";
+"profile_streaks_title" = "Drawing Streaks";
+"profile_streaks_days_label" = "Days";
+"profile_longest_streak_label" = "Longest Streak";
+"profile_achievements_title" = "Achievements";
+"profile_achievements_subtitle" = "View all the rewards you've earned";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "First Sketch";
+"achievement_daily_drawer" = "Daily Drawer";
+"achievement_photo_master" = "Photo Master";
+"achievement_gallery_keeper" = "Gallery Keeper";
+"achievement_color_explorer" = "Color Explorer";
+"achievement_sketch_learner" = "Sketch Learner";
+"achievement_focused_artist" = "Focused Artist";
+"achievement_speed_sketcher" = "Speed Sketcher";
+"achievement_perfect_trace" = "Perfect Trace";
+"achievement_collection_master" = "Collection Master";
+"achievement_line_artist" = "Line Artist";
+"achievement_skill_achiever" = "Skill Achiever";
+"achievement_detail_detective" = "Detail Detective";
+"achievement_template_collector" = "Template Collector";
+"achievement_upload_pro" = "Upload Pro";
+"achievement_timelapse_creator" = "Timelapse Creator";
+"achievement_consistency_king" = "Consistency King";
+"achievement_inspiration_seeker" = "Inspiration Seeker";
+
+"achievement_creative_wizard" = "Creative Wizard";
+"achievement_practice_pro" = "Practice Pro";
+"achievement_milestone_maker" = "Milestone Maker";
+"achievement_drawing_apprentice" = "Drawing Apprentice";
+"achievement_surprise_artist" = "Surprise Artist";
+"achievement_master_sketcher" = "Master Sketcher";
 
 
 // MARK: - Profile — Album

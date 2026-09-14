@@ -93,6 +93,8 @@ struct RootView: View {
             EditorView(mode: mode, templateURL: templateURL)
         case .sketchResult(let id):
             SketchResultView(sketchID: id)
+        case .achievements:
+            AchievementsView()
         }
     }
 }

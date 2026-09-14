@@ -14,6 +14,7 @@ struct ProfileView: View {
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SavedSketch.createdAt, ascending: false)]
     )
+    
     private var sketches: FetchedResults<SavedSketch>
 
     private let summary = ProfileSummary.placeholder
@@ -33,6 +34,8 @@ struct ProfileView: View {
                 statsCard
                 albumCard
                 lessonsCard
+                streaksCard
+                achievementsCard
             }
             .padding(.horizontal, pageMargin.w)
             .padding(.top, 8.h)
@@ -71,7 +74,7 @@ struct ProfileView: View {
                     .foregroundStyle(Color(app: .white).opacity(0.75))
 
                 Text(summary.levelName)
-                    .font(.app(.bold, size: 18))
+                    .font(.app(.paytoneOne, size: 18))
                     .foregroundStyle(Color(app: .white))
             }
 
@@ -120,7 +123,7 @@ struct ProfileView: View {
                         .frame(height: ProfileStat.iconHeight.s)
 
                     Text(summary.value(for: stat))
-                        .font(.app(.bold, size: 18))
+                        .font(.app(.paytoneOne, size: 18))
                         .foregroundStyle(Color(app: .dark))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
@@ -277,13 +280,113 @@ struct ProfileView: View {
             }
     }
 
+    // MARK: Streaks
+
+    private var streaksCard: some View {
+        VStack(spacing: 14.h) {
+            HStack(alignment: .top) {
+                Text(LocalizedKey.profileStreaksTitle.localized)
+                    .font(.app(.paytoneOne, size: 17))
+                    .foregroundStyle(Color(app: .dark))
+
+                Spacer(minLength: 8.w)
+
+                VStack(alignment: .trailing, spacing: 1.h) {
+                    HStack(spacing: 5.w) {
+                        Image(app: .fireIcon)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18.s, height: 18.s)
+
+                        Text(summary.streakDays)
+                            .font(.app(.bold, size: 20))
+                            .foregroundStyle(Color(app: .dark))
+                    }
+
+                    Text(LocalizedKey.profileStreaksDaysLabel.localized)
+                        .font(.app(.regular, size: 12))
+                        .foregroundStyle(Color(app: .textSecondary))
+                }
+            }
+
+            Rectangle()
+                .fill(Color(app: .dark).opacity(0.06))
+                .frame(height: 1)
+
+            HStack(spacing: 6.w) {
+                Image(.clockIcon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 16.s, height: 16.s)
+
+                Text(LocalizedKey.profileLongestStreakLabel.localized)
+                    .font(.app(.medium, size: 14))
+                    .foregroundStyle(Color(app: .proOrange))
+
+                Spacer(minLength: 8.w)
+
+                Text(summary.longestStreakDays)
+                    .font(.app(.bold, size: 15))
+                    .foregroundStyle(Color(app: .proOrange))
+            }
+        }
+        .padding(16.w)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(cardBackground)
+    }
+
+    // MARK: Achievements
+
+    private var achievementsCard: some View {
+        VStack(alignment: .leading, spacing: 14.h) {
+            Button {
+                router.push(.achievements)
+            } label: {
+                sectionHeader(
+                    title: LocalizedKey.profileAchievementsTitle.localized,
+                    subtitle: LocalizedKey.profileAchievementsSubtitle.localized
+                )
+            }
+            .buttonStyle(.plain)
+
+            HStack(spacing: 10.w) {
+                ForEach(AchievementCatalog.all.prefix(5)) { achievement in
+                    achievementBadge(achievement)
+                }
+
+                Spacer(minLength: 0)
+            }
+        }
+        .padding(16.w)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(cardBackground)
+    }
+
+    private func achievementBadge(_ achievement: Achievement) -> some View {
+        Image(app: achievement.icon)
+            .resizable()
+            .scaledToFit()
+            .padding(9.s)
+            .frame(width: 56.w, height: 56.w)
+            .background(
+                RoundedRectangle(cornerRadius: 14.s, style: .continuous)
+                    .fill(Color(app: .white))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 14.s, style: .continuous)
+                    .stroke(Color(app: .dark).opacity(0.08), lineWidth: 1)
+            )
+            .saturation(achievement.isUnlocked ? 1 : 0)
+            .opacity(achievement.isUnlocked ? 1 : 0.45)
+    }
+
     // MARK: Shared pieces
 
     private func sectionHeader(title: String, subtitle: String) -> some View {
         HStack(alignment: .top, spacing: 8.w) {
             VStack(alignment: .leading, spacing: 3.h) {
                 Text(title)
-                    .font(.app(.bold, size: 17))
+                    .font(.app(.paytoneOne, size: 17))
                     .foregroundStyle(Color(app: .dark))
 
                 Text(subtitle)

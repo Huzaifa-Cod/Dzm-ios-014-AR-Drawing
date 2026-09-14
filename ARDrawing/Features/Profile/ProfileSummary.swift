@@ -11,6 +11,8 @@ struct ProfileSummary {
     var drawnCount: String
     var timeSpent: String
     var lessonsProgress: String
+    var streakDays: String
+    var longestStreakDays: String
 
     func value(for stat: ProfileStat) -> String {
         switch stat {
@@ -24,6 +26,8 @@ struct ProfileSummary {
         levelName: "New Learner",
         drawnCount: "12",
         timeSpent: "0h 12m 5s",
-        lessonsProgress: "1/40"
+        lessonsProgress: "1/40",
+        streakDays: "12",
+        longestStreakDays: "27 days"
     )
 }

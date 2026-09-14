@@ -103,6 +103,17 @@ enum AppImage: String {
     /// Buttons inside the Photo/Record sheets — shown exactly as
     /// exported, no extra background or shadow drawn on top.
     case capturePhotoIconBtn, recordBtn, stopRecordingBtnIcon
+
+    /// Achievements — the 18 currently wired to a title (`Achievement.swift`)
+    /// plus 6 spares kept in reserve for badges not designed yet.
+    case achievementFirstSketchIcon, achievementDailyDrawerIcon, achievementPhotoMasterIcon
+    case achievementGalleryKeeperIcon, achievementColorExplorerIcon, achievementSketchLearnerIcon
+    case achievementFocusedArtistIcon, achievementSpeedSketcherIcon, achievementPerfectTraceIcon
+    case achievementCollectionMasterIcon, achievementLineArtistIcon, achievementSkillAchieverIcon
+    case achievementDetailDetectiveIcon, achievementTemplateCollectorIcon, achievementUploadProIcon
+    case achievementTimelapseCreatorIcon, achievementConsistencyKingIcon, achievementInspirationSeekerIcon
+    case achievementMasterSketcherIcon, achievementSurpriseArtistIcon, achievementDrawingApprenticeIcon
+    case achievementPracticeProIcon, achievementMilestoneMakerIcon, achievementCreativeWizardIcon
 }
 
 
@@ -455,6 +466,7 @@ enum AppRoute: Hashable {
     case editor(mode: DrawMode, templateURL: URL)
     /// The finished drawing, looked up from Core Data by the result screen.
     case sketchResult(id: UUID)
+    case achievements
 }
 
 // MARK: - Launch
@@ -695,6 +707,38 @@ enum LocalizedKey: String {
     case profileUploadDrawing = "profile_upload_drawing"
     case profileLessonsTitle = "profile_lessons_title"
     case profileLessonsSubtitle = "profile_lessons_subtitle"
+    case profileStreaksTitle = "profile_streaks_title"
+    case profileStreaksDaysLabel = "profile_streaks_days_label"
+    case profileLongestStreakLabel = "profile_longest_streak_label"
+    case profileAchievementsTitle = "profile_achievements_title"
+    case profileAchievementsSubtitle = "profile_achievements_subtitle"
+
+    // Achievements
+    case achievementFirstSketch = "achievement_first_sketch"
+    case achievementDailyDrawer = "achievement_daily_drawer"
+    case achievementPhotoMaster = "achievement_photo_master"
+    case achievementGalleryKeeper = "achievement_gallery_keeper"
+    case achievementColorExplorer = "achievement_color_explorer"
+    case achievementSketchLearner = "achievement_sketch_learner"
+    case achievementFocusedArtist = "achievement_focused_artist"
+    case achievementSpeedSketcher = "achievement_speed_sketcher"
+    case achievementPerfectTrace = "achievement_perfect_trace"
+    case achievementCollectionMaster = "achievement_collection_master"
+    case achievementLineArtist = "achievement_line_artist"
+    case achievementSkillAchiever = "achievement_skill_achiever"
+    case achievementDetailDetective = "achievement_detail_detective"
+    case achievementTemplateCollector = "achievement_template_collector"
+    case achievementUploadPro = "achievement_upload_pro"
+    case achievementTimelapseCreator = "achievement_timelapse_creator"
+    case achievementConsistencyKing = "achievement_consistency_king"
+    case achievementInspirationSeeker = "achievement_inspiration_seeker"
+    case achievementCreativeWizard = "achievement_creative_wizard"
+    
+    case achievementPractivePro = "achievement_practice_pro"
+    case achievementMilestoneMaker = "achievement_milestone_maker"
+    case achievementDrawingApprentice = "achievement_drawing_apprentice"
+    case achievementSurpriseArtist = "achievement_surprise_artist"
+    case achievementMasterSketcher = "achievement_master_sketcher"
     
     
     // Profile — Album
