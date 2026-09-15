@@ -3,7 +3,6 @@
 //  ARDrawing
 //
 
-
 import Foundation
 
 final class UserDefaultsManager {
@@ -31,5 +30,22 @@ final class UserDefaultsManager {
     var lastOnboardingPage: Int {
         get { defaults.integer(forKey: UserDefaultsKey.lastOnboardingPage.rawValue) }
         set { defaults.set(newValue, forKey: UserDefaultsKey.lastOnboardingPage.rawValue) }
+    }
+}
+
+extension UserDefaultsManager {
+    var selectedLanguage: AppLanguage {
+        get {
+            guard
+                let raw = defaults.string(forKey: UserDefaultsKey.selectedLanguageCode.rawValue),
+                let language = AppLanguage(rawValue: raw)
+            else {
+                return .english
+            }
+            return language
+        }
+        set {
+            defaults.set(newValue.rawValue, forKey: UserDefaultsKey.selectedLanguageCode.rawValue)
+        }
     }
 }

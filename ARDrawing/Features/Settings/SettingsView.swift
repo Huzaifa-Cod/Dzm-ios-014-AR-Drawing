@@ -6,6 +6,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject private var router: AppRouter
+
     private let pageMargin: CGFloat = 20
     private let cardRadius: CGFloat = 20
     private let iconPlateSize: CGFloat = 36
@@ -71,8 +73,11 @@ struct SettingsView: View {
 
     private func settingsRow(_ row: SettingsRow) -> some View {
         Button {
-            // Each destination lands with its own feature — Language,
-            // Rate Us, and the rest all still route here for now.
+            if let route = route(for: row) {
+                router.push(route)
+            }
+            // Rows with no route yet (Rate Us, Contact Us, ...) land with
+            // their own feature — tapping them does nothing for now.
         } label: {
             HStack(spacing: 12.w) {
                 Image(app: row.icon)
@@ -99,8 +104,20 @@ struct SettingsView: View {
         }
         .buttonStyle(.plain)
     }
+
+    /// Where a row navigates, if its screen exists yet. `nil` for rows
+    /// still waiting on their own feature.
+    private func route(for row: SettingsRow) -> AppRoute? {
+        switch row {
+        case .language: return .language
+        case .restorePurchase, .rateUs, .contactUs, .shareWithFriends,
+             .privacyPolicy, .termsAndConditions:
+            return nil
+        }
+    }
 }
 
 #Preview {
     SettingsView()
+        .environmentObject(AppRouter())
 }

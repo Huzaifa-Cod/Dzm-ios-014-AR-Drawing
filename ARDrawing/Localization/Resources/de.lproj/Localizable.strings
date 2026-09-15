@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  Deutsch
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "Erwecke deine Skizzen zum Leben";
+"intro_subtitle" = "Entdecke Skizzen, Porträts, Anime, Tiere und mehr – alles an einem Ort.";
+"intro_agree_button" = "Zustimmen & Weiter";
+"intro_terms_prefix" = "Ich stimme den";
+"intro_terms_of_use" = "Nutzungsbedingungen";
+"intro_terms_and" = "zu und habe die";
+"intro_privacy_policy" = "Datenschutzrichtlinie";
+
+/* Onboarding */
+"onboarding_trace_title" = "Mit dem Handy nachzeichnen";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "Zeichne deine eigenen Fotos";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "500+ kreative Vorlagen zum Einstieg";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "Schritt-für-Schritt-Lektionen zum Zeichnen lernen";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "Schließe dich Hunderten von Nutzern an";
+"onboarding_continue_button" = "Weiter";
+
+/* Tutorial */
+"tutorial_title" = "Mal sehen,\nwie gut du bist";
+"tutorial_badge" = "Tutorial";
+"tutorial_callout" = "Zeichne die Katze mit einer Schritt-für-Schritt-Anleitung";
+"tutorial_start_button" = "Tutorial starten";
+"tutorial_skip_button" = "Tutorial überspringen";
+"tutorial_lesson_title" = "Lass uns ein Gesicht zeichnen";
+"tutorial_complete_button" = "Fertigstellen";
+"tutorial_complete_social_proof" = "Deine Zeichnung ist besser als\n50 % unserer Nutzer.";
+"tutorial_complete_headline" = "Jedes Meisterwerk beginnt\nmit einem einzigen Strich";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "Weiter";
+
+/* Tab bar */
+"tab_home" = "Start";
+"tab_lessons" = "Lektionen";
+"tab_templates" = "Vorlagen";
+"tab_profile" = "Profil";
+"tab_settings" = "Einstellungen";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "Foto als\nVorlage";
+"home_capture_title" = "Aufnehmen";
+"home_step_by_step_title" = "Schritt für Schritt zeichnen";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "Für Kinder";
+"home_cute" = "Süß";
+"home_see_all" = "Alle anzeigen";
+
+/* Templates */
+"templates_title" = "Vorlagen";
+"templates_search_placeholder" = "Hier suchen";
+"template_category_kids" = "Kinder";
+"template_category_cute" = "Süß";
+"template_category_animal" = "Tier";
+"template_category_anime" = "Anime";
+
+/* Profile */
+"profile_title" = "Profil";
+"profile_current_level" = "Aktuelles Level";
+"profile_see_more" = "Mehr anzeigen";
+"profile_stat_drawn" = "Gezeichnet";
+"profile_stat_time_spent" = "Verbrachte Zeit";
+"profile_stat_lessons" = "Lektionen";
+"profile_album_title" = "Album";
+"profile_album_subtitle" = "Lade ein Foto deiner Zeichnung hoch";
+"profile_upload_drawing" = "Zeichnung hochladen";
+"profile_lessons_title" = "Lektionen";
+"profile_lessons_subtitle" = "Lade ein Foto deiner Zeichnung hoch";
+"profile_streaks_title" = "Zeichenserie";
+"profile_streaks_days_label" = "Tage";
+"profile_longest_streak_label" = "Längste Serie";
+"profile_achievements_title" = "Erfolge";
+"profile_achievements_subtitle" = "Sieh dir alle deine verdienten Belohnungen an";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "Erste Skizze";
+"achievement_daily_drawer" = "Täglicher Zeichner";
+"achievement_photo_master" = "Fotomeister";
+"achievement_gallery_keeper" = "Galeriewächter";
+"achievement_color_explorer" = "Farbentdecker";
+"achievement_sketch_learner" = "Skizzenlernender";
+"achievement_focused_artist" = "Fokussierter Künstler";
+"achievement_speed_sketcher" = "Schnellzeichner";
+"achievement_perfect_trace" = "Perfekte Nachzeichnung";
+"achievement_collection_master" = "Sammlungsmeister";
+"achievement_line_artist" = "Linienkünstler";
+"achievement_skill_achiever" = "Könnensmeister";
+"achievement_detail_detective" = "Detaildetektiv";
+"achievement_template_collector" = "Vorlagensammler";
+"achievement_upload_pro" = "Upload-Profi";
+"achievement_timelapse_creator" = "Zeitraffer-Ersteller";
+"achievement_consistency_king" = "König der Beständigkeit";
+"achievement_inspiration_seeker" = "Inspirationssucher";
+
+"achievement_creative_wizard" = "Kreativzauberer";
+"achievement_practice_pro" = "Übungsprofi";
+"achievement_milestone_maker" = "Meilensteinmacher";
+"achievement_drawing_apprentice" = "Zeichenlehrling";
+"achievement_surprise_artist" = "Überraschungskünstler";
+"achievement_master_sketcher" = "Skizzenmeister";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "Album";
+"album_select_all" = "Alle auswählen";
+"album_deselect_all" = "Auswahl aufheben";
+"album_tab_drawn" = "Gezeichnetes Bild";
+"album_tab_recorded" = "Aufgenommen";
+"album_items_selected" = "%d Elemente ausgewählt";
+"album_delete" = "Löschen";
+"album_empty_title" = "Noch keine Zeichnungen";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "Lektionen";
+"lessons_current_level" = "Aktuelles Level";
+"lesson_difficulty_all" = "Alle";
+"lesson_difficulty_beginner" = "Anfänger";
+"lesson_difficulty_intermediate" = "Fortgeschritten";
+"lesson_difficulty_expert" = "Experte";
+"lesson_avg_time_format" = "Ø Zeit: %@";
+"lesson_avg_time_value" = "5 Min.";
+"lesson_status_completed" = "Abgeschlossen";
+"lesson_status_start" = "Starten";
+
+
+// MARK: - Settings
+"settings_title" = "Einstellungen";
+"settings_section_manage" = "Verwalten";
+"settings_section_other" = "Weiteres";
+"settings_section_about" = "Über";
+"settings_restore_purchase" = "Kauf wiederherstellen";
+"settings_language" = "Sprache";
+"settings_rate_us" = "Bewerte uns";
+"settings_contact_us" = "Kontaktiere uns";
+"settings_share_with_friends" = "Mit Freunden teilen";
+"settings_privacy_policy" = "Datenschutzrichtlinie";
+"settings_terms_conditions" = "Allgemeine Geschäftsbedingungen";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "Modus wählen";
+"draw_mode_phone_title" = "Auf dem Handy zeichnen";
+"draw_mode_ar_title" = "AR-Zeichnen";
+"draw_mode_paper_title" = "Auf Papier zeichnen";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "Weiter";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "Einfach";
+"template_difficulty_medium" = "Mittel";
+"template_difficulty_expert" = "Experte";
+"template_preview_level_label" = "Level";
+"template_preview_avg_label" = "Ø";
+"template_preview_avg_minutes_format" = "%d Min.";
+"template_preview_free_badge" = "Kostenlos";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "Zeichnen starten";
+"template_preview_unlock_pro" = "Mit Pro freischalten";
+"template_preview_close" = "Schließen";
+
+
+// MARK: - Editor
+"editor_cancel" = "Abbrechen";
+"editor_finish" = "Fertig";
+"editor_tool_opacity" = "Deckkraft";
+"editor_tool_flip" = "Spiegeln";
+"editor_tool_eraser" = "Radierer";
+"editor_tool_record" = "Aufnehmen";
+"editor_tool_photo" = "Foto";
+"editor_tool_flash" = "Blitz";
+"editor_photo_saved_toast" = "In der Galerie gespeichert! ✨";
+"editor_record_mode_video" = "Video";
+"editor_record_mode_timelapse" = "Zeitraffer";
+"editor_capture_photo_title" = "Bild aufnehmen";
+"editor_tool_stroke" = "Strich";
+"editor_draw_stroke_title" = "Strich zeichnen";
+
+
+// MARK: - Sketch result
+"result_title" = "Deine Skizze ist fertig!";
+"result_subtitle" = "Sie wurde in deinem Album gespeichert. Lade sie herunter oder teile sie mit Freunden.";
+"result_download" = "Herunterladen";
+"result_share" = "Teilen";
+"result_done" = "Fertig";
+
+
+"album_preview_title" = "Vorschau";
+"album_share_artwork" = "Kunstwerk teilen";
+"album_delete_confirm_title" = "Diese Zeichnung löschen?";
+
+
+"learning_level_nav_title" = "Lernlevel";
+"learning_level_stage_new_learner" = "Neuer\nLernender";
+"learning_level_stage_sketch_beginner" = "Skizzen-\nAnfänger";
+"learning_level_stage_creative_explorer" = "Kreativer\nEntdecker";
+"learning_level_stage_sketch_enthusiast" = "Skizzen-\nEnthusiast";
+"how_to_level_up_title" = "Wie steige ich auf?";
+"how_to_level_up_description" = "Schließe weitere Lektionen ab, um ein höheres Level zu erreichen.";
+
+
+// MARK: - Premium
+"premium_title" = "Pro beitreten 👑";
+"premium_feature_ad_free" = "Werbefreie\nErfahrung";
+"premium_feature_ar_tracing" = "AR-\nNachzeichnen";
+"premium_feature_photo_to_sketch" = "Foto zu\nSkizze";
+"premium_feature_drawing_lessons" = "Zeichen-\nlektionen";
+"premium_plan_weekly" = "Wochenplan";
+"premium_plan_yearly" = "Jahresplan";
+"premium_save_badge" = "50 % sparen";
+"premium_start_free" = "Kostenlos starten";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3 Tage KOSTENLOS testen – danach %1$@/%2$@";
+"premium_period_week" = "Woche";
+"premium_period_month" = "Monat";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "Erste 3 Tage kostenlos, danach %@/Tag";
+"premium_commitment_note" = "Keine Verpflichtung. Jederzeit kündbar";
+"premium_terms_of_use" = "Nutzungsbedingungen";
+"premium_privacy_policy" = "Datenschutzrichtlinie";
+"premium_restore" = "Wiederherstellen";
+
+"premium_product_unavailable" = "Dieser Plan ist derzeit nicht verfügbar. Bitte versuche es erneut.";
+"premium_pending" = "Dein Kauf wartet auf Bestätigung.";
+"premium_failed_message" = "Etwas ist schiefgelaufen. Bitte versuche es erneut.";
+"premium_restoring" = "Wird wiederhergestellt…";
+"premium_restore_none_found" = "Kein vorheriger Kauf für dieses Apple-Konto gefunden.";

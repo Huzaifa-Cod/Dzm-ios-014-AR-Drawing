@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  Türkçe
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "Eskizlerine Hayat Ver";
+"intro_subtitle" = "Eskizleri, portreleri, animeyi, hayvanları ve daha fazlasını tek bir yerde keşfet.";
+"intro_agree_button" = "Kabul Et ve Devam Et";
+"intro_terms_prefix" = "Şunları kabul ediyorum:";
+"intro_terms_of_use" = "Kullanım Koşulları";
+"intro_terms_and" = "ve şunu okudum:";
+"intro_privacy_policy" = "Gizlilik Politikası";
+
+/* Onboarding */
+"onboarding_trace_title" = "Telefonunla çiz";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "Kendi fotoğraflarını çiz";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "Başlamak için 500'den fazla yaratıcı şablon";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "Çizim ustalığı için adım adım dersler";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "Yüzlerce kullanıcıya katıl";
+"onboarding_continue_button" = "Devam Et";
+
+/* Tutorial */
+"tutorial_title" = "Bakalım\nne kadar iyisin";
+"tutorial_badge" = "Öğretici";
+"tutorial_callout" = "Adım adım rehberle kediyi çiz";
+"tutorial_start_button" = "Öğreticiyi Başlat";
+"tutorial_skip_button" = "Öğreticiyi Atla";
+"tutorial_lesson_title" = "Hadi bir Yüz Çizelim";
+"tutorial_complete_button" = "Tamamla";
+"tutorial_complete_social_proof" = "Çizimin, kullanıcılarımızın\n%50'sinden daha iyi.";
+"tutorial_complete_headline" = "Her başyapıt\ntek bir çizgiyle başlar";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "Devam Et";
+
+/* Tab bar */
+"tab_home" = "Ana Sayfa";
+"tab_lessons" = "Dersler";
+"tab_templates" = "Şablonlar";
+"tab_profile" = "Profil";
+"tab_settings" = "Ayarlar";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "Referans olarak\nfotoğraf";
+"home_capture_title" = "Yakala";
+"home_step_by_step_title" = "Adım Adım Çiz";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "Çocuklar İçin";
+"home_cute" = "Sevimli";
+"home_see_all" = "Tümünü gör";
+
+/* Templates */
+"templates_title" = "Şablonlar";
+"templates_search_placeholder" = "Burada ara";
+"template_category_kids" = "Çocuklar";
+"template_category_cute" = "Sevimli";
+"template_category_animal" = "Hayvan";
+"template_category_anime" = "Anime";
+
+/* Profile */
+"profile_title" = "Profil";
+"profile_current_level" = "Mevcut Seviye";
+"profile_see_more" = "Daha fazla gör";
+"profile_stat_drawn" = "Çizilen";
+"profile_stat_time_spent" = "Geçirilen Süre";
+"profile_stat_lessons" = "Dersler";
+"profile_album_title" = "Albüm";
+"profile_album_subtitle" = "Çizdiğin eskizin bir fotoğrafını yükle";
+"profile_upload_drawing" = "Çizim yükle";
+"profile_lessons_title" = "Dersler";
+"profile_lessons_subtitle" = "Çizdiğin eskizin bir fotoğrafını yükle";
+"profile_streaks_title" = "Çizim Serisi";
+"profile_streaks_days_label" = "Gün";
+"profile_longest_streak_label" = "En Uzun Seri";
+"profile_achievements_title" = "Başarılar";
+"profile_achievements_subtitle" = "Kazandığın tüm ödülleri gör";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "İlk Eskiz";
+"achievement_daily_drawer" = "Günlük Çizer";
+"achievement_photo_master" = "Fotoğraf Ustası";
+"achievement_gallery_keeper" = "Galeri Bekçisi";
+"achievement_color_explorer" = "Renk Kâşifi";
+"achievement_sketch_learner" = "Eskiz Öğrencisi";
+"achievement_focused_artist" = "Odaklanmış Sanatçı";
+"achievement_speed_sketcher" = "Hızlı Eskizci";
+"achievement_perfect_trace" = "Mükemmel İz";
+"achievement_collection_master" = "Koleksiyon Ustası";
+"achievement_line_artist" = "Çizgi Sanatçısı";
+"achievement_skill_achiever" = "Beceri Şampiyonu";
+"achievement_detail_detective" = "Detay Dedektifi";
+"achievement_template_collector" = "Şablon Koleksiyoncusu";
+"achievement_upload_pro" = "Yükleme Uzmanı";
+"achievement_timelapse_creator" = "Timelapse Oluşturucu";
+"achievement_consistency_king" = "İstikrar Kralı";
+"achievement_inspiration_seeker" = "İlham Arayıcısı";
+
+"achievement_creative_wizard" = "Yaratıcılık Büyücüsü";
+"achievement_practice_pro" = "Pratik Uzmanı";
+"achievement_milestone_maker" = "Kilometre Taşı Yapıcısı";
+"achievement_drawing_apprentice" = "Çizim Çırağı";
+"achievement_surprise_artist" = "Sürpriz Sanatçı";
+"achievement_master_sketcher" = "Eskiz Ustası";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "Albüm";
+"album_select_all" = "Tümünü seç";
+"album_deselect_all" = "Seçimi kaldır";
+"album_tab_drawn" = "Çizilen Görsel";
+"album_tab_recorded" = "Kaydedilen";
+"album_items_selected" = "%d öğe seçildi";
+"album_delete" = "Sil";
+"album_empty_title" = "Henüz çizim yok";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "Dersler";
+"lessons_current_level" = "Mevcut Seviye";
+"lesson_difficulty_all" = "Tümü";
+"lesson_difficulty_beginner" = "Başlangıç";
+"lesson_difficulty_intermediate" = "Orta";
+"lesson_difficulty_expert" = "Uzman";
+"lesson_avg_time_format" = "Ort. süre: %@";
+"lesson_avg_time_value" = "5 dk";
+"lesson_status_completed" = "Tamamlandı";
+"lesson_status_start" = "Başla";
+
+
+// MARK: - Settings
+"settings_title" = "Ayarlar";
+"settings_section_manage" = "Yönet";
+"settings_section_other" = "Diğer";
+"settings_section_about" = "Hakkında";
+"settings_restore_purchase" = "Satın Alımı Geri Yükle";
+"settings_language" = "Dil";
+"settings_rate_us" = "Bizi Değerlendir";
+"settings_contact_us" = "Bize Ulaşın";
+"settings_share_with_friends" = "Arkadaşlarla Paylaş";
+"settings_privacy_policy" = "Gizlilik Politikası";
+"settings_terms_conditions" = "Şartlar ve Koşullar";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "Mod Seç";
+"draw_mode_phone_title" = "Telefonda Çiz";
+"draw_mode_ar_title" = "AR ile Çiz";
+"draw_mode_paper_title" = "Kağıda Çiz";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "Devam Et";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "Kolay";
+"template_difficulty_medium" = "Orta";
+"template_difficulty_expert" = "Uzman";
+"template_preview_level_label" = "Seviye";
+"template_preview_avg_label" = "Ort.";
+"template_preview_avg_minutes_format" = "%d dk";
+"template_preview_free_badge" = "Ücretsiz";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "Çizmeye Başla";
+"template_preview_unlock_pro" = "Pro ile Kilidi Aç";
+"template_preview_close" = "Kapat";
+
+
+// MARK: - Editor
+"editor_cancel" = "İptal";
+"editor_finish" = "Bitir";
+"editor_tool_opacity" = "Opaklık";
+"editor_tool_flip" = "Çevir";
+"editor_tool_eraser" = "Silgi";
+"editor_tool_record" = "Kaydet";
+"editor_tool_photo" = "Fotoğraf";
+"editor_tool_flash" = "Flaş";
+"editor_photo_saved_toast" = "Galeriye kaydedildi! ✨";
+"editor_record_mode_video" = "Video";
+"editor_record_mode_timelapse" = "Timelapse";
+"editor_capture_photo_title" = "Görüntü Yakala";
+"editor_tool_stroke" = "Fırça";
+"editor_draw_stroke_title" = "Fırça Çiz";
+
+
+// MARK: - Sketch result
+"result_title" = "Eskizin hazır!";
+"result_subtitle" = "Albümüne kaydedildi. İndir veya arkadaşlarınla paylaş.";
+"result_download" = "İndir";
+"result_share" = "Paylaş";
+"result_done" = "Bitti";
+
+
+"album_preview_title" = "Önizleme";
+"album_share_artwork" = "Sanat Eserini Paylaş";
+"album_delete_confirm_title" = "Bu çizim silinsin mi?";
+
+
+"learning_level_nav_title" = "Öğrenme Seviyesi";
+"learning_level_stage_new_learner" = "Yeni\nÖğrenci";
+"learning_level_stage_sketch_beginner" = "Eskiz\nBaşlangıcı";
+"learning_level_stage_creative_explorer" = "Yaratıcı\nKâşif";
+"learning_level_stage_sketch_enthusiast" = "Eskiz\nTutkunu";
+"how_to_level_up_title" = "Nasıl seviye atlarım?";
+"how_to_level_up_description" = "Daha yüksek bir seviyeye ulaşmak için daha fazla ders tamamla.";
+
+
+// MARK: - Premium
+"premium_title" = "Pro'ya Katıl 👑";
+"premium_feature_ad_free" = "Reklamsız\nDeneyim";
+"premium_feature_ar_tracing" = "AR ile\nİzleme";
+"premium_feature_photo_to_sketch" = "Fotoğraftan\nEskize";
+"premium_feature_drawing_lessons" = "Çizim\nDersleri";
+"premium_plan_weekly" = "Haftalık Plan";
+"premium_plan_yearly" = "Yıllık Plan";
+"premium_save_badge" = "%50 Tasarruf";
+"premium_start_free" = "Ücretsiz Başla";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3 Gün ÜCRETSİZ Deneme - ardından %1$@/%2$@";
+"premium_period_week" = "hafta";
+"premium_period_month" = "ay";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "İlk 3 gün ücretsiz, ardından %@/gün";
+"premium_commitment_note" = "Taahhüt Yok. İstediğin Zaman İptal Et";
+"premium_terms_of_use" = "Kullanım Koşulları";
+"premium_privacy_policy" = "Gizlilik Politikası";
+"premium_restore" = "Geri Yükle";
+
+"premium_product_unavailable" = "Bu plan şu anda kullanılamıyor. Lütfen tekrar deneyin.";
+"premium_pending" = "Satın alman onay bekliyor.";
+"premium_failed_message" = "Bir şeyler ters gitti. Lütfen tekrar deneyin.";
+"premium_restoring" = "Geri yükleniyor…";
+"premium_restore_none_found" = "Bu Apple Hesabı için önceki bir satın alma bulunamadı.";

@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  한국어
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "스케치에 생명을 불어넣으세요";
+"intro_subtitle" = "스케치, 초상화, 애니메, 동물 등 다양한 콘텐츠를 한 곳에서 만나보세요.";
+"intro_agree_button" = "동의하고 계속하기";
+"intro_terms_prefix" = "다음에 동의합니다:";
+"intro_terms_of_use" = "이용약관";
+"intro_terms_and" = "그리고 다음을 읽었습니다:";
+"intro_privacy_policy" = "개인정보 처리방침";
+
+/* Onboarding */
+"onboarding_trace_title" = "휴대폰으로 따라 그리기";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "나만의 사진을 그려보세요";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "시작하기 좋은 500개 이상의 창의적인 템플릿";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "그림 실력을 키우는 단계별 레슨";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "수백 명의 사용자와 함께하세요";
+"onboarding_continue_button" = "계속하기";
+
+/* Tutorial */
+"tutorial_title" = "얼마나 잘 그리는지\n확인해볼까요";
+"tutorial_badge" = "튜토리얼";
+"tutorial_callout" = "단계별 가이드로 고양이를 그려보세요";
+"tutorial_start_button" = "튜토리얼 시작";
+"tutorial_skip_button" = "튜토리얼 건너뛰기";
+"tutorial_lesson_title" = "얼굴을 그려볼까요";
+"tutorial_complete_button" = "완료";
+"tutorial_complete_social_proof" = "당신의 그림은 사용자의\n50%보다 우수합니다.";
+"tutorial_complete_headline" = "모든 걸작은\n단 하나의 선에서 시작됩니다";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "계속하기";
+
+/* Tab bar */
+"tab_home" = "홈";
+"tab_lessons" = "레슨";
+"tab_templates" = "템플릿";
+"tab_profile" = "프로필";
+"tab_settings" = "설정";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "참고용\n사진";
+"home_capture_title" = "캡처";
+"home_step_by_step_title" = "단계별로 그리기";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "어린이용";
+"home_cute" = "귀여운";
+"home_see_all" = "전체 보기";
+
+/* Templates */
+"templates_title" = "템플릿";
+"templates_search_placeholder" = "여기서 검색";
+"template_category_kids" = "어린이";
+"template_category_cute" = "귀여운";
+"template_category_animal" = "동물";
+"template_category_anime" = "애니메";
+
+/* Profile */
+"profile_title" = "프로필";
+"profile_current_level" = "현재 레벨";
+"profile_see_more" = "더 보기";
+"profile_stat_drawn" = "그린 작품";
+"profile_stat_time_spent" = "사용 시간";
+"profile_stat_lessons" = "레슨";
+"profile_album_title" = "앨범";
+"profile_album_subtitle" = "그린 스케치 사진을 업로드하세요";
+"profile_upload_drawing" = "그림 업로드";
+"profile_lessons_title" = "레슨";
+"profile_lessons_subtitle" = "그린 스케치 사진을 업로드하세요";
+"profile_streaks_title" = "연속 그림일";
+"profile_streaks_days_label" = "일";
+"profile_longest_streak_label" = "최장 연속 기록";
+"profile_achievements_title" = "업적";
+"profile_achievements_subtitle" = "획득한 모든 보상을 확인하세요";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "첫 스케치";
+"achievement_daily_drawer" = "매일 그리는 사람";
+"achievement_photo_master" = "포토 마스터";
+"achievement_gallery_keeper" = "갤러리 관리자";
+"achievement_color_explorer" = "컬러 탐험가";
+"achievement_sketch_learner" = "스케치 학습자";
+"achievement_focused_artist" = "집중하는 아티스트";
+"achievement_speed_sketcher" = "스피드 스케처";
+"achievement_perfect_trace" = "완벽한 트레이싱";
+"achievement_collection_master" = "컬렉션 마스터";
+"achievement_line_artist" = "라인 아티스트";
+"achievement_skill_achiever" = "실력의 달인";
+"achievement_detail_detective" = "디테일 탐정";
+"achievement_template_collector" = "템플릿 수집가";
+"achievement_upload_pro" = "업로드의 프로";
+"achievement_timelapse_creator" = "타임랩스 크리에이터";
+"achievement_consistency_king" = "꾸준함의 왕";
+"achievement_inspiration_seeker" = "영감을 찾는 사람";
+
+"achievement_creative_wizard" = "창의력 마법사";
+"achievement_practice_pro" = "연습의 프로";
+"achievement_milestone_maker" = "마일스톤 메이커";
+"achievement_drawing_apprentice" = "그림 견습생";
+"achievement_surprise_artist" = "서프라이즈 아티스트";
+"achievement_master_sketcher" = "스케치 마스터";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "앨범";
+"album_select_all" = "전체 선택";
+"album_deselect_all" = "선택 해제";
+"album_tab_drawn" = "그린 이미지";
+"album_tab_recorded" = "녹화됨";
+"album_items_selected" = "%d개 항목 선택됨";
+"album_delete" = "삭제";
+"album_empty_title" = "아직 그림이 없습니다";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "레슨";
+"lessons_current_level" = "현재 레벨";
+"lesson_difficulty_all" = "전체";
+"lesson_difficulty_beginner" = "초급";
+"lesson_difficulty_intermediate" = "중급";
+"lesson_difficulty_expert" = "고급";
+"lesson_avg_time_format" = "평균 시간: %@";
+"lesson_avg_time_value" = "5분";
+"lesson_status_completed" = "완료";
+"lesson_status_start" = "시작";
+
+
+// MARK: - Settings
+"settings_title" = "설정";
+"settings_section_manage" = "관리";
+"settings_section_other" = "기타";
+"settings_section_about" = "정보";
+"settings_restore_purchase" = "구매 복원";
+"settings_language" = "언어";
+"settings_rate_us" = "평가하기";
+"settings_contact_us" = "문의하기";
+"settings_share_with_friends" = "친구에게 공유";
+"settings_privacy_policy" = "개인정보 처리방침";
+"settings_terms_conditions" = "이용약관";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "모드 선택";
+"draw_mode_phone_title" = "휴대폰에 그리기";
+"draw_mode_ar_title" = "AR로 그리기";
+"draw_mode_paper_title" = "종이에 그리기";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "계속하기";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "쉬움";
+"template_difficulty_medium" = "보통";
+"template_difficulty_expert" = "고급";
+"template_preview_level_label" = "레벨";
+"template_preview_avg_label" = "평균";
+"template_preview_avg_minutes_format" = "%d분";
+"template_preview_free_badge" = "무료";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "그리기 시작";
+"template_preview_unlock_pro" = "Pro로 잠금 해제";
+"template_preview_close" = "닫기";
+
+
+// MARK: - Editor
+"editor_cancel" = "취소";
+"editor_finish" = "완료";
+"editor_tool_opacity" = "불투명도";
+"editor_tool_flip" = "반전";
+"editor_tool_eraser" = "지우개";
+"editor_tool_record" = "녹화";
+"editor_tool_photo" = "사진";
+"editor_tool_flash" = "플래시";
+"editor_photo_saved_toast" = "갤러리에 저장되었습니다! ✨";
+"editor_record_mode_video" = "동영상";
+"editor_record_mode_timelapse" = "타임랩스";
+"editor_capture_photo_title" = "이미지 캡처";
+"editor_tool_stroke" = "선 굵기";
+"editor_draw_stroke_title" = "선 그리기";
+
+
+// MARK: - Sketch result
+"result_title" = "스케치가 완성되었습니다!";
+"result_subtitle" = "앨범에 저장되었습니다. 다운로드하거나 친구와 공유하세요.";
+"result_download" = "다운로드";
+"result_share" = "공유";
+"result_done" = "완료";
+
+
+"album_preview_title" = "미리보기";
+"album_share_artwork" = "작품 공유";
+"album_delete_confirm_title" = "이 그림을 삭제하시겠습니까?";
+
+
+"learning_level_nav_title" = "학습 레벨";
+"learning_level_stage_new_learner" = "새내기\n학습자";
+"learning_level_stage_sketch_beginner" = "스케치\n초보자";
+"learning_level_stage_creative_explorer" = "창의적\n탐험가";
+"learning_level_stage_sketch_enthusiast" = "스케치\n애호가";
+"how_to_level_up_title" = "레벨 업 방법은?";
+"how_to_level_up_description" = "더 많은 레슨을 완료하여 더 높은 레벨에 도달하세요.";
+
+
+// MARK: - Premium
+"premium_title" = "Pro 가입하기 👑";
+"premium_feature_ad_free" = "광고 없는\n경험";
+"premium_feature_ar_tracing" = "AR\n트레이싱";
+"premium_feature_photo_to_sketch" = "사진을\n스케치로";
+"premium_feature_drawing_lessons" = "드로잉\n레슨";
+"premium_plan_weekly" = "주간 플랜";
+"premium_plan_yearly" = "연간 플랜";
+"premium_save_badge" = "50% 절약";
+"premium_start_free" = "무료로 시작하기";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3일 무료 체험 - 이후 %1$@/%2$@";
+"premium_period_week" = "주";
+"premium_period_month" = "월";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "처음 3일 무료, 이후 %@/일";
+"premium_commitment_note" = "약정 없음. 언제든지 취소 가능";
+"premium_terms_of_use" = "이용약관";
+"premium_privacy_policy" = "개인정보 처리방침";
+"premium_restore" = "복원";
+
+"premium_product_unavailable" = "현재 해당 플랜을 이용할 수 없습니다. 다시 시도해주세요.";
+"premium_pending" = "구매가 승인 대기 중입니다.";
+"premium_failed_message" = "문제가 발생했습니다. 다시 시도해주세요.";
+"premium_restoring" = "복원 중…";
+"premium_restore_none_found" = "이 Apple 계정에 대한 이전 구매 내역을 찾을 수 없습니다.";

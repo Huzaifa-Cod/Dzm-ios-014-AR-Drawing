@@ -36,9 +36,12 @@ final class AppRouter: ObservableObject {
 /// NavigationStack so it can own the initial fade/replace transition.
 struct RootView: View {
     @StateObject private var router = AppRouter()
+    @StateObject private var tabRouter = TabRouter()
     /// Shared with Home and Templates via `.environmentObject` so both
     /// read the same fetched catalog instead of each fetching its own.
     @StateObject private var templateCatalog = TemplateCatalogStore()
+    @StateObject private var iap = IAPManager.shared
+    @StateObject private var localization = LocalizationManager.shared
     @State private var isSplashFinished = false
 
     @State private var launch = LaunchDestination.current
@@ -58,6 +61,25 @@ struct RootView: View {
         }
         .environmentObject(router)
         .environmentObject(templateCatalog)
+        .environmentObject(tabRouter)
+        .environmentObject(iap)
+        .environmentObject(localization)
+        // Rebuilds every screen — including ones already on the
+        // navigation stack — the instant the language changes, so
+        // switching in Settings needs no app restart.
+        .id(localization.language)
+        .environment(\.layoutDirection, localization.language.isRightToLeft ? .rightToLeft : .leftToRight)
+        .task {
+            iap.verifySubscriptions()
+            iap.fetchProducts()
+        }
+        // `IAPManager.canProceed` is static and reachable from anywhere,
+        // including call sites with no route to the router — it announces
+        // that the allowance is spent, and this is what answers.
+        .onReceive(NotificationCenter.default.publisher(for: .showPremiumScreen)) { _ in
+            guard !iap.isPremiumUnlocked else { return }
+            router.push(.premium)
+        }
     }
 
     @ViewBuilder
@@ -95,6 +117,12 @@ struct RootView: View {
             SketchResultView(sketchID: id)
         case .achievements:
             AchievementsView()
+        case .learningLevel:
+            LearningLevelView()
+        case .language:
+            LanguageSettingsView()
+        case .premium:
+            PremiumView()
         }
     }
 }

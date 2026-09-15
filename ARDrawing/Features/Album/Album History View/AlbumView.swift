@@ -32,6 +32,14 @@ struct AlbumView: View {
     @State private var selectedTab: AlbumTab = .drawn
     @State private var selectedIDs: Set<NSManagedObjectID> = []
 
+    /// Off by default: cells are plain and a tap opens `AlbumPreviewView`.
+    /// A long-press, or "Select all", turns this on — checkboxes appear
+    /// on every cell and a tap toggles selection instead of previewing.
+    @State private var isSelectionMode = false
+
+    /// Drives the preview cover. `nil` when nothing's being previewed.
+    @State private var previewSketch: SavedSketch?
+
     private let pageMargin: CGFloat = 20
 
     private let columns = [
@@ -88,6 +96,26 @@ struct AlbumView: View {
         }
         .background(Color(app: .homeBackground).ignoresSafeArea())
         .navigationBarHidden(true)
+        .fullScreenCover(isPresented: previewBinding) {
+            if let previewSketch {
+                AlbumPreviewView(sketch: previewSketch) {
+                    // Keeps the grid's own selection state in sync in the
+                    // rare case the previewed sketch was also mid-selection.
+                    selectedIDs.remove(previewSketch.objectID)
+                    if selectedIDs.isEmpty { isSelectionMode = false }
+                }
+            }
+        }
+    }
+
+    /// `fullScreenCover(item:)` would need `SavedSketch` to be
+    /// `Identifiable`, which this Core Data model doesn't declare — this
+    /// derives an equivalent `Bool` binding from `previewSketch` instead.
+    private var previewBinding: Binding<Bool> {
+        Binding(
+            get: { previewSketch != nil },
+            set: { isPresented in if !isPresented { previewSketch = nil } }
+        )
     }
 
     // MARK: Header
@@ -166,6 +194,7 @@ struct AlbumView: View {
             )
         }
         .buttonStyle(.plain)
+        .disabled(visibleSketches.isEmpty)
     }
 
     // MARK: Tabs
@@ -257,14 +286,30 @@ struct AlbumView: View {
                     )
             )
             .overlay(alignment: .topTrailing) {
-                Image(app: isSelected ? .checkIcon : .uncheckIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20.s, height: 20.s)
-                    .padding(8.s)
+                // Only shown once the user is actually choosing items to
+                // delete — plain cells otherwise, so a tap always means
+                // "open this", never "select this".
+                if isSelectionMode {
+                    Image(app: isSelected ? .checkIcon : .uncheckIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20.s, height: 20.s)
+                        .padding(8.s)
+                        .transition(.scale.combined(with: .opacity))
+                }
             }
             .contentShape(Rectangle())
-            .onTapGesture { toggle(sketch) }
+            .onTapGesture {
+                if isSelectionMode {
+                    toggle(sketch)
+                } else {
+                    previewSketch = sketch
+                }
+            }
+            .onLongPressGesture(minimumDuration: 0.35) {
+                enterSelectionMode(startingWith: sketch)
+            }
+            .animation(.easeOut(duration: 0.15), value: isSelectionMode)
     }
 
     private func sketchImage(_ sketch: SavedSketch) -> Image {
@@ -314,7 +359,7 @@ struct AlbumView: View {
         .padding(.horizontal, 5.w)
         .frame(height: 50.h)
         .frame(maxWidth: .infinity)
-        .background( 
+        .background(
              Capsule()
                  .fill(Color(app: .white))
                  .overlay(
@@ -340,6 +385,14 @@ struct AlbumView: View {
 
     // MARK: Actions
 
+    private func enterSelectionMode(startingWith sketch: SavedSketch) {
+        guard !isSelectionMode else { return }
+        withAnimation(.easeOut(duration: 0.15)) {
+            isSelectionMode = true
+            selectedIDs.insert(sketch.objectID)
+        }
+    }
+
     private func toggle(_ sketch: SavedSketch) {
         withAnimation(.easeOut(duration: 0.15)) {
             if selectedIDs.contains(sketch.objectID) {
@@ -347,12 +400,21 @@ struct AlbumView: View {
             } else {
                 selectedIDs.insert(sketch.objectID)
             }
+            // Nothing left checked — drop back to plain tap-to-preview
+            // cells rather than leaving an empty selection UI hanging.
+            if selectedIDs.isEmpty { isSelectionMode = false }
         }
     }
 
     private func toggleSelectAll() {
         withAnimation(.easeOut(duration: 0.15)) {
-            selectedIDs = allSelected ? [] : Set(visibleSketches.map(\.objectID))
+            if allSelected {
+                selectedIDs = []
+                isSelectionMode = false
+            } else {
+                selectedIDs = Set(visibleSketches.map(\.objectID))
+                isSelectionMode = true
+            }
         }
     }
 
@@ -361,6 +423,7 @@ struct AlbumView: View {
         withAnimation(.easeOut(duration: 0.2)) {
             SketchStore.delete(doomed, in: moc)
             selectedIDs.removeAll()
+            isSelectionMode = false
         }
     }
 }

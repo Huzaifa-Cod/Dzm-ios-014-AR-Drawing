@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  Tiếng Việt
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "Thổi hồn vào những bản phác thảo của bạn";
+"intro_subtitle" = "Khám phá phác thảo, chân dung, anime, động vật và hơn thế nữa, tất cả trong một nơi.";
+"intro_agree_button" = "Đồng ý & Tiếp tục";
+"intro_terms_prefix" = "Tôi đồng ý với";
+"intro_terms_of_use" = "Điều khoản sử dụng";
+"intro_terms_and" = "và đã đọc";
+"intro_privacy_policy" = "Chính sách quyền riêng tư";
+
+/* Onboarding */
+"onboarding_trace_title" = "Đồ hình bằng điện thoại của bạn";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "Vẽ lại ảnh của riêng bạn";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "Hơn 500 mẫu sáng tạo để bắt đầu";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "Bài học từng bước để thành thạo vẽ";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "Tham gia cùng hàng trăm người dùng";
+"onboarding_continue_button" = "Tiếp tục";
+
+/* Tutorial */
+"tutorial_title" = "Cùng xem\nbạn giỏi đến đâu";
+"tutorial_badge" = "Hướng dẫn";
+"tutorial_callout" = "Vẽ chú mèo theo hướng dẫn từng bước";
+"tutorial_start_button" = "Bắt đầu hướng dẫn";
+"tutorial_skip_button" = "Bỏ qua hướng dẫn";
+"tutorial_lesson_title" = "Cùng vẽ một khuôn mặt";
+"tutorial_complete_button" = "Hoàn tất";
+"tutorial_complete_social_proof" = "Bản vẽ của bạn tốt hơn\n50% người dùng của chúng tôi.";
+"tutorial_complete_headline" = "Mọi kiệt tác đều bắt đầu\ntừ một nét vẽ duy nhất";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "Tiếp tục";
+
+/* Tab bar */
+"tab_home" = "Trang chủ";
+"tab_lessons" = "Bài học";
+"tab_templates" = "Mẫu vẽ";
+"tab_profile" = "Hồ sơ";
+"tab_settings" = "Cài đặt";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "Ảnh làm\ntham khảo";
+"home_capture_title" = "Chụp ảnh";
+"home_step_by_step_title" = "Vẽ từng bước";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "Dành cho trẻ em";
+"home_cute" = "Dễ thương";
+"home_see_all" = "Xem tất cả";
+
+/* Templates */
+"templates_title" = "Mẫu vẽ";
+"templates_search_placeholder" = "Tìm kiếm tại đây";
+"template_category_kids" = "Trẻ em";
+"template_category_cute" = "Dễ thương";
+"template_category_animal" = "Động vật";
+"template_category_anime" = "Anime";
+
+/* Profile */
+"profile_title" = "Hồ sơ";
+"profile_current_level" = "Cấp độ hiện tại";
+"profile_see_more" = "Xem thêm";
+"profile_stat_drawn" = "Đã vẽ";
+"profile_stat_time_spent" = "Thời gian đã dùng";
+"profile_stat_lessons" = "Bài học";
+"profile_album_title" = "Album";
+"profile_album_subtitle" = "Tải lên ảnh chụp bản phác thảo bạn đã vẽ";
+"profile_upload_drawing" = "Tải lên bản vẽ";
+"profile_lessons_title" = "Bài học";
+"profile_lessons_subtitle" = "Tải lên ảnh chụp bản phác thảo bạn đã vẽ";
+"profile_streaks_title" = "Chuỗi ngày vẽ";
+"profile_streaks_days_label" = "Ngày";
+"profile_longest_streak_label" = "Chuỗi dài nhất";
+"profile_achievements_title" = "Thành tựu";
+"profile_achievements_subtitle" = "Xem tất cả phần thưởng bạn đã đạt được";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "Bản phác thảo đầu tiên";
+"achievement_daily_drawer" = "Người vẽ hằng ngày";
+"achievement_photo_master" = "Bậc thầy ảnh";
+"achievement_gallery_keeper" = "Người giữ thư viện ảnh";
+"achievement_color_explorer" = "Nhà khám phá màu sắc";
+"achievement_sketch_learner" = "Người học vẽ phác thảo";
+"achievement_focused_artist" = "Họa sĩ tập trung";
+"achievement_speed_sketcher" = "Vẽ nhanh";
+"achievement_perfect_trace" = "Đồ hình hoàn hảo";
+"achievement_collection_master" = "Bậc thầy bộ sưu tập";
+"achievement_line_artist" = "Nghệ sĩ đường nét";
+"achievement_skill_achiever" = "Người đạt kỹ năng";
+"achievement_detail_detective" = "Thám tử chi tiết";
+"achievement_template_collector" = "Người sưu tầm mẫu vẽ";
+"achievement_upload_pro" = "Chuyên gia tải lên";
+"achievement_timelapse_creator" = "Nhà sáng tạo timelapse";
+"achievement_consistency_king" = "Vua sự kiên trì";
+"achievement_inspiration_seeker" = "Người tìm cảm hứng";
+
+"achievement_creative_wizard" = "Phù thủy sáng tạo";
+"achievement_practice_pro" = "Chuyên gia luyện tập";
+"achievement_milestone_maker" = "Người tạo cột mốc";
+"achievement_drawing_apprentice" = "Học việc vẽ";
+"achievement_surprise_artist" = "Họa sĩ bất ngờ";
+"achievement_master_sketcher" = "Bậc thầy phác thảo";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "Album";
+"album_select_all" = "Chọn tất cả";
+"album_deselect_all" = "Bỏ chọn tất cả";
+"album_tab_drawn" = "Hình vẽ";
+"album_tab_recorded" = "Đã quay";
+"album_items_selected" = "Đã chọn %d mục";
+"album_delete" = "Xóa";
+"album_empty_title" = "Chưa có bản vẽ nào";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "Bài học";
+"lessons_current_level" = "Cấp độ hiện tại";
+"lesson_difficulty_all" = "Tất cả";
+"lesson_difficulty_beginner" = "Người mới";
+"lesson_difficulty_intermediate" = "Trung cấp";
+"lesson_difficulty_expert" = "Chuyên gia";
+"lesson_avg_time_format" = "Thời gian TB: %@";
+"lesson_avg_time_value" = "5 phút";
+"lesson_status_completed" = "Đã hoàn thành";
+"lesson_status_start" = "Bắt đầu";
+
+
+// MARK: - Settings
+"settings_title" = "Cài đặt";
+"settings_section_manage" = "Quản lý";
+"settings_section_other" = "Khác";
+"settings_section_about" = "Giới thiệu";
+"settings_restore_purchase" = "Khôi phục giao dịch mua";
+"settings_language" = "Ngôn ngữ";
+"settings_rate_us" = "Đánh giá chúng tôi";
+"settings_contact_us" = "Liên hệ chúng tôi";
+"settings_share_with_friends" = "Chia sẻ với bạn bè";
+"settings_privacy_policy" = "Chính sách quyền riêng tư";
+"settings_terms_conditions" = "Điều khoản & Điều kiện";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "Chọn chế độ";
+"draw_mode_phone_title" = "Vẽ trên điện thoại";
+"draw_mode_ar_title" = "Vẽ bằng AR";
+"draw_mode_paper_title" = "Vẽ trên giấy";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "Tiếp tục";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "Dễ";
+"template_difficulty_medium" = "Trung bình";
+"template_difficulty_expert" = "Chuyên gia";
+"template_preview_level_label" = "Cấp độ";
+"template_preview_avg_label" = "TB";
+"template_preview_avg_minutes_format" = "%d phút";
+"template_preview_free_badge" = "Miễn phí";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "Bắt đầu vẽ";
+"template_preview_unlock_pro" = "Mở khóa với Pro";
+"template_preview_close" = "Đóng";
+
+
+// MARK: - Editor
+"editor_cancel" = "Hủy";
+"editor_finish" = "Hoàn tất";
+"editor_tool_opacity" = "Độ mờ đục";
+"editor_tool_flip" = "Lật";
+"editor_tool_eraser" = "Tẩy";
+"editor_tool_record" = "Quay";
+"editor_tool_photo" = "Ảnh";
+"editor_tool_flash" = "Đèn flash";
+"editor_photo_saved_toast" = "Đã lưu vào thư viện! ✨";
+"editor_record_mode_video" = "Video";
+"editor_record_mode_timelapse" = "Timelapse";
+"editor_capture_photo_title" = "Chụp ảnh";
+"editor_tool_stroke" = "Nét vẽ";
+"editor_draw_stroke_title" = "Vẽ nét";
+
+
+// MARK: - Sketch result
+"result_title" = "Bản phác thảo của bạn đã sẵn sàng!";
+"result_subtitle" = "Đã lưu vào album của bạn. Tải xuống hoặc chia sẻ với bạn bè.";
+"result_download" = "Tải xuống";
+"result_share" = "Chia sẻ";
+"result_done" = "Xong";
+
+
+"album_preview_title" = "Xem trước";
+"album_share_artwork" = "Chia sẻ tác phẩm";
+"album_delete_confirm_title" = "Xóa bản vẽ này?";
+
+
+"learning_level_nav_title" = "Cấp độ học tập";
+"learning_level_stage_new_learner" = "Người học\nmới";
+"learning_level_stage_sketch_beginner" = "Người mới\nphác thảo";
+"learning_level_stage_creative_explorer" = "Nhà khám phá\nsáng tạo";
+"learning_level_stage_sketch_enthusiast" = "Người đam mê\nphác thảo";
+"how_to_level_up_title" = "Làm sao để lên cấp?";
+"how_to_level_up_description" = "Hoàn thành thêm bài học để đạt cấp độ cao hơn.";
+
+
+// MARK: - Premium
+"premium_title" = "Tham gia Pro 👑";
+"premium_feature_ad_free" = "Trải nghiệm\nkhông quảng cáo";
+"premium_feature_ar_tracing" = "Đồ hình\nbằng AR";
+"premium_feature_photo_to_sketch" = "Ảnh thành\nphác thảo";
+"premium_feature_drawing_lessons" = "Bài học\nvẽ";
+"premium_plan_weekly" = "Gói hàng tuần";
+"premium_plan_yearly" = "Gói hàng năm";
+"premium_save_badge" = "Tiết kiệm 50%";
+"premium_start_free" = "Bắt đầu miễn phí";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "Dùng thử MIỄN PHÍ 3 ngày - sau đó %1$@/%2$@";
+"premium_period_week" = "tuần";
+"premium_period_month" = "tháng";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "3 ngày đầu miễn phí, sau đó %@/ngày";
+"premium_commitment_note" = "Không ràng buộc. Hủy bất cứ lúc nào";
+"premium_terms_of_use" = "Điều khoản sử dụng";
+"premium_privacy_policy" = "Chính sách quyền riêng tư";
+"premium_restore" = "Khôi phục";
+
+"premium_product_unavailable" = "Gói này hiện không khả dụng. Vui lòng thử lại.";
+"premium_pending" = "Giao dịch mua của bạn đang chờ phê duyệt.";
+"premium_failed_message" = "Đã có lỗi xảy ra. Vui lòng thử lại.";
+"premium_restoring" = "Đang khôi phục…";
+"premium_restore_none_found" = "Không tìm thấy giao dịch mua trước đó cho tài khoản Apple này.";

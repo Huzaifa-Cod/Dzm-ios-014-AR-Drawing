@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  繁體中文
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "讓你的草圖栩栩如生";
+"intro_subtitle" = "探索素描、肖像、動漫、動物等，一站式盡享。";
+"intro_agree_button" = "同意並繼續";
+"intro_terms_prefix" = "我已同意";
+"intro_terms_of_use" = "使用條款";
+"intro_terms_and" = "並已閱讀";
+"intro_privacy_policy" = "隱私權政策";
+
+/* Onboarding */
+"onboarding_trace_title" = "用手機描摹";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "繪製你自己的照片";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "500+創意範本，助你輕鬆上手";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "循序漸進的課程，助你掌握繪畫";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "加入數百名使用者的行列";
+"onboarding_continue_button" = "繼續";
+
+/* Tutorial */
+"tutorial_title" = "來看看\n你的功力如何";
+"tutorial_badge" = "教學";
+"tutorial_callout" = "跟著分步指南畫一隻貓";
+"tutorial_start_button" = "開始教學";
+"tutorial_skip_button" = "跳過教學";
+"tutorial_lesson_title" = "一起來畫一張臉";
+"tutorial_complete_button" = "完成";
+"tutorial_complete_social_proof" = "你的畫比\n50%的使用者都要好。";
+"tutorial_complete_headline" = "每一幅傑作\n都始於一筆";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "繼續";
+
+/* Tab bar */
+"tab_home" = "首頁";
+"tab_lessons" = "課程";
+"tab_templates" = "範本";
+"tab_profile" = "個人檔案";
+"tab_settings" = "設定";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "照片\n作參考";
+"home_capture_title" = "拍攝";
+"home_step_by_step_title" = "逐步繪畫";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "兒童專區";
+"home_cute" = "可愛";
+"home_see_all" = "查看全部";
+
+/* Templates */
+"templates_title" = "範本";
+"templates_search_placeholder" = "在此搜尋";
+"template_category_kids" = "兒童";
+"template_category_cute" = "可愛";
+"template_category_animal" = "動物";
+"template_category_anime" = "動漫";
+
+/* Profile */
+"profile_title" = "個人檔案";
+"profile_current_level" = "目前等級";
+"profile_see_more" = "查看更多";
+"profile_stat_drawn" = "已繪製";
+"profile_stat_time_spent" = "已使用時間";
+"profile_stat_lessons" = "課程";
+"profile_album_title" = "相簿";
+"profile_album_subtitle" = "上傳你所畫草圖的照片";
+"profile_upload_drawing" = "上傳作品";
+"profile_lessons_title" = "課程";
+"profile_lessons_subtitle" = "上傳你所畫草圖的照片";
+"profile_streaks_title" = "連續繪畫天數";
+"profile_streaks_days_label" = "天";
+"profile_longest_streak_label" = "最長連續天數";
+"profile_achievements_title" = "成就";
+"profile_achievements_subtitle" = "查看你獲得的所有獎勵";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "初次素描";
+"achievement_daily_drawer" = "每日繪畫者";
+"achievement_photo_master" = "照片大師";
+"achievement_gallery_keeper" = "相簿管理員";
+"achievement_color_explorer" = "色彩探索者";
+"achievement_sketch_learner" = "素描學徒";
+"achievement_focused_artist" = "專注畫者";
+"achievement_speed_sketcher" = "速寫高手";
+"achievement_perfect_trace" = "完美描摹";
+"achievement_collection_master" = "收藏大師";
+"achievement_line_artist" = "線條藝術家";
+"achievement_skill_achiever" = "技能達人";
+"achievement_detail_detective" = "細節偵探";
+"achievement_template_collector" = "範本收藏家";
+"achievement_upload_pro" = "上傳達人";
+"achievement_timelapse_creator" = "縮時攝影創作者";
+"achievement_consistency_king" = "堅持之王";
+"achievement_inspiration_seeker" = "靈感探尋者";
+
+"achievement_creative_wizard" = "創意魔法師";
+"achievement_practice_pro" = "練習達人";
+"achievement_milestone_maker" = "里程碑締造者";
+"achievement_drawing_apprentice" = "繪畫學徒";
+"achievement_surprise_artist" = "驚喜畫家";
+"achievement_master_sketcher" = "素描大師";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "相簿";
+"album_select_all" = "全選";
+"album_deselect_all" = "取消全選";
+"album_tab_drawn" = "手繪圖像";
+"album_tab_recorded" = "已錄製";
+"album_items_selected" = "已選擇%d項";
+"album_delete" = "刪除";
+"album_empty_title" = "尚無作品";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "課程";
+"lessons_current_level" = "目前等級";
+"lesson_difficulty_all" = "全部";
+"lesson_difficulty_beginner" = "初級";
+"lesson_difficulty_intermediate" = "中級";
+"lesson_difficulty_expert" = "高級";
+"lesson_avg_time_format" = "平均耗時：%@";
+"lesson_avg_time_value" = "5分鐘";
+"lesson_status_completed" = "已完成";
+"lesson_status_start" = "開始";
+
+
+// MARK: - Settings
+"settings_title" = "設定";
+"settings_section_manage" = "管理";
+"settings_section_other" = "其他";
+"settings_section_about" = "關於";
+"settings_restore_purchase" = "恢復購買";
+"settings_language" = "語言";
+"settings_rate_us" = "評價我們";
+"settings_contact_us" = "聯絡我們";
+"settings_share_with_friends" = "分享給好友";
+"settings_privacy_policy" = "隱私權政策";
+"settings_terms_conditions" = "條款與細則";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "選擇模式";
+"draw_mode_phone_title" = "在手機上繪畫";
+"draw_mode_ar_title" = "AR繪畫";
+"draw_mode_paper_title" = "在紙上繪畫";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "繼續";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "簡單";
+"template_difficulty_medium" = "中等";
+"template_difficulty_expert" = "高級";
+"template_preview_level_label" = "難度";
+"template_preview_avg_label" = "平均";
+"template_preview_avg_minutes_format" = "%d分鐘";
+"template_preview_free_badge" = "免費";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "開始繪畫";
+"template_preview_unlock_pro" = "解鎖Pro";
+"template_preview_close" = "關閉";
+
+
+// MARK: - Editor
+"editor_cancel" = "取消";
+"editor_finish" = "完成";
+"editor_tool_opacity" = "不透明度";
+"editor_tool_flip" = "翻轉";
+"editor_tool_eraser" = "橡皮擦";
+"editor_tool_record" = "錄製";
+"editor_tool_photo" = "拍照";
+"editor_tool_flash" = "閃光燈";
+"editor_photo_saved_toast" = "已儲存至相簿！✨";
+"editor_record_mode_video" = "影片";
+"editor_record_mode_timelapse" = "縮時攝影";
+"editor_capture_photo_title" = "擷取影像";
+"editor_tool_stroke" = "畫筆";
+"editor_draw_stroke_title" = "繪製筆觸";
+
+
+// MARK: - Sketch result
+"result_title" = "你的作品已完成！";
+"result_subtitle" = "已儲存至你的相簿。下載或與好友分享吧。";
+"result_download" = "下載";
+"result_share" = "分享";
+"result_done" = "完成";
+
+
+"album_preview_title" = "預覽";
+"album_share_artwork" = "分享作品";
+"album_delete_confirm_title" = "刪除這幅作品？";
+
+
+"learning_level_nav_title" = "學習等級";
+"learning_level_stage_new_learner" = "新手\n學徒";
+"learning_level_stage_sketch_beginner" = "素描\n初學者";
+"learning_level_stage_creative_explorer" = "創意\n探索者";
+"learning_level_stage_sketch_enthusiast" = "素描\n愛好者";
+"how_to_level_up_title" = "如何提升等級？";
+"how_to_level_up_description" = "完成更多課程以達到更高等級。";
+
+
+// MARK: - Premium
+"premium_title" = "加入Pro 👑";
+"premium_feature_ad_free" = "無廣告\n體驗";
+"premium_feature_ar_tracing" = "AR\n描摹";
+"premium_feature_photo_to_sketch" = "照片轉\n素描";
+"premium_feature_drawing_lessons" = "繪畫\n課程";
+"premium_plan_weekly" = "週方案";
+"premium_plan_yearly" = "年方案";
+"premium_save_badge" = "省50%";
+"premium_start_free" = "免費開始";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3天免費試用 - 之後%1$@/%2$@";
+"premium_period_week" = "週";
+"premium_period_month" = "月";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "前3天免費，之後%@/天";
+"premium_commitment_note" = "無需承諾，隨時可取消";
+"premium_terms_of_use" = "使用條款";
+"premium_privacy_policy" = "隱私權政策";
+"premium_restore" = "恢復";
+
+"premium_product_unavailable" = "該方案目前無法使用，請重試。";
+"premium_pending" = "你的購買正在等待核准。";
+"premium_failed_message" = "發生錯誤，請重試。";
+"premium_restoring" = "正在恢復…";
+"premium_restore_none_found" = "找不到此Apple帳戶的先前購買記錄。";

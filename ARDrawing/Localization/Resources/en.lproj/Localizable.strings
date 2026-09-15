@@ -159,6 +159,19 @@
 "draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
 "draw_mode_continue_button" = "Continue";
 
+// MARK: - Template preview
+"template_difficulty_easy" = "Easy";
+"template_difficulty_medium" = "Medium";
+"template_difficulty_expert" = "Expert";
+"template_preview_level_label" = "Level";
+"template_preview_avg_label" = "Avg.";
+"template_preview_avg_minutes_format" = "%d min";
+"template_preview_free_badge" = "Free";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "Start Drawing";
+"template_preview_unlock_pro" = "Unlock with Pro";
+"template_preview_close" = "Close";
+
 
 // MARK: - Editor
 "editor_cancel" = "Cancel";
@@ -183,3 +196,45 @@
 "result_download" = "Download";
 "result_share" = "Share";
 "result_done" = "Done";
+
+
+"album_preview_title" = "Preview";
+"album_share_artwork" = "Share Artwork";
+"album_delete_confirm_title" = "Delete this drawing?";
+
+
+"learning_level_nav_title" = "Learning Level";
+"learning_level_stage_new_learner" = "New\nLearner";
+"learning_level_stage_sketch_beginner" = "Sketch\nBeginner";
+"learning_level_stage_creative_explorer" = "Creative\nExplorer";
+"learning_level_stage_sketch_enthusiast" = "Sketch\nEnthusiast";
+"how_to_level_up_title" = "How to Level Up?";
+"how_to_level_up_description" = "Complete more lessons to achieve higher level.";
+
+
+// MARK: - Premium
+"premium_title" = "Join Pro 👑";
+"premium_feature_ad_free" = "Ad-Free\nExperience";
+"premium_feature_ar_tracing" = "AR\nTracing";
+"premium_feature_photo_to_sketch" = "Photo to\nSketch";
+"premium_feature_drawing_lessons" = "Drawing\nLessons";
+"premium_plan_weekly" = "Weekly Plan";
+"premium_plan_yearly" = "Yearly Plan";
+"premium_save_badge" = "Saves 50%";
+"premium_start_free" = "Start for Free";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3 Days FREE Trial - then %1$@/%2$@";
+"premium_period_week" = "week";
+"premium_period_month" = "month";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "First 3 days free, then %@/day";
+"premium_commitment_note" = "No Commitment. Cancel Anytime";
+"premium_terms_of_use" = "Terms of Use";
+"premium_privacy_policy" = "Privacy Policy";
+"premium_restore" = "Restore";
+
+"premium_product_unavailable" = "That plan isn't available right now. Please try again.";
+"premium_pending" = "Your purchase is pending approval.";
+"premium_failed_message" = "Something went wrong. Please try again.";
+"premium_restoring" = "Restoring…";
+"premium_restore_none_found" = "No previous purchase found for this Apple Account.";

@@ -3,24 +3,7 @@
 //  ARDrawing
 //
 //  Scales Figma values to the current device.
-//
-//  The design is a phone layout drawn on a 390x844 frame. Everything in the
-//  app — fonts, paddings, card sizes, corner radii — is written in those
-//  design points and scaled through `.w` / `.h` / `.s`.
-//
-//  The scale is a single uniform factor: how much of the design frame fits
-//  on this screen, i.e. an aspect fit. That matters on tablets. Scaling each
-//  axis independently would stretch a 13" iPad's width by 2.6 and its height
-//  by 1.6, shearing the design against its own vertical rhythm; fitting it
-//  as a whole enlarges every element the way a photo enlarges, so a tablet
-//  gets bigger text, cards and controls rather than a phone-sized layout
-//  adrift in the middle of the glass.
-//
-//  Screens still lay their content out edge to edge (no centred-column
-//  cap) — a grid like Templates' should add columns on a wider screen
-//  rather than sit at its phone column count with extra margin either
-//  side. See `TemplatesView.columnCount` for that.
-//
+
 
 import SwiftUI
 

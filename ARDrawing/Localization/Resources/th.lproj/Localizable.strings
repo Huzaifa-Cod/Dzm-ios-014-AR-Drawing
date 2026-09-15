@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  ไทย
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "เติมชีวิตชีวาให้ภาพร่างของคุณ";
+"intro_subtitle" = "ค้นพบภาพร่าง ภาพเหมือน อนิเมะ สัตว์ และอื่น ๆ อีกมากมายในที่เดียว";
+"intro_agree_button" = "ยอมรับและดำเนินการต่อ";
+"intro_terms_prefix" = "ฉันยอมรับ";
+"intro_terms_of_use" = "ข้อกำหนดการใช้งาน";
+"intro_terms_and" = "และได้อ่าน";
+"intro_privacy_policy" = "นโยบายความเป็นส่วนตัว";
+
+/* Onboarding */
+"onboarding_trace_title" = "ลอกลายด้วยโทรศัพท์ของคุณ";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "วาดภาพถ่ายของคุณเอง";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "เทมเพลตสร้างสรรค์กว่า 500 แบบเพื่อเริ่มต้น";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "บทเรียนทีละขั้นตอนเพื่อฝึกฝนการวาดภาพ";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "เข้าร่วมกับผู้ใช้หลายร้อยคน";
+"onboarding_continue_button" = "ดำเนินการต่อ";
+
+/* Tutorial */
+"tutorial_title" = "มาดูกันว่า\nคุณเก่งแค่ไหน";
+"tutorial_badge" = "บทแนะนำ";
+"tutorial_callout" = "วาดแมวตามคำแนะนำทีละขั้นตอน";
+"tutorial_start_button" = "เริ่มบทแนะนำ";
+"tutorial_skip_button" = "ข้ามบทแนะนำ";
+"tutorial_lesson_title" = "มาวาดใบหน้ากัน";
+"tutorial_complete_button" = "เสร็จสิ้น";
+"tutorial_complete_social_proof" = "ภาพวาดของคุณดีกว่า\n50% ของผู้ใช้ของเรา";
+"tutorial_complete_headline" = "ทุกผลงานชิ้นเอก\nเริ่มต้นจากเส้นเดียว";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "ดำเนินการต่อ";
+
+/* Tab bar */
+"tab_home" = "หน้าแรก";
+"tab_lessons" = "บทเรียน";
+"tab_templates" = "เทมเพลต";
+"tab_profile" = "โปรไฟล์";
+"tab_settings" = "ตั้งค่า";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "ภาพถ่าย\nเป็นต้นแบบ";
+"home_capture_title" = "ถ่ายภาพ";
+"home_step_by_step_title" = "วาดทีละขั้นตอน";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "สำหรับเด็ก";
+"home_cute" = "น่ารัก";
+"home_see_all" = "ดูทั้งหมด";
+
+/* Templates */
+"templates_title" = "เทมเพลต";
+"templates_search_placeholder" = "ค้นหาที่นี่";
+"template_category_kids" = "เด็ก";
+"template_category_cute" = "น่ารัก";
+"template_category_animal" = "สัตว์";
+"template_category_anime" = "อนิเมะ";
+
+/* Profile */
+"profile_title" = "โปรไฟล์";
+"profile_current_level" = "ระดับปัจจุบัน";
+"profile_see_more" = "ดูเพิ่มเติม";
+"profile_stat_drawn" = "วาดแล้ว";
+"profile_stat_time_spent" = "เวลาที่ใช้";
+"profile_stat_lessons" = "บทเรียน";
+"profile_album_title" = "อัลบั้ม";
+"profile_album_subtitle" = "อัปโหลดภาพถ่ายของภาพร่างที่คุณวาด";
+"profile_upload_drawing" = "อัปโหลดภาพวาด";
+"profile_lessons_title" = "บทเรียน";
+"profile_lessons_subtitle" = "อัปโหลดภาพถ่ายของภาพร่างที่คุณวาด";
+"profile_streaks_title" = "สถิติวาดต่อเนื่อง";
+"profile_streaks_days_label" = "วัน";
+"profile_longest_streak_label" = "สถิติต่อเนื่องยาวนานที่สุด";
+"profile_achievements_title" = "ความสำเร็จ";
+"profile_achievements_subtitle" = "ดูรางวัลทั้งหมดที่คุณได้รับ";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "ภาพร่างแรก";
+"achievement_daily_drawer" = "นักวาดประจำวัน";
+"achievement_photo_master" = "ปรมาจารย์ภาพถ่าย";
+"achievement_gallery_keeper" = "ผู้ดูแลแกลเลอรี";
+"achievement_color_explorer" = "นักสำรวจสีสัน";
+"achievement_sketch_learner" = "ผู้เรียนรู้การวาด";
+"achievement_focused_artist" = "ศิลปินผู้ตั้งใจ";
+"achievement_speed_sketcher" = "นักวาดเร็ว";
+"achievement_perfect_trace" = "ลอกลายสมบูรณ์แบบ";
+"achievement_collection_master" = "ปรมาจารย์คอลเลกชัน";
+"achievement_line_artist" = "ศิลปินเส้น";
+"achievement_skill_achiever" = "ผู้เชี่ยวชาญทักษะ";
+"achievement_detail_detective" = "นักสืบรายละเอียด";
+"achievement_template_collector" = "นักสะสมเทมเพลต";
+"achievement_upload_pro" = "มือโปรการอัปโหลด";
+"achievement_timelapse_creator" = "ผู้สร้างไทม์แลปส์";
+"achievement_consistency_king" = "ราชาแห่งความสม่ำเสมอ";
+"achievement_inspiration_seeker" = "ผู้แสวงหาแรงบันดาลใจ";
+
+"achievement_creative_wizard" = "พ่อมดแห่งความคิดสร้างสรรค์";
+"achievement_practice_pro" = "มือโปรการฝึกฝน";
+"achievement_milestone_maker" = "ผู้สร้างเหตุการณ์สำคัญ";
+"achievement_drawing_apprentice" = "ลูกมือนักวาด";
+"achievement_surprise_artist" = "ศิลปินเซอร์ไพรส์";
+"achievement_master_sketcher" = "ปรมาจารย์ภาพร่าง";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "อัลบั้ม";
+"album_select_all" = "เลือกทั้งหมด";
+"album_deselect_all" = "ยกเลิกเลือกทั้งหมด";
+"album_tab_drawn" = "ภาพที่วาด";
+"album_tab_recorded" = "บันทึกไว้";
+"album_items_selected" = "เลือกแล้ว %d รายการ";
+"album_delete" = "ลบ";
+"album_empty_title" = "ยังไม่มีภาพวาด";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "บทเรียน";
+"lessons_current_level" = "ระดับปัจจุบัน";
+"lesson_difficulty_all" = "ทั้งหมด";
+"lesson_difficulty_beginner" = "เริ่มต้น";
+"lesson_difficulty_intermediate" = "ปานกลาง";
+"lesson_difficulty_expert" = "ผู้เชี่ยวชาญ";
+"lesson_avg_time_format" = "เวลาเฉลี่ย: %@";
+"lesson_avg_time_value" = "5 นาที";
+"lesson_status_completed" = "เสร็จสิ้น";
+"lesson_status_start" = "เริ่ม";
+
+
+// MARK: - Settings
+"settings_title" = "ตั้งค่า";
+"settings_section_manage" = "จัดการ";
+"settings_section_other" = "อื่น ๆ";
+"settings_section_about" = "เกี่ยวกับ";
+"settings_restore_purchase" = "กู้คืนการซื้อ";
+"settings_language" = "ภาษา";
+"settings_rate_us" = "ให้คะแนนเรา";
+"settings_contact_us" = "ติดต่อเรา";
+"settings_share_with_friends" = "แชร์ให้เพื่อน";
+"settings_privacy_policy" = "นโยบายความเป็นส่วนตัว";
+"settings_terms_conditions" = "ข้อกำหนดและเงื่อนไข";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "เลือกโหมด";
+"draw_mode_phone_title" = "วาดบนโทรศัพท์";
+"draw_mode_ar_title" = "วาดด้วย AR";
+"draw_mode_paper_title" = "วาดบนกระดาษ";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "ดำเนินการต่อ";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "ง่าย";
+"template_difficulty_medium" = "ปานกลาง";
+"template_difficulty_expert" = "ผู้เชี่ยวชาญ";
+"template_preview_level_label" = "ระดับ";
+"template_preview_avg_label" = "เฉลี่ย";
+"template_preview_avg_minutes_format" = "%d นาที";
+"template_preview_free_badge" = "ฟรี";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "เริ่มวาด";
+"template_preview_unlock_pro" = "ปลดล็อกด้วย Pro";
+"template_preview_close" = "ปิด";
+
+
+// MARK: - Editor
+"editor_cancel" = "ยกเลิก";
+"editor_finish" = "เสร็จสิ้น";
+"editor_tool_opacity" = "ความทึบ";
+"editor_tool_flip" = "พลิก";
+"editor_tool_eraser" = "ยางลบ";
+"editor_tool_record" = "บันทึก";
+"editor_tool_photo" = "ภาพถ่าย";
+"editor_tool_flash" = "แฟลช";
+"editor_photo_saved_toast" = "บันทึกลงแกลเลอรีแล้ว! ✨";
+"editor_record_mode_video" = "วิดีโอ";
+"editor_record_mode_timelapse" = "ไทม์แลปส์";
+"editor_capture_photo_title" = "จับภาพ";
+"editor_tool_stroke" = "เส้นวาด";
+"editor_draw_stroke_title" = "วาดเส้น";
+
+
+// MARK: - Sketch result
+"result_title" = "ภาพร่างของคุณพร้อมแล้ว!";
+"result_subtitle" = "บันทึกลงอัลบั้มของคุณแล้ว ดาวน์โหลดหรือแชร์ให้เพื่อนได้เลย";
+"result_download" = "ดาวน์โหลด";
+"result_share" = "แชร์";
+"result_done" = "เสร็จสิ้น";
+
+
+"album_preview_title" = "ดูตัวอย่าง";
+"album_share_artwork" = "แชร์ผลงาน";
+"album_delete_confirm_title" = "ลบภาพวาดนี้หรือไม่?";
+
+
+"learning_level_nav_title" = "ระดับการเรียนรู้";
+"learning_level_stage_new_learner" = "ผู้เรียน\nใหม่";
+"learning_level_stage_sketch_beginner" = "ผู้เริ่มต้น\nวาดภาพร่าง";
+"learning_level_stage_creative_explorer" = "นักสำรวจ\nความคิดสร้างสรรค์";
+"learning_level_stage_sketch_enthusiast" = "ผู้หลงใหล\nภาพร่าง";
+"how_to_level_up_title" = "วิธีเลื่อนระดับ?";
+"how_to_level_up_description" = "ทำบทเรียนเพิ่มเติมเพื่อเลื่อนระดับให้สูงขึ้น";
+
+
+// MARK: - Premium
+"premium_title" = "เข้าร่วม Pro 👑";
+"premium_feature_ad_free" = "ประสบการณ์\nไร้โฆษณา";
+"premium_feature_ar_tracing" = "ลอกลาย\nด้วย AR";
+"premium_feature_photo_to_sketch" = "แปลงภาพถ่าย\nเป็นภาพร่าง";
+"premium_feature_drawing_lessons" = "บทเรียน\nการวาดภาพ";
+"premium_plan_weekly" = "แพ็กเกจรายสัปดาห์";
+"premium_plan_yearly" = "แพ็กเกจรายปี";
+"premium_save_badge" = "ประหยัด 50%";
+"premium_start_free" = "เริ่มต้นฟรี";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "ทดลองใช้ฟรี 3 วัน - จากนั้น %1$@/%2$@";
+"premium_period_week" = "สัปดาห์";
+"premium_period_month" = "เดือน";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "ฟรี 3 วันแรก จากนั้น %@/วัน";
+"premium_commitment_note" = "ไม่มีข้อผูกมัด ยกเลิกได้ทุกเมื่อ";
+"premium_terms_of_use" = "ข้อกำหนดการใช้งาน";
+"premium_privacy_policy" = "นโยบายความเป็นส่วนตัว";
+"premium_restore" = "กู้คืน";
+
+"premium_product_unavailable" = "แพ็กเกจนี้ไม่พร้อมใช้งานในขณะนี้ กรุณาลองใหม่อีกครั้ง";
+"premium_pending" = "การซื้อของคุณกำลังรอการอนุมัติ";
+"premium_failed_message" = "เกิดข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้ง";
+"premium_restoring" = "กำลังกู้คืน…";
+"premium_restore_none_found" = "ไม่พบการซื้อก่อนหน้านี้สำหรับบัญชี Apple นี้";

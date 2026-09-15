@@ -3,7 +3,6 @@
 //  ARDrawing
 
 import Combine
-import FirebaseAuth
 import FirebaseStorage
 import Foundation
 
@@ -39,8 +38,6 @@ final class TemplateCatalogStore: ObservableObject {
 
     private let storage = Storage.storage()
     private var didStartLoading = false
-
-    private var signInTask: Task<Void, Never>?
 
     private static let resolvedURLCacheKey = "cachedTemplateImageURLs"
     private lazy var resolvedURLCache: [String: URL] = {
@@ -97,29 +94,11 @@ final class TemplateCatalogStore: ObservableObject {
         }
     }
 
-    /// Signs in anonymously if there's no session yet. Storage's rules
-    /// reject unauthenticated requests outright, so every Storage call
-    /// in this store routes through this first.
+    /// Storage's rules reject unauthenticated requests outright, so every
+    /// Storage call in this store routes through this first. The sign-in
+    /// itself is shared with every other store — see `FirebaseAppAuth`.
     private func ensureSignedIn() async {
-        if let task = signInTask {
-            await task.value
-            return
-        }
-        if Auth.auth().currentUser != nil {
-            return
-        }
-
-        let task = Task<Void, Never> {
-            print("\(Self.logTag) No auth session — signing in anonymously…")
-            do {
-                let result = try await Auth.auth().signInAnonymously()
-                print("\(Self.logTag) Signed in anonymously (uid=\(result.user.uid))")
-            } catch {
-                print("\(Self.logTag) Anonymous sign-in failed: \(error.localizedDescription) — Storage calls will likely be rejected. Check that Anonymous sign-in is enabled under Firebase Console → Authentication → Sign-in method.")
-            }
-        }
-        signInTask = task
-        await task.value
+        await FirebaseAppAuth.shared.ensureSignedIn()
     }
 
     private func loadFromCache(reason: String) {

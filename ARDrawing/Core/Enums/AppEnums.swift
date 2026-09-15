@@ -17,12 +17,19 @@ enum AppColor: String {
     case homeBackground = "kHomeBg"
     case proOrange = "kProOrange"
     case tutorialBorder = "kTutorialBorder"
-    /// Bottom stop of the screen gradient (white FFFFFF → this F7F8FA).
-    /// See `View.screenGradientBackground()`.
+
     case gradientEnd = "kGradientEnd"
     case successGreen = "kSuccessGreen"
     case surfaceLight = "kSurfaceLight"
     case redAccent = "kRed"
+    /// Light end of the Premium call-to-action gradient; `proOrange` is
+    /// the dark end.
+    case premiumGold = "kPremiumGold"
+    /// Fill of an unselected plan card on the Premium screen.
+    case planUnselected = "kPlanUnselected"
+    /// Middle ring on the selected plan card, between the pale-blue halo
+    /// and the blue fill.
+    case planRingGray = "kPlanRingGray"
 }
 
 // MARK: - Fonts
@@ -35,9 +42,12 @@ enum AppFontName: String {
     case light = "Outfit-Light"
     case extraBold = "Outfit-ExtraBold"
     case paytoneOne = "PaytoneOne-Regular"
+    case fredoka = "FredokaOne-Regular"
 }
 
+
 // MARK: - Images
+
 enum AppImage: String {
     case splash = "Splash"
     case splashIcon = "splashIcon"
@@ -93,6 +103,11 @@ enum AppImage: String {
     case restorePurchaseIcon = "Group"
     case languageIcon, rateIcon, contactIcon, shareIcon, privacyIcon, termsIcon
 
+    /// Premium
+    case premiumImg, whiteOverlay, whiteCrownIcon
+    case noAdIcon, arTracingIcon, sketchPhotosIcon, drawingLessonIcon
+    case pCheckIcon, pUncheckIcon
+
     /// Draw mode
     case phoneIcon, paperIcon, arDrawIcon
 
@@ -114,6 +129,9 @@ enum AppImage: String {
     case achievementTimelapseCreatorIcon, achievementConsistencyKingIcon, achievementInspirationSeekerIcon
     case achievementMasterSketcherIcon, achievementSurpriseArtistIcon, achievementDrawingApprenticeIcon
     case achievementPracticeProIcon, achievementMilestoneMakerIcon, achievementCreativeWizardIcon
+    
+    /// Learning Level
+    case currentLevelBg, levelBadgeIcon, checkGreenIcon
 }
 
 
@@ -176,10 +194,80 @@ enum AppTab: Int, CaseIterable, Identifiable {
     }
 }
 
+
+
+// MARK: - Language
+/// Every language the app ships copy for. `code` is the value stored in
+/// UserDefaults and handed to `Bundle`/`Locale` when the app actually
+/// switches its display language.
+enum AppLanguage: String, CaseIterable, Identifiable {
+    case english = "en"
+    case arabic = "ar"
+    case german = "de"
+    case spanish = "es"
+    case french = "fr"
+    case italian = "it"
+    case japanese = "ja"
+    case korean = "ko"
+    case portuguese = "pt"
+    case chineseSimplified = "zh-Hans"
+    case chineseTraditional = "zh-Hant"
+    case thai = "th"
+    case turkish = "tr"
+    case vietnamese = "vi"
+
+    var id: String { rawValue }
+
+    /// Shown in its own language, not translated — how every language
+    /// picker in the wild does it, so a user can find their language
+    /// even if the app is currently showing one they can't read.
+    var nativeName: String {
+        switch self {
+        case .english: return "English"
+        case .arabic: return "العربية"
+        case .german: return "Deutsch"
+        case .spanish: return "Español"
+        case .french: return "Français"
+        case .italian: return "Italiano"
+        case .japanese: return "日本語"
+        case .korean: return "한국어"
+        case .portuguese: return "Português"
+        case .chineseSimplified: return "简体中文"
+        case .chineseTraditional: return "繁體中文"
+        case .thai: return "ไทย"
+        case .turkish: return "Türkçe"
+        case .vietnamese: return "Tiếng Việt"
+        }
+    }
+
+    /// Flag emoji — cheap, no extra asset needed, renders fine at row height.
+    var flag: String {
+        switch self {
+        case .english: return "🇺🇸"
+        case .arabic: return "🇸🇦"
+        case .german: return "🇩🇪"
+        case .spanish: return "🇪🇸"
+        case .french: return "🇫🇷"
+        case .italian: return "🇮🇹"
+        case .japanese: return "🇯🇵"
+        case .korean: return "🇰🇷"
+        case .portuguese: return "🇵🇹"
+        case .chineseSimplified: return "🇨🇳"
+        case .chineseTraditional: return "🇹🇼"
+        case .thai: return "🇹🇭"
+        case .turkish: return "🇹🇷"
+        case .vietnamese: return "🇻🇳"
+        }
+    }
+
+    /// Arabic reads right-to-left — the root view mirrors its layout
+    /// direction off this instead of the system locale, since switching
+    /// in-app doesn't touch the device's own language setting.
+    var isRightToLeft: Bool { self == .arabic }
+}
+
 // MARK: - Profile
-/// The three figures in the stats card. All three icons were exported at
-/// the same 33pt height with differing widths, so they are pinned by height
-/// and keep their natural proportions.
+
 enum ProfileStat: Int, CaseIterable, Identifiable {
     case drawn = 0
     case timeSpent
@@ -234,9 +322,7 @@ enum AlbumTab: Int, CaseIterable, Identifiable {
 
 
 // MARK: - Draw Mode
-/// The three ways a template can be drawn, offered as a carousel right
-/// after picking one. Each page gets a looping usage clip once that
-/// exists — see `DrawModeSelectionView`.
+
 enum DrawMode: Int, CaseIterable, Identifiable {
     case phone = 0
     case arDraw
@@ -257,6 +343,20 @@ enum DrawMode: Int, CaseIterable, Identifiable {
         case .phone: return .drawModePhoneTitle
         case .arDraw: return .drawModeARTitle
         case .paper: return .drawModePaperTitle
+        }
+    }
+
+    /// Substrings that identify this mode's preview clip inside
+    /// `SketchVideo.json` — matched against each entry lowercased, so the
+    /// manifest's exact filename doesn't have to be predicted in advance.
+    /// `paper` has no clip uploaded yet; once one lands with "paper"
+    /// somewhere in its name, `TutorialVideoCatalogStore` picks it up with
+    /// no code change.
+    var tutorialVideoKeywords: [String] {
+        switch self {
+        case .phone: return ["draw_now", "phone"]
+        case .arDraw: return ["camera_draw", "camera", "ar_draw"]
+        case .paper: return ["paper"]
         }
     }
 }
@@ -391,6 +491,7 @@ enum SettingsSection: Int, CaseIterable, Identifiable {
     }
 }
 
+
 // MARK: - Lessons
 /// Difficulty tag shown on a lesson card — also the four filter chips
 /// (`nil` case = "All") across the top of the screen.
@@ -448,6 +549,81 @@ struct Lesson: Identifiable {
     ]
 }
 
+// MARK: - Premium
+/// The four selling points listed under the Premium headline. Every icon
+/// was exported white, to sit on the accent-coloured plate behind it.
+enum PremiumFeature: Int, CaseIterable, Identifiable {
+    case adFree = 0
+    case arTracing
+    case photoToSketch
+    case drawingLessons
+
+    var id: Int { rawValue }
+
+    var icon: AppImage {
+        switch self {
+        case .adFree: return .noAdIcon
+        case .arTracing: return .arTracingIcon
+        case .photoToSketch: return .sketchPhotosIcon
+        case .drawingLessons: return .drawingLessonIcon
+        }
+    }
+
+    /// Height the artwork is drawn at. They were exported at slightly
+    /// different sizes, so each keeps its own rather than being forced
+    /// into a shared box, which would scale the smaller ones up.
+    var iconHeight: CGFloat {
+        switch self {
+        case .adFree: return 28
+        case .arTracing: return 23
+        case .photoToSketch: return 29
+        case .drawingLessons: return 23
+        }
+    }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .adFree: return .premiumFeatureAdFree
+        case .arTracing: return .premiumFeatureArTracing
+        case .photoToSketch: return .premiumFeaturePhotoToSketch
+        case .drawingLessons: return .premiumFeatureDrawingLessons
+        }
+    }
+}
+
+/// The two subscription options. Prices live in `PremiumPricing` — they
+/// come from the store, not from the app's copy.
+enum PremiumPlan: Int, CaseIterable, Identifiable {
+    case weekly = 0
+    case yearly
+
+    var id: Int { rawValue }
+
+    var titleKey: LocalizedKey {
+        switch self {
+        case .weekly: return .premiumPlanWeekly
+        case .yearly: return .premiumPlanYearly
+        }
+    }
+
+    /// How the headline price is billed. The yearly plan advertises a
+    /// monthly figure, so it is not simply the plan's own name.
+    var periodKey: LocalizedKey {
+        switch self {
+        case .weekly: return .premiumPeriodWeek
+        case .yearly: return .premiumPeriodMonth
+        }
+    }
+
+    /// The StoreKit product this card buys.
+    var productId: PremiumProductId {
+        switch self {
+        case .weekly: return .weekly
+        case .yearly: return .yearly
+        }
+    }
+}
+
 // MARK: - Navigation Routes
 /// Every screen the app can push/present. `AppRouter` reads this enum
 /// to build the destination view.
@@ -467,6 +643,9 @@ enum AppRoute: Hashable {
     /// The finished drawing, looked up from Core Data by the result screen.
     case sketchResult(id: UUID)
     case achievements
+    case learningLevel
+    case language
+    case premium
 }
 
 // MARK: - Launch
@@ -625,6 +804,7 @@ enum UserDefaultsKey: String {
     case hasCompletedOnboarding
     case lastOnboardingPage
     case hasCompletedTutorial
+    case selectedLanguageCode
 }
 
 // MARK: - Localization Keys
@@ -772,6 +952,30 @@ enum LocalizedKey: String {
     case settingsSectionAbout = "settings_section_about"
     case settingsRestorePurchase = "settings_restore_purchase"
     case settingsLanguage = "settings_language"
+
+    // Premium
+    case premiumTitle = "premium_title"
+    case premiumFeatureAdFree = "premium_feature_ad_free"
+    case premiumFeatureArTracing = "premium_feature_ar_tracing"
+    case premiumFeaturePhotoToSketch = "premium_feature_photo_to_sketch"
+    case premiumFeatureDrawingLessons = "premium_feature_drawing_lessons"
+    case premiumPlanWeekly = "premium_plan_weekly"
+    case premiumPlanYearly = "premium_plan_yearly"
+    case premiumSaveBadge = "premium_save_badge"
+    case premiumStartFree = "premium_start_free"
+    case premiumTrialNote = "premium_trial_note"
+    case premiumPlanFootnote = "premium_plan_footnote"
+    case premiumPeriodWeek = "premium_period_week"
+    case premiumPeriodMonth = "premium_period_month"
+    case premiumCommitmentNote = "premium_commitment_note"
+    case premiumTermsOfUse = "premium_terms_of_use"
+    case premiumPrivacyPolicy = "premium_privacy_policy"
+    case premiumRestore = "premium_restore"
+    case premiumProductUnavailable = "premium_product_unavailable"
+    case premiumPending = "premium_pending"
+    case premiumFailedMessage = "premium_failed_message"
+    case premiumRestoring = "premium_restoring"
+    case premiumRestoreNoneFound = "premium_restore_none_found"
     case settingsRateUs = "settings_rate_us"
     case settingsContactUs = "settings_contact_us"
     case settingsShareWithFriends = "settings_share_with_friends"
@@ -785,6 +989,19 @@ enum LocalizedKey: String {
     case drawModePaperTitle = "draw_mode_paper_title"
     case drawModeDescription = "draw_mode_description"
     case drawModeContinueButton = "draw_mode_continue_button"
+
+    // Template preview
+    case templateDifficultyEasy = "template_difficulty_easy"
+    case templateDifficultyMedium = "template_difficulty_medium"
+    case templateDifficultyExpert = "template_difficulty_expert"
+    case templatePreviewLevelLabel = "template_preview_level_label"
+    case templatePreviewAvgLabel = "template_preview_avg_label"
+    case templatePreviewAvgMinutesFormat = "template_preview_avg_minutes_format"
+    case templatePreviewFreeBadge = "template_preview_free_badge"
+    case templatePreviewProBadge = "template_preview_pro_badge"
+    case templatePreviewStartDrawing = "template_preview_start_drawing"
+    case templatePreviewUnlockPro = "template_preview_unlock_pro"
+    case templatePreviewClose = "template_preview_close"
 
     // Editor
     case editorCancel = "editor_cancel"
@@ -809,4 +1026,18 @@ enum LocalizedKey: String {
     case editorCapturePhotoTitle = "editor_capture_photo_title"
     case editorDrawStrokeTitle = "editor_draw_stroke_title"
     
+    
+    case albumPreviewTitle = "album_preview_title"
+    case albumShareArtwork = "album_share_artwork"
+    case albumDeleteConfirmTitle = "album_delete_confirm_title"
+    
+    
+    // Learning Level
+    case learningLevelNavTitle = "learning_level_nav_title"
+    case learningLevelStageNewLearner = "learning_level_stage_new_learner"
+    case learningLevelStageSketchBeginner = "learning_level_stage_sketch_beginner"
+    case learningLevelStageCreativeExplorer = "learning_level_stage_creative_explorer"
+    case learningLevelStageSketchEnthusiast = "learning_level_stage_sketch_enthusiast"
+    case howToLevelUpTitle = "how_to_level_up_title"
+    case howToLevelUpDescription = "how_to_level_up_description"
 }

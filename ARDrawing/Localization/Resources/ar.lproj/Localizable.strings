@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  العربية
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "أضِف الحياة إلى رسوماتك";
+"intro_subtitle" = "اكتشف الرسومات والبورتريهات والأنمي والحيوانات والمزيد، كل ذلك في مكان واحد.";
+"intro_agree_button" = "موافقة ومتابعة";
+"intro_terms_prefix" = "أوافق على";
+"intro_terms_of_use" = "شروط الاستخدام";
+"intro_terms_and" = "وقد قرأت";
+"intro_privacy_policy" = "سياسة الخصوصية";
+
+/* Onboarding */
+"onboarding_trace_title" = "ارسم باستخدام هاتفك";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "ارسم صورك الخاصة";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "أكثر من 500 قالب إبداعي للبدء";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "دروس خطوة بخطوة لإتقان الرسم";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "انضم إلى مئات المستخدمين";
+"onboarding_continue_button" = "متابعة";
+
+/* Tutorial */
+"tutorial_title" = "لنرَ\nمدى براعتك";
+"tutorial_badge" = "درس تعليمي";
+"tutorial_callout" = "ارسم القطة باستخدام دليل خطوة بخطوة";
+"tutorial_start_button" = "ابدأ الدرس التعليمي";
+"tutorial_skip_button" = "تخطي الدرس التعليمي";
+"tutorial_lesson_title" = "لنرسم وجهًا";
+"tutorial_complete_button" = "إكمال";
+"tutorial_complete_social_proof" = "رسمتك أفضل من\n50٪ من مستخدمينا.";
+"tutorial_complete_headline" = "كل تحفة فنية تبدأ\nبضربة واحدة";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "متابعة";
+
+/* Tab bar */
+"tab_home" = "الرئيسية";
+"tab_lessons" = "الدروس";
+"tab_templates" = "القوالب";
+"tab_profile" = "الملف الشخصي";
+"tab_settings" = "الإعدادات";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "برو";
+"home_photo_reference_title" = "صورة\nكمرجع";
+"home_capture_title" = "التقاط";
+"home_step_by_step_title" = "ارسم خطوة بخطوة";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "للأطفال";
+"home_cute" = "لطيف";
+"home_see_all" = "عرض الكل";
+
+/* Templates */
+"templates_title" = "القوالب";
+"templates_search_placeholder" = "ابحث هنا";
+"template_category_kids" = "أطفال";
+"template_category_cute" = "لطيف";
+"template_category_animal" = "حيوان";
+"template_category_anime" = "أنمي";
+
+/* Profile */
+"profile_title" = "الملف الشخصي";
+"profile_current_level" = "المستوى الحالي";
+"profile_see_more" = "عرض المزيد";
+"profile_stat_drawn" = "مرسوم";
+"profile_stat_time_spent" = "الوقت المستغرق";
+"profile_stat_lessons" = "الدروس";
+"profile_album_title" = "الألبوم";
+"profile_album_subtitle" = "ارفع صورة للرسمة التي رسمتها";
+"profile_upload_drawing" = "رفع رسمة";
+"profile_lessons_title" = "الدروس";
+"profile_lessons_subtitle" = "ارفع صورة للرسمة التي رسمتها";
+"profile_streaks_title" = "سلسلة الرسم";
+"profile_streaks_days_label" = "أيام";
+"profile_longest_streak_label" = "أطول سلسلة";
+"profile_achievements_title" = "الإنجازات";
+"profile_achievements_subtitle" = "اطّلع على جميع المكافآت التي حصلت عليها";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "أول رسمة";
+"achievement_daily_drawer" = "رسّام يومي";
+"achievement_photo_master" = "خبير الصور";
+"achievement_gallery_keeper" = "حارس المعرض";
+"achievement_color_explorer" = "مستكشف الألوان";
+"achievement_sketch_learner" = "متعلم الرسم";
+"achievement_focused_artist" = "فنان مركّز";
+"achievement_speed_sketcher" = "رسّام سريع";
+"achievement_perfect_trace" = "تتبع مثالي";
+"achievement_collection_master" = "خبير المجموعة";
+"achievement_line_artist" = "فنان الخطوط";
+"achievement_skill_achiever" = "بطل المهارة";
+"achievement_detail_detective" = "محقق التفاصيل";
+"achievement_template_collector" = "جامع القوالب";
+"achievement_upload_pro" = "خبير الرفع";
+"achievement_timelapse_creator" = "منشئ الفاصل الزمني";
+"achievement_consistency_king" = "ملك الاستمرارية";
+"achievement_inspiration_seeker" = "باحث عن الإلهام";
+
+"achievement_creative_wizard" = "ساحر الإبداع";
+"achievement_practice_pro" = "خبير التمرين";
+"achievement_milestone_maker" = "صانع الإنجازات";
+"achievement_drawing_apprentice" = "متدرب الرسم";
+"achievement_surprise_artist" = "فنان المفاجآت";
+"achievement_master_sketcher" = "خبير الرسم";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "الألبوم";
+"album_select_all" = "تحديد الكل";
+"album_deselect_all" = "إلغاء تحديد الكل";
+"album_tab_drawn" = "صورة مرسومة";
+"album_tab_recorded" = "مسجّل";
+"album_items_selected" = "تم تحديد %d عناصر";
+"album_delete" = "حذف";
+"album_empty_title" = "لا توجد رسومات بعد";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "الدروس";
+"lessons_current_level" = "المستوى الحالي";
+"lesson_difficulty_all" = "الكل";
+"lesson_difficulty_beginner" = "مبتدئ";
+"lesson_difficulty_intermediate" = "متوسط";
+"lesson_difficulty_expert" = "خبير";
+"lesson_avg_time_format" = "الوقت المتوسط: %@";
+"lesson_avg_time_value" = "5 دقائق";
+"lesson_status_completed" = "مكتمل";
+"lesson_status_start" = "ابدأ";
+
+
+// MARK: - Settings
+"settings_title" = "الإعدادات";
+"settings_section_manage" = "إدارة";
+"settings_section_other" = "أخرى";
+"settings_section_about" = "حول";
+"settings_restore_purchase" = "استعادة الشراء";
+"settings_language" = "اللغة";
+"settings_rate_us" = "قيّمنا";
+"settings_contact_us" = "تواصل معنا";
+"settings_share_with_friends" = "مشاركة مع الأصدقاء";
+"settings_privacy_policy" = "سياسة الخصوصية";
+"settings_terms_conditions" = "الشروط والأحكام";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "اختر الوضع";
+"draw_mode_phone_title" = "الرسم على الهاتف";
+"draw_mode_ar_title" = "رسم بالواقع المعزز";
+"draw_mode_paper_title" = "الرسم على الورق";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "متابعة";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "سهل";
+"template_difficulty_medium" = "متوسط";
+"template_difficulty_expert" = "خبير";
+"template_preview_level_label" = "المستوى";
+"template_preview_avg_label" = "المتوسط";
+"template_preview_avg_minutes_format" = "%d دقيقة";
+"template_preview_free_badge" = "مجاني";
+"template_preview_pro_badge" = "برو";
+"template_preview_start_drawing" = "ابدأ الرسم";
+"template_preview_unlock_pro" = "فتح مع برو";
+"template_preview_close" = "إغلاق";
+
+
+// MARK: - Editor
+"editor_cancel" = "إلغاء";
+"editor_finish" = "إنهاء";
+"editor_tool_opacity" = "الشفافية";
+"editor_tool_flip" = "عكس";
+"editor_tool_eraser" = "ممحاة";
+"editor_tool_record" = "تسجيل";
+"editor_tool_photo" = "صورة";
+"editor_tool_flash" = "الفلاش";
+"editor_photo_saved_toast" = "تم الحفظ في المعرض! ✨";
+"editor_record_mode_video" = "فيديو";
+"editor_record_mode_timelapse" = "فاصل زمني";
+"editor_capture_photo_title" = "التقاط صورة";
+"editor_tool_stroke" = "خط الرسم";
+"editor_draw_stroke_title" = "رسم خط";
+
+
+// MARK: - Sketch result
+"result_title" = "رسمتك جاهزة!";
+"result_subtitle" = "تم حفظها في ألبومك. قم بتنزيلها أو مشاركتها مع أصدقائك.";
+"result_download" = "تنزيل";
+"result_share" = "مشاركة";
+"result_done" = "تم";
+
+
+"album_preview_title" = "معاينة";
+"album_share_artwork" = "مشاركة العمل الفني";
+"album_delete_confirm_title" = "هل تريد حذف هذه الرسمة؟";
+
+
+"learning_level_nav_title" = "مستوى التعلم";
+"learning_level_stage_new_learner" = "متعلم\nجديد";
+"learning_level_stage_sketch_beginner" = "مبتدئ في\nالرسم";
+"learning_level_stage_creative_explorer" = "مستكشف\nمبدع";
+"learning_level_stage_sketch_enthusiast" = "شغوف\nبالرسم";
+"how_to_level_up_title" = "كيف ترتقي بمستواك؟";
+"how_to_level_up_description" = "أكمل المزيد من الدروس للوصول إلى مستوى أعلى.";
+
+
+// MARK: - Premium
+"premium_title" = "انضم إلى برو 👑";
+"premium_feature_ad_free" = "تجربة\nخالية من الإعلانات";
+"premium_feature_ar_tracing" = "تتبع\nبالواقع المعزز";
+"premium_feature_photo_to_sketch" = "تحويل الصورة\nإلى رسمة";
+"premium_feature_drawing_lessons" = "دروس\nالرسم";
+"premium_plan_weekly" = "خطة أسبوعية";
+"premium_plan_yearly" = "خطة سنوية";
+"premium_save_badge" = "وفّر 50٪";
+"premium_start_free" = "ابدأ مجانًا";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "تجربة مجانية 3 أيام، ثم %1$@/%2$@";
+"premium_period_week" = "أسبوع";
+"premium_period_month" = "شهر";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "أول 3 أيام مجانية، ثم %@/يوم";
+"premium_commitment_note" = "بدون التزام. يمكنك الإلغاء في أي وقت";
+"premium_terms_of_use" = "شروط الاستخدام";
+"premium_privacy_policy" = "سياسة الخصوصية";
+"premium_restore" = "استعادة";
+
+"premium_product_unavailable" = "هذه الخطة غير متاحة حاليًا. حاول مرة أخرى.";
+"premium_pending" = "عملية الشراء الخاصة بك في انتظار الموافقة.";
+"premium_failed_message" = "حدث خطأ ما. حاول مرة أخرى.";
+"premium_restoring" = "جارٍ الاستعادة…";
+"premium_restore_none_found" = "لم يتم العثور على عملية شراء سابقة لهذا الحساب في Apple.";

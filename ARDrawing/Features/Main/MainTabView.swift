@@ -4,11 +4,24 @@
 //
 
 import SwiftUI
+import Combine
+
+@MainActor
+final class TabRouter: ObservableObject {
+    @Published var selection: AppTab = .home
+    @Published var pendingCategoryID: String?
+
+    func showTemplates(category: TemplateCategoryData) {
+        pendingCategoryID = category.id
+        selection = .templates
+    }
+}
 
 struct MainTabView: View {
     @State private var selection: AppTab = .home
     @State private var hasContentBelow = false
-
+    @EnvironmentObject private var tabRouter: TabRouter
+    
     /// How far the content dissolves into the bar as it scrolls behind it.
     private let contentFadeHeight: CGFloat = 100
 
@@ -25,7 +38,7 @@ struct MainTabView: View {
                     }
                 }
 
-            AppTabBar(selection: $selection)
+            AppTabBar(selection: $tabRouter.selection)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(app: .white).ignoresSafeArea())
@@ -44,7 +57,7 @@ struct MainTabView: View {
 
     @ViewBuilder
     private var content: some View {
-        switch selection {
+        switch tabRouter.selection {
         case .home: HomeView()
         case .lessons: LessonsView()
         case .templates: TemplatesView()

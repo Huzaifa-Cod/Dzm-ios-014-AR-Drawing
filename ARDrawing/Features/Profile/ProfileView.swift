@@ -1,15 +1,16 @@
 //
 //  ProfileView.swift
 //  ARDrawing
-//
 
 
 import CoreData
+import PhotosUI
 import SwiftUI
 
 struct ProfileView: View {
 
     @EnvironmentObject private var router: AppRouter
+    @Environment(\.managedObjectContext) private var moc
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \SavedSketch.createdAt, ascending: false)]
@@ -25,6 +26,11 @@ struct ProfileView: View {
     private let levelCardHeight: CGFloat = 70
     private let thumbnailSize: CGFloat = 78
     private let lessonTile = CGSize(width: 118, height: 106)
+
+    // MARK: Upload
+    @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var isUploading = false
+    @State private var uploadErrorMessage: String?
 
     var body: some View {
         ReportingScrollView {
@@ -42,6 +48,21 @@ struct ProfileView: View {
             .padding(.bottom, 16.h)
         }
         .background(Color(app: .homeBackground).ignoresSafeArea())
+        .onChange(of: selectedPhotoItem) { _, newItem in
+            guard let newItem else { return }
+            Task { await handlePickedPhoto(newItem) }
+        }
+        .alert(
+            "Couldn't upload drawing",
+            isPresented: Binding(
+                get: { uploadErrorMessage != nil },
+                set: { if !$0 { uploadErrorMessage = nil } }
+            )
+        ) {
+            Button("OK", role: .cancel) { uploadErrorMessage = nil }
+        } message: {
+            Text(uploadErrorMessage ?? "")
+        }
     }
 
     // MARK: Header
@@ -94,7 +115,7 @@ struct ProfileView: View {
 
     private var seeMoreButton: some View {
         Button {
-            // Level detail lands with the lessons work.
+            router.push(.learningLevel)
         } label: {
             HStack(spacing: 4.w) {
                 Text(LocalizedKey.profileSeeMore.localized)
@@ -159,8 +180,6 @@ struct ProfileView: View {
                 )
             }
             .buttonStyle(.plain)
-           
-
             HStack(spacing: 10.w) {
                 ForEach(recentSketches, id: \.objectID) { sketch in
                     albumThumbnail(sketch)
@@ -203,14 +222,22 @@ struct ProfileView: View {
     }
 
     private var uploadButton: some View {
-        Button {
-            // Photo picker lands with the album work.
-        } label: {
+        PhotosPicker(
+            selection: $selectedPhotoItem,
+            matching: .images,
+            photoLibrary: .shared()
+        ) {
             HStack(spacing: 8.w) {
-                Image(app: .uploadIcon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 23.s, height: 15.s)
+                if isUploading {
+                    ProgressView()
+                        .tint(Color(app: .accent))
+                        .frame(width: 23.s, height: 15.s)
+                } else {
+                    Image(app: .uploadIcon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 23.s, height: 15.s)
+                }
 
                 Text(LocalizedKey.profileUploadDrawing.localized)
                     .font(.app(.semiBold, size: 15))
@@ -230,7 +257,35 @@ struct ProfileView: View {
                     )
             )
         }
-        .buttonStyle(.plain)
+        .disabled(isUploading)
+    }
+
+    // MARK: Upload handling
+
+    @MainActor
+    private func handlePickedPhoto(_ item: PhotosPickerItem) async {
+        isUploading = true
+        defer {
+            isUploading = false
+            selectedPhotoItem = nil   // reset so re-picking the same photo still triggers onChange
+        }
+
+        do {
+            guard
+                let data = try await item.loadTransferable(type: Data.self),
+                let uiImage = UIImage(data: data)
+            else {
+                uploadErrorMessage = "That file couldn't be read as an image."
+                return
+            }
+
+            // Uploaded drawings live in the "Drawn" bucket alongside
+            // hand-drawn sketches — matches AlbumTab.drawn's storageKind.
+            SketchStore.save(image: uiImage, kind: .drawn, in: moc)
+
+        } catch {
+            uploadErrorMessage = error.localizedDescription
+        }
     }
 
     // MARK: Lessons

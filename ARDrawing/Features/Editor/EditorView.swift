@@ -289,6 +289,11 @@ struct EditorView: View {
             let id = SketchStore.save(image: image, in: moc)
         else { return }
 
+        // The try is spent here rather than on the way into the editor, so
+        // opening a mode and backing out without drawing costs nothing —
+        // and a failed render above costs nothing either.
+        IAPManager.saveTrial()
+
         router.push(.sketchResult(id: id))
     }
 

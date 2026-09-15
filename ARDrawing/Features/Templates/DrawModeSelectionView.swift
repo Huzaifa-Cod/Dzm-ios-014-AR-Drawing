@@ -13,6 +13,10 @@ struct DrawModeSelectionView: View {
     /// `nil` only in the instant SwiftUI hands back control mid-gesture;
     /// every read falls back to `.phone` via `currentMode`.
     @State private var scrolledID: DrawMode?
+    /// Scoped to this screen — the carousel is the only place these clips
+    /// play, so there's no sharing concern that would push this up to
+    /// `RootView` the way `TemplateCatalogStore` is shared.
+    @StateObject private var videoCatalog = TutorialVideoCatalogStore()
 
     private let pageMargin: CGFloat = 24
     private let cardRadius: CGFloat = 26
@@ -39,6 +43,10 @@ struct DrawModeSelectionView: View {
             Spacer(minLength: 0)
 
             PrimaryButton(title: LocalizedKey.drawModeContinueButton.localized) {
+                // Spending the try is Finish's job, not this screen's —
+                // `canProceed` only checks the allowance, and raises the
+                // paywall itself once it's gone.
+                guard IAPManager.canProceed() else { return }
                 router.push(.editor(mode: currentMode, templateURL: templateURL))
             }
             .padding(.horizontal, pageMargin.w)
@@ -47,6 +55,7 @@ struct DrawModeSelectionView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.kGradientEnd)
         .navigationBarHidden(true)
+        .task { videoCatalog.loadIfNeeded() }
     }
 
 
@@ -97,7 +106,7 @@ struct DrawModeSelectionView: View {
             ScrollView(.horizontal) {
                 LazyHStack(spacing: 14.w) {
                     ForEach(DrawMode.allCases) { mode in
-                        videoPlaceholder(radius: cardRadius.s)
+                        carouselCard(for: mode, radius: cardRadius.s)
                             .frame(width: cardWidth, height: cardHeight)
                             .id(mode)
                     }
@@ -116,27 +125,43 @@ struct DrawModeSelectionView: View {
     }
 
     /// Double border: a soft tinted halo behind a smaller white card with
-    /// a solid accent outline, matching the reference exactly.
-    private func videoPlaceholder(radius: CGFloat) -> some View {
+    /// a solid accent outline, matching the reference exactly. The card
+    /// plays this mode's preview clip once `TutorialVideoCatalogStore`
+    /// resolves one, and falls back to the original play-icon placeholder
+    /// for any mode — `paper`, for now — whose clip isn't uploaded yet.
+    private func carouselCard(for mode: DrawMode, radius: CGFloat) -> some View {
         let inset: CGFloat = 8.s
 
         return RoundedRectangle(cornerRadius: radius + inset / 2, style: .continuous)
             .fill(Color(app: .accent).opacity(0.12))
             .overlay {
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .fill(Color(app: .white))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: radius, style: .continuous)
-                            .stroke(Color(app: .accent), lineWidth: 2)
-                    )
-                    .overlay {
-                        Image(systemName: "play.circle.fill")
-                            .font(.system(size: 46.s, weight: .regular))
-                            .foregroundStyle(Color(app: .dotInactive))
-                    }
+                innerCard(for: mode, radius: radius)
                     .padding(inset)
             }
             .shadow(color: Color(app: .dark).opacity(0.06), radius: 12.s, y: 6.h)
+    }
+
+    /// The stroke is added last, over the clip, so a full-bleed video
+    /// doesn't paint across it — with only the static play icon, draw
+    /// order didn't matter, since the icon never reached the edges.
+    @ViewBuilder
+    private func innerCard(for mode: DrawMode, radius: CGFloat) -> some View {
+        RoundedRectangle(cornerRadius: radius, style: .continuous)
+            .fill(Color(app: .white))
+            .overlay {
+                if let url = videoCatalog.resolvedURLs[mode] {
+                    RemoteVideoLoopView(url: url)
+                        .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
+                } else {
+                    Image(systemName: "play.circle.fill")
+                        .font(.system(size: 46.s, weight: .regular))
+                        .foregroundStyle(Color(app: .dotInactive))
+                }
+            }
+            .overlay(
+                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                    .stroke(Color(app: .accent), lineWidth: 2)
+            )
     }
 
     // MARK: Copy

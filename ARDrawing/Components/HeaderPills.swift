@@ -24,9 +24,20 @@ struct StreakPill: View {
     }
 }
 
-/// Upgrade badge.
+/// Upgrade badge. Opens the paywall.
 struct ProPill: View {
+    @EnvironmentObject private var router: AppRouter
+
     var body: some View {
+        Button {
+            router.push(.premium)
+        } label: {
+            content
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var content: some View {
         HStack(spacing: 5.w) {
             Image(app: .starIcon)
                 .resizable()

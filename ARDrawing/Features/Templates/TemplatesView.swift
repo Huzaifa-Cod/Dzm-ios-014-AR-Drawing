@@ -1,18 +1,18 @@
 //
 //  TemplatesView.swift
 //  ARDrawing
-//
-//  Browse screen: search, category filter chips, and a grid of templates
-//  fetched from Firebase Storage via `TemplateCatalogStore`.
-//
+
 
 import SwiftUI
 
 struct TemplatesView: View {
     @EnvironmentObject private var router: AppRouter
     @EnvironmentObject private var templateCatalog: TemplateCatalogStore
+    @EnvironmentObject private var tabRouter: TabRouter
+    
     @State private var searchText = ""
     @State private var selectedCategory: TemplateCategoryData?
+    @State private var templatePreview: TemplatePreviewSelection?
 
     private let pageMargin: CGFloat = 20
     private let gridSpacing: CGFloat = 12
@@ -68,16 +68,7 @@ struct TemplatesView: View {
                     .padding(.horizontal, pageMargin.w)
                     .padding(.top, 16.h)
                     .padding(.bottom, 16.h)
-                    // A fresh identity per category, not just fresh data —
-                    // without this, switching categories reuses the same
-                    // grid-cell views (both categories fill the same
-                    // 1...imageCount indices), so the old thumbnails'
-                    // already-resolved URLs kept showing while the new
-                    // ones raced to load in underneath, which is exactly
-                    // the "mixed templates for a moment" glitch. Forcing
-                    // a new identity throws the old grid away outright —
-                    // the crossfade below then swaps it cleanly for an
-                    // entirely fresh one.
+
                     .id(category.id)
                     .transition(.opacity)
                 }
@@ -86,8 +77,33 @@ struct TemplatesView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(app: .homeBackground).ignoresSafeArea())
-        .onAppear { templateCatalog.loadIfNeeded() }
+        .onAppear {
+            templateCatalog.loadIfNeeded()
+            applyPendingCategoryIfNeeded()
+        }
+        .onChange(of: tabRouter.pendingCategoryID) { _, _ in
+            applyPendingCategoryIfNeeded()
+        }
+        .onChange(of: templateCatalog.categories) { _, _ in
+            applyPendingCategoryIfNeeded()
+        }
+        
+        .sheet(item: $templatePreview) { selection in
+            TemplatePreviewSheet(selection: selection) { url in
+                router.push(.drawModeSelection(templateURL: url))
+            }
+        }
     }
+    
+    private func applyPendingCategoryIfNeeded() {
+          guard let pendingID = tabRouter.pendingCategoryID else { return }
+          guard let match = templateCatalog.categories.first(where: { $0.id == pendingID }) else {
+              return
+          }
+          selectedCategory = match
+          tabRouter.pendingCategoryID = nil
+      }
+
 
     // MARK: Header
 
@@ -192,7 +208,7 @@ struct TemplatesView: View {
             print("[TemplatesView] No resolved URL yet for \(category.folderName) #\(index) — ignoring tap.")
             return
         }
-        router.push(.drawModeSelection(templateURL: url))
+        templatePreview = TemplatePreviewSelection(category: category, index: index, url: url)
     }
 }
 

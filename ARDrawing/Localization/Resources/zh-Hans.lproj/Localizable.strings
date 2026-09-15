@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  简体中文
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "让你的草图栩栩如生";
+"intro_subtitle" = "探索素描、肖像、动漫、动物等，一站式尽享。";
+"intro_agree_button" = "同意并继续";
+"intro_terms_prefix" = "我已同意";
+"intro_terms_of_use" = "使用条款";
+"intro_terms_and" = "并已阅读";
+"intro_privacy_policy" = "隐私政策";
+
+/* Onboarding */
+"onboarding_trace_title" = "用手机描摹";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "绘制你自己的照片";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "500+创意模板，助你轻松上手";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "循序渐进的课程，助你掌握绘画";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "加入数百名用户的行列";
+"onboarding_continue_button" = "继续";
+
+/* Tutorial */
+"tutorial_title" = "来看看\n你的水平如何";
+"tutorial_badge" = "教程";
+"tutorial_callout" = "跟随分步指南画一只猫";
+"tutorial_start_button" = "开始教程";
+"tutorial_skip_button" = "跳过教程";
+"tutorial_lesson_title" = "一起来画一张脸";
+"tutorial_complete_button" = "完成";
+"tutorial_complete_social_proof" = "你的画比\n50%的用户都要好。";
+"tutorial_complete_headline" = "每一幅杰作\n都始于一笔";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "继续";
+
+/* Tab bar */
+"tab_home" = "首页";
+"tab_lessons" = "课程";
+"tab_templates" = "模板";
+"tab_profile" = "我的";
+"tab_settings" = "设置";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "照片\n作参考";
+"home_capture_title" = "拍摄";
+"home_step_by_step_title" = "分步绘画";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "儿童专区";
+"home_cute" = "可爱";
+"home_see_all" = "查看全部";
+
+/* Templates */
+"templates_title" = "模板";
+"templates_search_placeholder" = "在此搜索";
+"template_category_kids" = "儿童";
+"template_category_cute" = "可爱";
+"template_category_animal" = "动物";
+"template_category_anime" = "动漫";
+
+/* Profile */
+"profile_title" = "我的";
+"profile_current_level" = "当前等级";
+"profile_see_more" = "查看更多";
+"profile_stat_drawn" = "已绘制";
+"profile_stat_time_spent" = "已用时长";
+"profile_stat_lessons" = "课程";
+"profile_album_title" = "相册";
+"profile_album_subtitle" = "上传你所画草图的照片";
+"profile_upload_drawing" = "上传作品";
+"profile_lessons_title" = "课程";
+"profile_lessons_subtitle" = "上传你所画草图的照片";
+"profile_streaks_title" = "绘画连续天数";
+"profile_streaks_days_label" = "天";
+"profile_longest_streak_label" = "最长连续天数";
+"profile_achievements_title" = "成就";
+"profile_achievements_subtitle" = "查看你获得的所有奖励";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "初次素描";
+"achievement_daily_drawer" = "每日绘画者";
+"achievement_photo_master" = "照片大师";
+"achievement_gallery_keeper" = "相册管理员";
+"achievement_color_explorer" = "色彩探索者";
+"achievement_sketch_learner" = "素描学徒";
+"achievement_focused_artist" = "专注画者";
+"achievement_speed_sketcher" = "速写高手";
+"achievement_perfect_trace" = "完美描摹";
+"achievement_collection_master" = "收藏大师";
+"achievement_line_artist" = "线条艺术家";
+"achievement_skill_achiever" = "技能达人";
+"achievement_detail_detective" = "细节侦探";
+"achievement_template_collector" = "模板收藏家";
+"achievement_upload_pro" = "上传达人";
+"achievement_timelapse_creator" = "延时摄影创作者";
+"achievement_consistency_king" = "坚持之王";
+"achievement_inspiration_seeker" = "灵感探寻者";
+
+"achievement_creative_wizard" = "创意魔法师";
+"achievement_practice_pro" = "练习达人";
+"achievement_milestone_maker" = "里程碑缔造者";
+"achievement_drawing_apprentice" = "绘画学徒";
+"achievement_surprise_artist" = "惊喜画家";
+"achievement_master_sketcher" = "素描大师";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "相册";
+"album_select_all" = "全选";
+"album_deselect_all" = "取消全选";
+"album_tab_drawn" = "手绘图像";
+"album_tab_recorded" = "已录制";
+"album_items_selected" = "已选择%d项";
+"album_delete" = "删除";
+"album_empty_title" = "暂无作品";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "课程";
+"lessons_current_level" = "当前等级";
+"lesson_difficulty_all" = "全部";
+"lesson_difficulty_beginner" = "初级";
+"lesson_difficulty_intermediate" = "中级";
+"lesson_difficulty_expert" = "高级";
+"lesson_avg_time_format" = "平均用时：%@";
+"lesson_avg_time_value" = "5分钟";
+"lesson_status_completed" = "已完成";
+"lesson_status_start" = "开始";
+
+
+// MARK: - Settings
+"settings_title" = "设置";
+"settings_section_manage" = "管理";
+"settings_section_other" = "其他";
+"settings_section_about" = "关于";
+"settings_restore_purchase" = "恢复购买";
+"settings_language" = "语言";
+"settings_rate_us" = "评价我们";
+"settings_contact_us" = "联系我们";
+"settings_share_with_friends" = "分享给好友";
+"settings_privacy_policy" = "隐私政策";
+"settings_terms_conditions" = "条款与条件";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "选择模式";
+"draw_mode_phone_title" = "在手机上绘画";
+"draw_mode_ar_title" = "AR绘画";
+"draw_mode_paper_title" = "在纸上绘画";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "继续";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "简单";
+"template_difficulty_medium" = "中等";
+"template_difficulty_expert" = "高级";
+"template_preview_level_label" = "难度";
+"template_preview_avg_label" = "平均";
+"template_preview_avg_minutes_format" = "%d分钟";
+"template_preview_free_badge" = "免费";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "开始绘画";
+"template_preview_unlock_pro" = "解锁Pro";
+"template_preview_close" = "关闭";
+
+
+// MARK: - Editor
+"editor_cancel" = "取消";
+"editor_finish" = "完成";
+"editor_tool_opacity" = "不透明度";
+"editor_tool_flip" = "翻转";
+"editor_tool_eraser" = "橡皮擦";
+"editor_tool_record" = "录制";
+"editor_tool_photo" = "拍照";
+"editor_tool_flash" = "闪光灯";
+"editor_photo_saved_toast" = "已保存到相册！✨";
+"editor_record_mode_video" = "视频";
+"editor_record_mode_timelapse" = "延时摄影";
+"editor_capture_photo_title" = "拍摄图像";
+"editor_tool_stroke" = "画笔";
+"editor_draw_stroke_title" = "绘制笔触";
+
+
+// MARK: - Sketch result
+"result_title" = "你的作品已完成！";
+"result_subtitle" = "已保存到你的相册。下载或与好友分享吧。";
+"result_download" = "下载";
+"result_share" = "分享";
+"result_done" = "完成";
+
+
+"album_preview_title" = "预览";
+"album_share_artwork" = "分享作品";
+"album_delete_confirm_title" = "删除这幅作品？";
+
+
+"learning_level_nav_title" = "学习等级";
+"learning_level_stage_new_learner" = "新手\n学徒";
+"learning_level_stage_sketch_beginner" = "素描\n初学者";
+"learning_level_stage_creative_explorer" = "创意\n探索者";
+"learning_level_stage_sketch_enthusiast" = "素描\n爱好者";
+"how_to_level_up_title" = "如何提升等级？";
+"how_to_level_up_description" = "完成更多课程以达到更高等级。";
+
+
+// MARK: - Premium
+"premium_title" = "加入Pro 👑";
+"premium_feature_ad_free" = "无广告\n体验";
+"premium_feature_ar_tracing" = "AR\n描摹";
+"premium_feature_photo_to_sketch" = "照片转\n素描";
+"premium_feature_drawing_lessons" = "绘画\n课程";
+"premium_plan_weekly" = "周度套餐";
+"premium_plan_yearly" = "年度套餐";
+"premium_save_badge" = "省50%";
+"premium_start_free" = "免费开始";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3天免费试用 - 之后%1$@/%2$@";
+"premium_period_week" = "周";
+"premium_period_month" = "月";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "前3天免费，之后%@/天";
+"premium_commitment_note" = "无需承诺，随时可取消";
+"premium_terms_of_use" = "使用条款";
+"premium_privacy_policy" = "隐私政策";
+"premium_restore" = "恢复";
+
+"premium_product_unavailable" = "该套餐目前不可用，请重试。";
+"premium_pending" = "你的购买正在等待批准。";
+"premium_failed_message" = "出现了一些问题，请重试。";
+"premium_restoring" = "正在恢复…";
+"premium_restore_none_found" = "未找到该Apple账户的历史购买记录。";

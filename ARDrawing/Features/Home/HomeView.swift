@@ -1,13 +1,15 @@
 //
 //  HomeView.swift
 //  ARDrawing
-//
 
 import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject private var router: AppRouter
     @EnvironmentObject private var templateCatalog: TemplateCatalogStore
+    @EnvironmentObject private var tabRouter: TabRouter
+    
+    @State private var templatePreview: TemplatePreviewSelection?
 
     private let pageMargin: CGFloat = 20
     private let featureCardHeight: CGFloat = 220
@@ -44,6 +46,11 @@ struct HomeView: View {
         }
         .background(Color(app: .homeBackground).ignoresSafeArea())
         .onAppear { templateCatalog.loadIfNeeded() }
+        .sheet(item: $templatePreview) { selection in
+            TemplatePreviewSheet(selection: selection) { url in
+                router.push(.drawModeSelection(templateURL: url))
+            }
+        }
     }
 
     // MARK: Header
@@ -106,11 +113,6 @@ struct HomeView: View {
         }
     }
 
-    /// Both top cards are the same box with a full-bleed artwork behind
-    /// whatever sits on top. Width is flexible — the enclosing HStack
-    /// splits the row evenly between the two — so they fill the row edge
-    /// to edge on any screen instead of sitting at a fixed phone width
-    /// with space left over on a tablet.
     private func featureCardShell<Content: View>(
         background: AppImage,
         @ViewBuilder content: () -> Content
@@ -164,7 +166,7 @@ struct HomeView: View {
                 Spacer()
 
                 Button {
-                    // Destination lands with the templates screen.
+                    tabRouter.showTemplates(category: category)
                 } label: {
                     Text(LocalizedKey.homeSeeAll.localized)
                         .font(.app(.medium, size: 14))
@@ -204,10 +206,13 @@ struct HomeView: View {
             print("[HomeView] No resolved URL yet for \(category.folderName) #\(index) — ignoring tap.")
             return
         }
-        router.push(.drawModeSelection(templateURL: url))
+        templatePreview = TemplatePreviewSelection(category: category, index: index, url: url)
     }
 }
 
-#Preview {
-    HomeView()
-}
+
+
+//
+//#Preview {
+//    HomeView()
+//}

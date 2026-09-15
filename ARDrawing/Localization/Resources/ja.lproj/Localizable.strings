@@ -1,0 +1,240 @@
+/*
+  Localizable.strings
+  ARDrawing
+
+  日本語
+*/
+
+"app_name" = "AR Drawing";
+
+/* Intro screen */
+"intro_title" = "スケッチに命を吹き込もう";
+"intro_subtitle" = "スケッチ、ポートレート、アニメ、動物など、すべてを一箇所で。";
+"intro_agree_button" = "同意して続ける";
+"intro_terms_prefix" = "私は";
+"intro_terms_of_use" = "利用規約";
+"intro_terms_and" = "に同意し、";
+"intro_privacy_policy" = "プライバシーポリシーを読みました";
+
+/* Onboarding */
+"onboarding_trace_title" = "スマホでトレース";
+"onboarding_trace_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_draw_photos_title" = "自分の写真を描く";
+"onboarding_draw_photos_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_templates_title" = "始めるための500以上のクリエイティブなテンプレート";
+"onboarding_templates_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_lessons_title" = "描画をマスターするステップバイステップのレッスン";
+"onboarding_lessons_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"onboarding_community_title" = "何百人ものユーザーに参加しよう";
+"onboarding_continue_button" = "続ける";
+
+/* Tutorial */
+"tutorial_title" = "あなたの腕前を\n見てみましょう";
+"tutorial_badge" = "チュートリアル";
+"tutorial_callout" = "ステップバイステップガイドで猫を描こう";
+"tutorial_start_button" = "チュートリアルを開始";
+"tutorial_skip_button" = "チュートリアルをスキップ";
+"tutorial_lesson_title" = "顔を描いてみよう";
+"tutorial_complete_button" = "完了";
+"tutorial_complete_social_proof" = "あなたの絵はユーザーの\n50%より上手です。";
+"tutorial_complete_headline" = "すべての傑作は\n一本の線から始まる";
+"tutorial_complete_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"tutorial_complete_continue_button" = "続ける";
+
+/* Tab bar */
+"tab_home" = "ホーム";
+"tab_lessons" = "レッスン";
+"tab_templates" = "テンプレート";
+"tab_profile" = "プロフィール";
+"tab_settings" = "設定";
+
+/* Home */
+"home_streak_count" = "12";
+"home_pro_badge" = "Pro";
+"home_photo_reference_title" = "参考写真";
+"home_capture_title" = "撮影";
+"home_step_by_step_title" = "ステップバイステップで描く";
+"home_step_by_step_subtitle" = "At vero eos et accusamus et iusto";
+"home_for_kids" = "キッズ向け";
+"home_cute" = "かわいい";
+"home_see_all" = "すべて見る";
+
+/* Templates */
+"templates_title" = "テンプレート";
+"templates_search_placeholder" = "ここで検索";
+"template_category_kids" = "キッズ";
+"template_category_cute" = "かわいい";
+"template_category_animal" = "動物";
+"template_category_anime" = "アニメ";
+
+/* Profile */
+"profile_title" = "プロフィール";
+"profile_current_level" = "現在のレベル";
+"profile_see_more" = "もっと見る";
+"profile_stat_drawn" = "描いた数";
+"profile_stat_time_spent" = "使用時間";
+"profile_stat_lessons" = "レッスン";
+"profile_album_title" = "アルバム";
+"profile_album_subtitle" = "描いたスケッチの写真をアップロードしよう";
+"profile_upload_drawing" = "作品をアップロード";
+"profile_lessons_title" = "レッスン";
+"profile_lessons_subtitle" = "描いたスケッチの写真をアップロードしよう";
+"profile_streaks_title" = "連続描画記録";
+"profile_streaks_days_label" = "日";
+"profile_longest_streak_label" = "最長連続記録";
+"profile_achievements_title" = "実績";
+"profile_achievements_subtitle" = "獲得したすべての報酬を見る";
+
+// MARK: - Achievements
+"achievement_first_sketch" = "初めてのスケッチ";
+"achievement_daily_drawer" = "デイリードローワー";
+"achievement_photo_master" = "フォトマスター";
+"achievement_gallery_keeper" = "ギャラリーキーパー";
+"achievement_color_explorer" = "カラーエクスプローラー";
+"achievement_sketch_learner" = "スケッチ学習者";
+"achievement_focused_artist" = "集中アーティスト";
+"achievement_speed_sketcher" = "スピードスケッチャー";
+"achievement_perfect_trace" = "パーフェクトトレース";
+"achievement_collection_master" = "コレクションマスター";
+"achievement_line_artist" = "ラインアーティスト";
+"achievement_skill_achiever" = "スキルアチーバー";
+"achievement_detail_detective" = "ディテール探偵";
+"achievement_template_collector" = "テンプレートコレクター";
+"achievement_upload_pro" = "アップロードのプロ";
+"achievement_timelapse_creator" = "タイムラプスクリエイター";
+"achievement_consistency_king" = "継続王";
+"achievement_inspiration_seeker" = "インスピレーションシーカー";
+
+"achievement_creative_wizard" = "クリエイティブウィザード";
+"achievement_practice_pro" = "練習のプロ";
+"achievement_milestone_maker" = "マイルストーンメーカー";
+"achievement_drawing_apprentice" = "見習い絵師";
+"achievement_surprise_artist" = "サプライズアーティスト";
+"achievement_master_sketcher" = "スケッチマスター";
+
+
+// MARK: - Profile — Album
+"album_nav_title" = "アルバム";
+"album_select_all" = "すべて選択";
+"album_deselect_all" = "選択を解除";
+"album_tab_drawn" = "描いた作品";
+"album_tab_recorded" = "録画";
+"album_items_selected" = "%d件選択中";
+"album_delete" = "削除";
+"album_empty_title" = "まだ作品がありません";
+
+
+// MARK: - Lessons
+"lessons_screen_title" = "レッスン";
+"lessons_current_level" = "現在のレベル";
+"lesson_difficulty_all" = "すべて";
+"lesson_difficulty_beginner" = "初級";
+"lesson_difficulty_intermediate" = "中級";
+"lesson_difficulty_expert" = "上級";
+"lesson_avg_time_format" = "平均時間: %@";
+"lesson_avg_time_value" = "5分";
+"lesson_status_completed" = "完了";
+"lesson_status_start" = "開始";
+
+
+// MARK: - Settings
+"settings_title" = "設定";
+"settings_section_manage" = "管理";
+"settings_section_other" = "その他";
+"settings_section_about" = "アプリについて";
+"settings_restore_purchase" = "購入を復元";
+"settings_language" = "言語";
+"settings_rate_us" = "評価する";
+"settings_contact_us" = "お問い合わせ";
+"settings_share_with_friends" = "友達に共有";
+"settings_privacy_policy" = "プライバシーポリシー";
+"settings_terms_conditions" = "利用規約";
+
+
+// MARK: - Draw Mode
+"draw_mode_select_title" = "モードを選択";
+"draw_mode_phone_title" = "スマホに描く";
+"draw_mode_ar_title" = "ARで描く";
+"draw_mode_paper_title" = "紙に描く";
+"draw_mode_description" = "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium";
+"draw_mode_continue_button" = "続ける";
+
+// MARK: - Template preview
+"template_difficulty_easy" = "簡単";
+"template_difficulty_medium" = "普通";
+"template_difficulty_expert" = "上級";
+"template_preview_level_label" = "レベル";
+"template_preview_avg_label" = "平均";
+"template_preview_avg_minutes_format" = "%d分";
+"template_preview_free_badge" = "無料";
+"template_preview_pro_badge" = "Pro";
+"template_preview_start_drawing" = "描画を開始";
+"template_preview_unlock_pro" = "Proでロック解除";
+"template_preview_close" = "閉じる";
+
+
+// MARK: - Editor
+"editor_cancel" = "キャンセル";
+"editor_finish" = "完了";
+"editor_tool_opacity" = "不透明度";
+"editor_tool_flip" = "反転";
+"editor_tool_eraser" = "消しゴム";
+"editor_tool_record" = "録画";
+"editor_tool_photo" = "写真";
+"editor_tool_flash" = "フラッシュ";
+"editor_photo_saved_toast" = "ギャラリーに保存しました！✨";
+"editor_record_mode_video" = "動画";
+"editor_record_mode_timelapse" = "タイムラプス";
+"editor_capture_photo_title" = "画像をキャプチャ";
+"editor_tool_stroke" = "ストローク";
+"editor_draw_stroke_title" = "ストロークを描く";
+
+
+// MARK: - Sketch result
+"result_title" = "スケッチが完成しました！";
+"result_subtitle" = "アルバムに保存されました。ダウンロードするか、友達と共有しましょう。";
+"result_download" = "ダウンロード";
+"result_share" = "共有";
+"result_done" = "完了";
+
+
+"album_preview_title" = "プレビュー";
+"album_share_artwork" = "作品を共有";
+"album_delete_confirm_title" = "この作品を削除しますか？";
+
+
+"learning_level_nav_title" = "学習レベル";
+"learning_level_stage_new_learner" = "新米\n学習者";
+"learning_level_stage_sketch_beginner" = "スケッチ\n初心者";
+"learning_level_stage_creative_explorer" = "クリエイティブ\nエクスプローラー";
+"learning_level_stage_sketch_enthusiast" = "スケッチ\n愛好家";
+"how_to_level_up_title" = "レベルアップの方法は？";
+"how_to_level_up_description" = "レッスンを完了して、より高いレベルを目指しましょう。";
+
+
+// MARK: - Premium
+"premium_title" = "Proに参加 👑";
+"premium_feature_ad_free" = "広告なしの\n体験";
+"premium_feature_ar_tracing" = "ARトレース";
+"premium_feature_photo_to_sketch" = "写真から\nスケッチへ";
+"premium_feature_drawing_lessons" = "描画\nレッスン";
+"premium_plan_weekly" = "週間プラン";
+"premium_plan_yearly" = "年間プラン";
+"premium_save_badge" = "50%お得";
+"premium_start_free" = "無料で始める";
+/* %1$@ is the price, %2$@ the billing period — e.g. "$5.99" / "month" */
+"premium_trial_note" = "3日間無料トライアル - その後 %1$@/%2$@";
+"premium_period_week" = "週";
+"premium_period_month" = "月";
+/* %@ is the per-day price, e.g. "$0.09" */
+"premium_plan_footnote" = "最初の3日間は無料、その後は%@/日";
+"premium_commitment_note" = "縛りなし。いつでもキャンセル可能";
+"premium_terms_of_use" = "利用規約";
+"premium_privacy_policy" = "プライバシーポリシー";
+"premium_restore" = "復元";
+
+"premium_product_unavailable" = "現在このプランはご利用いただけません。もう一度お試しください。";
+"premium_pending" = "購入は承認待ちです。";
+"premium_failed_message" = "問題が発生しました。もう一度お試しください。";
+"premium_restoring" = "復元中…";
+"premium_restore_none_found" = "このApple IDでの以前の購入は見つかりませんでした。";
