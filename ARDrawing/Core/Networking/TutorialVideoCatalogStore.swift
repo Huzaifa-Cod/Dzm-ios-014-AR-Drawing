@@ -1,18 +1,7 @@
 //
 //  TutorialVideoCatalogStore.swift
 //  ARDrawing
-//
-//  Fetches `SketchVideo.json` — the manifest of preview clips for the draw
-//  mode carousel (`DrawModeSelectionView`) — and resolves each `DrawMode`
-//  against it.
-//
-//  The manifest only lists which clips exist; it says nothing about which
-//  mode a clip belongs to. That match is made on this side, by
-//  `DrawMode.tutorialVideoKeywords`, against filenames like
-//  "tutorial_camera_draw". A mode with no match — `paper`, until its clip
-//  is uploaded — simply resolves to `nil`, and the carousel falls back to
-//  its placeholder card for that one slot rather than failing outright.
-//
+
 
 import Combine
 import FirebaseStorage
@@ -24,10 +13,7 @@ private struct TutorialVideoManifest: Codable {
 
 @MainActor
 final class TutorialVideoCatalogStore: ObservableObject {
-    /// The clip resolved for each mode, once known. A mode absent from
-    /// this dictionary either hasn't resolved yet or has no clip in the
-    /// manifest — the carousel treats both the same way: show the
-    /// placeholder until told otherwise.
+    
     @Published private(set) var resolvedURLs: [DrawMode: URL] = [:]
 
     private static let logTag = "[TutorialVideoCatalogStore]"

@@ -25,7 +25,10 @@ struct DrawModeSelectionView: View {
     /// How much of a neighbouring card peeks in at each side.
     private let peekInset: CGFloat = 30
 
-    private var currentMode: DrawMode { scrolledID ?? .phone }
+    /// Falls back to whichever mode is declared first, so reordering
+    /// `DrawMode` is all it takes to change the carousel — nothing here
+    /// names a specific mode.
+    private var currentMode: DrawMode { scrolledID ?? DrawMode.allCases.first ?? .phone }
 
     var body: some View {
         VStack(spacing: 0) {
@@ -33,7 +36,13 @@ struct DrawModeSelectionView: View {
             Spacer(minLength: 0)
             videoCarousel
 
-            PageIndicator(count: DrawMode.allCases.count, currentIndex: currentMode.rawValue)
+            PageIndicator(
+                count: DrawMode.allCases.count,
+                // Position in the carousel, not the raw value — the two
+                // only agree while the cases happen to be declared in
+                // raw-value order.
+                currentIndex: DrawMode.allCases.firstIndex(of: currentMode) ?? 0
+            )
                 .padding(.top, 22.h)
 
             modeSummary
@@ -43,9 +52,7 @@ struct DrawModeSelectionView: View {
             Spacer(minLength: 0)
 
             PrimaryButton(title: LocalizedKey.drawModeContinueButton.localized) {
-                // Spending the try is Finish's job, not this screen's —
-                // `canProceed` only checks the allowance, and raises the
-                // paywall itself once it's gone.
+
                 guard IAPManager.canProceed() else { return }
                 router.push(.editor(mode: currentMode, templateURL: templateURL))
             }
@@ -121,7 +128,7 @@ struct DrawModeSelectionView: View {
             .frame(maxHeight: .infinity, alignment: .center)
         }
         .frame(height: (ScreenSize.screenWidth - peekInset.w * 2) / cardAspect)
-        .onAppear { scrolledID = .phone }
+        .onAppear { scrolledID = DrawMode.allCases.first }
     }
 
     /// Double border: a soft tinted halo behind a smaller white card with

@@ -349,14 +349,18 @@ enum DrawMode: Int, CaseIterable, Identifiable {
     /// Substrings that identify this mode's preview clip inside
     /// `SketchVideo.json` — matched against each entry lowercased, so the
     /// manifest's exact filename doesn't have to be predicted in advance.
-    /// `paper` has no clip uploaded yet; once one lands with "paper"
-    /// somewhere in its name, `TutorialVideoCatalogStore` picks it up with
+    ///
+    /// "tutorial_draw_now" belongs to `paper` despite its name: the clip
+    /// shows a phone propped over a sheet while the drawing is traced onto
+    /// the paper. `phone` has no clip of its own yet, so its card falls
+    /// back to the placeholder until one is uploaded and added to the
+    /// manifest — anything with "phone" in the name will bind to it with
     /// no code change.
     var tutorialVideoKeywords: [String] {
         switch self {
-        case .phone: return ["draw_now", "phone"]
+        case .phone: return ["phone", "draw_screen", "on_screen"]
         case .arDraw: return ["camera_draw", "camera", "ar_draw"]
-        case .paper: return ["paper"]
+        case .paper: return ["paper", "draw_now"]
         }
     }
 }

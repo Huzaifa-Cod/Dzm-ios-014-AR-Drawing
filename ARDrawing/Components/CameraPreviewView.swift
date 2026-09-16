@@ -1,25 +1,12 @@
 //
 //  CameraPreviewView.swift
 //  ARDrawing
-//
-//  Live back-camera passthrough behind the editor canvas, the video
-//  recording backing the Record tool, and still capture backing the
-//  Photo tool. Stills go through `AVCapturePhotoOutput` rather than a
-//  window screenshot — `AVCaptureVideoPreviewLayer`'s video content is
-//  hardware-composited and simply does not show up in a
-//  `drawHierarchy`/`layer.render` snapshot; it renders black. A real
-//  photo is the only reliable way to get actual camera pixels.
-//
+
 
 import AVFoundation
 import Combine
 import SwiftUI
 
-/// Thin handle the SwiftUI side holds to imperatively trigger a photo
-/// capture and to map screen geometry (the canvas's on-screen frame)
-/// onto the camera's actual image space — `CameraPreviewView` itself is
-/// a value type recreated on every render, so this is what survives
-/// across those and reaches the live `PreviewView` underneath.
 final class CameraController: ObservableObject {
     fileprivate weak var previewView: PreviewView?
 
@@ -32,12 +19,6 @@ final class CameraController: ObservableObject {
         previewView.capturePhoto(completion: completion)
     }
 
-    /// Maps a rect in the preview's own on-screen coordinate space
-    /// (e.g. the canvas's current frame, zoom/offset already applied)
-    /// to a normalized (0...1) rect in the camera's full, uncropped
-    /// image — accounting for the aspect-fill cropping the preview
-    /// applies. This is Apple's documented technique for aligning an
-    /// overlay with what the camera actually captures.
     func normalizedRect(forLayerRect rect: CGRect) -> CGRect? {
         previewView?.normalizedRect(forLayerRect: rect)
     }

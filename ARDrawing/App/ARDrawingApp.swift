@@ -11,9 +11,7 @@ import Firebase
 
 @main
 struct ARDrawingApp: App {
-    // Without this, `AppDelegate.application(_:didFinishLaunchingWithOptions:)`
-    // never fires and `FirebaseApp.configure()` never runs — every
-    // Firebase call (Storage included) would crash on first use.
+
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     let persistenceController = PersistenceController.shared
 
